@@ -134,3 +134,6 @@ export default {
 ```
 
 最后效果图：
+
+![image-20191222163912882](E:\MarkDown学习笔记\LearningNotes\Ant\G2\Vue如何使用G2绘制图片\images\image-20191222163912882.png)
+

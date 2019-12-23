@@ -8,8 +8,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@antv/data-set": "^0.10.2",
     "@antv/g2": "^3.5.11",
     "core-js": "^3.4.3",
+    "echarts": "^4.5.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "node-less": "^1.0.0",
+    "style-loader": "^1.1.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {
