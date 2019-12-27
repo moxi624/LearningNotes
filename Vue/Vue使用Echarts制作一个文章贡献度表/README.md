@@ -4,11 +4,11 @@
 
 最近想给博客做一个类似于码云代码提交记录的图表，就类似于下面这样的
 
-![image-20191225144436770](.\images\image-20191225144436770.png)
+![image-20191225144436770](./images/image-20191225144436770.png)
 
 然后将每天的博客提交的博客生成对应的记录，下面先看最终的结果图
 
-![image-20191225213702433](.\images\image-20191225213702433.png)
+![image-20191225213702433](./images/image-20191225213702433.png)
 
 有点不一样的地方是，这里使用圆圈的大小，来表示提交的次数
 
@@ -16,7 +16,7 @@
 
 这个博客贡献表是使用了ECharts中的 calendar-effectscatter 组件：[点我传送](https://www.echartsjs.com/examples/en/editor.html?c=calendar-effectscatter)
 
-![image-20191225214915704](.\images\image-20191225214915704.png)
+![image-20191225214915704](./images/image-20191225214915704.png)
 
 首先附上完整的vue代码：
 
@@ -173,7 +173,7 @@ SELECT DISTINCT DATE_FORMAT(create_time, '%Y-%m-%d') DATE, COUNT(uid) COUNT FROM
 
 执行完成后得到的结果如下：
 
-![image-20191225215238967](.\images\image-20191225215238967.png)
+![image-20191225215238967](./images/image-20191225215238967.png)
 
 将统计出每天的文章数，通过上面我们能够看到，里面的日期不是连续的，所以我们还需要编写代码针对那些没有记录的日期，初始化贡献度为0。
 
