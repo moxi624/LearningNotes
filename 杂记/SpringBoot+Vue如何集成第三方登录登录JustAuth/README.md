@@ -493,7 +493,7 @@ public class AuthRestApi {
 
 application.yml部分配置文件如下所示：
 
-```
+```yaml
 data:
   # 门户页面
   webSite:
@@ -564,7 +564,7 @@ vue代码，就是通过source判断我点击的按钮，如果是github，那�
 
 ![image-20191231124501601](images/image-20191231124501601.png)
 
-回显的接口如下所示：
+回调的接口如下所示：
 
 ```java
     /**
@@ -609,7 +609,33 @@ vue代码，就是通过source判断我点击的按钮，如果是github，那�
     }
 ```
 
-登录完成后，就能够看到头像回显了：
+然后在vue项目中，我们只需要判断是否有token通过url传递过来
+
+```javascript
+ let token = this.getUrlVars()["token"];
+      // 判断url中是否含有token
+      if (token != undefined) {
+        setCookie("token", token, 1)
+      }
+
+      // 从cookie中获取token
+      token = getCookie("token")
+      if (token != undefined) {
+        authVerify(token).then(response => {
+          if (response.code == "success") {
+            this.isLogin = true;
+            this.userInfo = response.data;
+          } else {
+            this.isLogin = false;
+            delCookie("token");
+          }
+        });
+      } else {
+        this.isLogin = false;
+ }
+```
+
+如果有，那么就通过token获取用户信息，登录完成后，就能够看到头像回显了：
 
 ![image-20191231125825022](images/image-20191231125825022.png)
 
