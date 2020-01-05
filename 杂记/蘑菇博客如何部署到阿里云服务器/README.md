@@ -28,8 +28,8 @@ mvn clean install
 下面我们需要进入下列的目录，把对应的jar上传到我们之前制作的docker容器中
 
 ```
-# 进入 mogu_admin目录
-cd mogu_admin\target
+# 进入 mogu_eureka目录
+cd mogu_eureka\target
 ```
 
 我们把下面的jar包复制
@@ -374,3 +374,11 @@ http://yourIp:9528
 ```
 
 如果配置了域名的话，输入对应的域名即可
+
+```yaml
+# 前台项目
+http://www.moguit.cn
+# 后台项目 admin  mogu2018
+http://admin.moguit.cn
+```
+
