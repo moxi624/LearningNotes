@@ -23,7 +23,7 @@
     </div>
 </template>
 <script>
-    import moment from 'moment';
+
     export default {
         props: ['userInfo', 'replyInfo'],
         data() {
@@ -31,7 +31,6 @@
                 comments: [],
                 submitting: false,
                 value: '',
-                moment,
             };
         },
         methods: {
@@ -42,6 +41,7 @@
                     userName: this.userInfo.userName,
                     avatar: this.userInfo.avatar,
                     content: this.value,
+                    reply: []
                 }
                 this.value = '';
                 this.$emit("submit-box", this.comments)
@@ -51,7 +51,7 @@
             },
             handleCancle() {
                 this.value = '';
-                this.$emit("cancleBox", this.replyInfo.uid)
+                this.$emit("cancel-box", this.replyInfo.uid)
             }
         },
     };

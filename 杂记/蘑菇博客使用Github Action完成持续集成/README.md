@@ -115,7 +115,7 @@ on: [push, pull_request]
 
 workflow文件的主体是由一个个job构成，表示要执行的一个或多个任务
 
-iobs字段中，需要写出每一项任务的job_id，具体名称子弟应
+iobs字段中，需要写出每一项任务的job_id
 
 ```
 jobs:
@@ -398,7 +398,6 @@ npm run build
 script: |
           cd /home
           tar -zxvf /home/transfer_files.tar.gz
-
 ```
 
 然后判断原来的备份文件是否存在，如果存在那么需要删除

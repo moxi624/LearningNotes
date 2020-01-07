@@ -12,26 +12,28 @@
                 {{item.content}}
             </p>
 
-            <a-comment class="comment" :id="item.uid" :reply-info="replyInfo">
-                <a-avatar
-                        slot="avatar"
-                        :src="userInfo.avatar"
-                        alt="Han Solo"
-                />
-                <div slot="content">
-                    <a-form-item>
-                        <a-textarea :rows="4" @change="handleChange" :value="value"></a-textarea>
-                    </a-form-item>
-                    <a-form-item>
-                        <a-button htmlType="submit" :loading="submitting" @click="handleSubmit" type="primary">
-                            添加评论
-                        </a-button>
-                        <a-button style="margin-left:5px;" @click="handleCancle">
-                            取消评论
-                        </a-button>
-                    </a-form-item>
-                </div>
-            </a-comment>
+<!--            <a-comment class="comment" :id="item.uid" :reply-info="replyInfo">-->
+<!--                <a-avatar-->
+<!--                        slot="avatar"-->
+<!--                        :src="userInfo.avatar"-->
+<!--                        alt="Han Solo"-->
+<!--                />-->
+<!--                <div slot="content">-->
+<!--                    <a-form-item>-->
+<!--                        <a-textarea :rows="4" @change="handleChange" :value="value"></a-textarea>-->
+<!--                    </a-form-item>-->
+<!--                    <a-form-item>-->
+<!--                        <a-button htmlType="submit" :loading="submitting" @click="handleSubmit" type="primary">-->
+<!--                            添加评论-->
+<!--                        </a-button>-->
+<!--                        <a-button style="margin-left:5px;" @click="handleCancle">-->
+<!--                            取消评论-->
+<!--                        </a-button>-->
+<!--                    </a-form-item>-->
+<!--                </div>-->
+<!--            </a-comment>-->
+
+            <CommentBox class="comment" :userInfo="userInfo" :reply-info="replyInfo" :id="item.uid" @submit-box="submitBox" @canel-box="cancelBox"></CommentBox>
 
             <CommentList :comments="item.reply"></CommentList>
 
@@ -41,7 +43,7 @@
 <script>
 
     import { mapMutations} from 'vuex';
-
+    import CommentBox from "../components/CommentBox";
     export default {
         name: "CommentList",
         props: ['comments'],
@@ -67,7 +69,7 @@
 
         },
         components: {
-
+            CommentBox
         },
 
         compute: {
@@ -83,7 +85,22 @@
                 document.getElementById(uid).style.display = 'block';
                 this.replyInfo.uid = uid
             },
+            submitBox(e) {
+                console.log("提交", e)
 
+                this.value = '';
+
+                document.getElementById(this.replyInfo.uid).style.display = 'none'
+
+                var comments = this.$store.state.app.commentList;
+
+                this.getMenuBtnList(comments, e.replyCommentUid, e)
+
+                this.$store.commit("setCommentList", comments);
+            },
+            cancelBox(e) {
+                console.log("取消", e)
+            },
             handleSubmit() {
 
                 this.comment = {
@@ -94,7 +111,6 @@
                     content: this.value,
                     reply: []
                 }
-
                 this.value = '';
 
                 document.getElementById(this.replyInfo.uid).style.display = 'none'

@@ -1,7 +1,9 @@
 <template>
     <div>
+
+        <CommentBox :userInfo="userInfo" :reply-info="replyInfo"  @submit-box="submitBox" @canel-box="cancelBox"></CommentBox>
+
         <CommentList :comments="comments"></CommentList>
-        <CommentBox :userInfo="userInfo" :reply-info="replyInfo"></CommentBox>
     </div>
 </template>
 <script>
@@ -93,6 +95,31 @@
         methods: {
             //拿到vuex中的写的两个方法
             ...mapMutations(['setCommentList']),
+            getMenuBtnList(menuTreeList, uid, comment) {
+
+                if (menuTreeList == undefined || menuTreeList.length <= 0) {
+                    return;
+                }
+
+                for (let item of menuTreeList) {
+
+                    if (item.uid === uid) {
+                        var menu = item.reply;
+                        menu.push(comment);
+                    } else {
+                        this.getMenuBtnList(item.reply, uid, comment);
+                    }
+                }
+            },
+            submitBox(e) {
+                console.log("提交");
+                var comments = this.$store.state.app.commentList;
+                comments.push(e);
+                this.$store.commit("setCommentList", comments);
+            },
+            cancelBox(e) {
+                console.log("取消", e)
+            },
         },
     };
 </script>
