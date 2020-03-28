@@ -263,8 +263,6 @@ mapState 和 mapMutations 就相当于把刚刚我们在main.js页面中创建�
 
 在这之前，我推荐一个vue的chrome 插件，它能够让我们看到我们操作state时候的数据变化
 
-![image-20191222110544442](E:\MarkDown学习笔记\LearningNotes\Vue\VueX\images\image-20191222110544442.png)
-
 安装完成后，重启浏览器，然后F12后，能在调试页面就能够看到vue这个选项卡了，下面看demo运行的结果：
 
 ![](./images/111.gif)
