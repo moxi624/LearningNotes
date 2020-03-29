@@ -12,7 +12,11 @@ import java.net.Socket;
  */
 public class QQClient {
     public static void main(String[] args) throws IOException {
+
         Socket socket = new Socket("127.0.0.1", 8080);
         socket.getOutputStream().write("我来发送".getBytes());
+        while (true) {
+
+        }
     }
 }

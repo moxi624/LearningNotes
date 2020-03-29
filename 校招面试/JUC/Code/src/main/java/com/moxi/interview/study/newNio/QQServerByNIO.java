@@ -46,10 +46,13 @@ public class QQServerByNIO {
                 System.out.println("无人连接");
                 for(SocketChannel item: socketChannelList) {
                     int len = item.read(byteBuffer);
-                    // 切换成读模式
-                    byteBuffer.flip();
-                    // 打印出结果
-                    System.out.println("读取到的数据" + new String(byteBuffer.array(), 0, len));
+                    if(len > 0) {
+                        // 切换成读模式
+                        byteBuffer.flip();
+                        // 打印出结果
+                        System.out.println("读取到的数据" + new String(byteBuffer.array(), 0, len));
+                    }
+                    byteBuffer.clear();
                 }
 
             } else {
@@ -57,6 +60,20 @@ public class QQServerByNIO {
 
                 // 设置成非阻塞
                 socketChannel.configureBlocking(false);
+
+                // 将该通道存入到List中
+                socketChannelList.add(socketChannel);
+
+                for(SocketChannel item: socketChannelList) {
+                    int len = item.read(byteBuffer);
+                    if(len > 0) {
+                        // 切换成读模式
+                        byteBuffer.flip();
+                        // 打印出结果
+                        System.out.println("读取到的数据" + new String(byteBuffer.array(), 0, len));
+                    }
+                    byteBuffer.clear();
+                }
             }
         }
     }

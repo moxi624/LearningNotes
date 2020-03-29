@@ -17,3 +17,11 @@
 17. nacos：SpringCloud alibaba开源的服务发现组件
 18. Channel：通道
 19. capacity：容量
+20. annotation：注解
+21. retention：保留
+22. deprecated：不推荐，不赞同
+23. Reflection：反射
+24. constructor：构造器
+25. property：属性
+26. declared：断言，公开
+27. invoke：激活
