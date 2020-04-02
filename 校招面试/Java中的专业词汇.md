@@ -25,3 +25,6 @@
 25. property：属性
 26. declared：断言，公开
 27. invoke：激活
+28. signal：暗号，信号
+29. yield：放弃（让步）
+30. interrupt：中断
