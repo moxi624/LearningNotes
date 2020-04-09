@@ -1,8 +1,8 @@
 1. ReentrantLock：重入锁
 2. Reference：引用
 3. concurrent：并发
-4. CountDownLatch：闭锁
-5. CyclicBarrier：循环屏障
+4. CountDownLatch：闭锁，原子变量
+5. CyclicBarrier：循环屏障，Java中线程计数器
 6. Semaphore：信号量
 7. ThreadPoolExecutor：线程池的底层类
 8. Scheduled：调度
@@ -28,3 +28,20 @@
 28. signal：暗号，信号
 29. yield：放弃（让步）
 30. interrupt：中断
+31. Aspect：切面
+32. atomicity：原子性
+33. consistency：一致性
+34. isolation：隔离性
+35. durabilily：持久性
+36. transaction：事务，交易
+37. dispatch：派发，转发
+38. actuator：激励者，促进器，SpringCloud中的
+39. availability：高可用
+40. consistency：一致性
+41. Partition Tolerance：分区容忍性
+42. Balancer：平衡
+43. hystrix：豪猪，SpringCloud中的熔断器
+44. sentinel：哨兵，SpringCloud中的组件
+45. circuitBreaker：断路器
+46. predicate：断言
+
