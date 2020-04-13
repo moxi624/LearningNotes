@@ -1,0 +1,210 @@
+# 进程通信和线程通信
+
+## 概念
+
+进程就是正在运行的程序，它是系统资源调度的独立单位，并且一个进程可以执行多个任务，而线程是程序执行的任务，它是程序使用CPU的基本单位，因此也可以说线程是依赖进程的
+
+### 进程
+
+进程就是正在运行的程序，它是系统资源调度的独立单位，各个进程之间不会相互影响，因为系统给它们分配了不同的空间和资源，它分为单进程和多进程
+
+单进程的计算机一次只能做一件事，而多个进程的计算机可以做到一次做不同的事情，一边听音乐，一边打游戏，这两件事虽然看起来在同时进行，但是其实是CPU在做成程序之间的高效切换，才让我们感觉是同时进行的。
+
+### 线程
+
+线程是程序执行的任务，它是程序使用CPU的基本单位，同时单线程也就是做的事情很专一，不会分神去做别的 事，也就是程序只有一条执行路径，多线程就是可以分出多条路径去做同一件事情，也就是程序有多条执行路径。因为多线程的存在，不是提高了程序的执行速度，其实是为了提高应用程序的使用率，也可以说程序的执行其实都是抢CPU的资源，也就是抢CPU的执行权，而其中的某一个进程如果执行路径比较多，就会有更高的几率抢到CPU执行权，但是这一过程是随机的，不知道哪一个线程会在哪一个时刻占到这个资源，所以线程的执行有随机性。
+
+### 获取线程的方式
+
+目前获取线程有四种方式
+
+- 实现Runnable接口（无返回值）
+- 实现Callable接口（有返回值）
+- 实例化Thread类
+- 使用线程池获取
+
+## 进程通信方式
+
+- 管道：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有血缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系
+- 信号量：信号量是一个计数器，可以用来控制多线进程对共享资源的访问。它常作为一种锁机制，防止某个进程正在访问共享资源时，其它进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。
+- 消息队列：消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信息传递信息少，管道只能承载无格式字节流以及缓冲区大小受限等特点。
+- 共享内存：共享内存就是映射一段能够被其它进程所访问的内存，这段共享内存由一个进程创建，但多个进程可以访问。共享内存是最快的IPC方式，它是针对进程内通信方式运行效率而专门设计。它往往与其它通信机制，如信号量配合使用，来实现进程间的同步和通信。
+- 套接字：套接字也是一种进程通信机制，与其它通信机制不同的是，它可以用于不同设备间的进程通信
+
+## 线程间的通信方式
+
+- 锁机制：包括互斥锁，条件变量，读写锁
+  - 互斥锁提供了以排他方式防止数据结构被并发修改的问题
+  - 读写锁运行多线程同时读共享数据，而对写操作是互斥的
+  - 条件变量可以以原子方式阻塞进程，知道某个特定条件为真为止。对条件的测试是在互斥锁的保护下进行的，条件变量始终与互斥锁一起使用。
+- 信号量机制（Semaphore）：包括无名线程信号量和命名线程信号量
+- 信号机制（Signal）：类似进程间的信号处理，线程间的通信目的主要是用于线程同步，所以线程没有像进程通信中的用于数据交换的通信机制。
+
+## 线程如何按照自己指定的顺序执行
+
+我们在日常的多线程开发中，可能有时会想让每个线程都按照我们指定的顺序来运行，而不是让CPU随机调度，这样可能会让我们在日常开发的工作中带来不必要的。
+
+如下代码所示，我们按照顺序写了一段多线程的代码，然后想让t1，t2，t3都能顺序的执行
+
+```
+    /**
+     * 没有顺序执行的示例
+     */
+    public static void test() {
+        Thread t1 = new Thread(() -> {
+            System.out.println("1");
+        }, "t1");
+
+        Thread t2 = new Thread(() -> {
+            System.out.println("2");
+        }, "t2");
+
+        Thread t3 = new Thread(() -> {
+            System.out.println("3");
+        }, "t3");
+
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+```
+
+但是我们在运行后会发现，他们并没有按照我们的代码顺序执行的，那么有什么方法能够让他们按顺序执行？
+
+```
+1
+3
+2
+```
+
+### 使用join
+
+jion的意思是加入线程，需要等待线程执行完毕以后，其它线程才能够继续执行
+
+实例代码：
+
+```
+    public static void test2() throws InterruptedException {
+        Thread t1 = new Thread(() -> {
+            System.out.println("1");
+        }, "t1");
+
+        Thread t2 = new Thread(() -> {
+            System.out.println("2");
+        }, "t2");
+
+        Thread t3 = new Thread(() -> {
+            System.out.println("3");
+        }, "t3");
+
+        t1.start();
+        t1.join();
+
+        t2.start();
+        t2.join();
+
+        t3.start();
+        t3.join();
+    }
+```
+
+最后运行结果：
+
+```
+1
+2
+3
+```
+
+这里主要利用了join的阻塞效果，来达到我们的使用目的，从上可知，程序已经按照我们指定的顺序执行结束了，并得到了我们想要的结果，我们进入join的源码页面
+
+```
+    public final synchronized void join(long millis)
+    throws InterruptedException {
+        long base = System.currentTimeMillis();
+        long now = 0;
+
+        if (millis < 0) {
+            throw new IllegalArgumentException("timeout value is negative");
+        }
+
+        if (millis == 0) {
+            while (isAlive()) {
+                wait(0);
+            }
+        } else {
+            while (isAlive()) {
+                long delay = millis - now;
+                if (delay <= 0) {
+                    break;
+                }
+                wait(delay);
+                now = System.currentTimeMillis() - base;
+            }
+        }
+    }
+```
+
+首先我们可以看到，join方法是线程安全的，因为引入了 `Synchronized` 重量锁，同时我们可以看到，join方法默认是传递的参数为0
+
+```
+public final void join() throws InterruptedException {
+	join(0);
+}
+```
+
+那么它就会进入这个方法，也就是while循环，isAlive()方法就是判断这个线程是否激活，但线程没有运行完成的时候，处于激活状态，也就是说当t1没有执行完成后，主线程会进入阻塞状态，也就是不断自旋的操作，直到线程执行完毕后，才跳出循环
+
+需要注意的是，这里的wait不是阻塞调用者，而是阻塞主线程，也就是说当t1线程没有执行完毕，主线程是无法继续往下执行的
+
+```
+if (millis == 0) {
+    while (isAlive()) {
+    	wait(0);
+    }
+}
+```
+
+### 利用Executors线程池
+
+Executors是JUC里面的操作类，可以方便的给我们提供线程池的操作，这里我们使用Executors中的newSingleThreadExecutor方法，创建一个单线程的线程池。
+
+```
+    /**
+     * 使用线程池
+     */
+    public static void test3() {
+        // 创建一个单例线程
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Thread t1 = new Thread(() -> {
+            System.out.println("1");
+        }, "t1");
+
+        Thread t2 = new Thread(() -> {
+            System.out.println("2");
+        }, "t2");
+
+        Thread t3 = new Thread(() -> {
+            System.out.println("3");
+        }, "t3");
+        executorService.submit(t1);
+        executorService.submit(t2);
+        executorService.submit(t3);
+    }
+```
+
+运行结果
+
+```
+1
+2
+3
+```
+
+我们能够看到，线程也按照我们的顺序进行执行，这里主要就是利用了newSingleThreadExecutor()方法，其实原理很简单，因为单例线程池的内部是一个基于FIFO的队列，也就是说当我们依次将t1, t2, t3加入队列中，实际上就绪状态只有t1这个线程，t2，t3则会被添加到队列中，当t1执行完毕后，在从队列中获取一个放到就绪队列。
+
+## 参考
+
+[进程间通信和线程间通信的几种方式](https://blog.csdn.net/liyue98/article/details/80112246)
+
+[Java中如何让线程按照自己指定的顺序执行？](https://blog.csdn.net/u010185035/article/details/81172767)
