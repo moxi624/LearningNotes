@@ -44,4 +44,9 @@
 44. sentinel：哨兵，SpringCloud中的组件
 45. circuitBreaker：断路器
 46. predicate：断言
+47. AES：对称加密算法
+48. RSA：非对称加密算法
+49. myisam：MySQL数据库引擎
+50. InnoDB：MySQL数据库引擎
+51. sleuth：侦探，侦察
 

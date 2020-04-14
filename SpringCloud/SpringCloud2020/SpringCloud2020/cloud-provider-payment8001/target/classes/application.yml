@@ -24,14 +24,15 @@ eureka:
     fetch-registry: true
     service-url:
       # 入驻地址
-       defaultZone: http://localhost:7001/eureka/
+#       defaultZone: http://localhost:7001/eureka/
       #集群版
-#      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
   #服务名称
   instance:
     instance-id: payment8001
     #访问路径显示IP地址
     prefer-ip-address: true
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.atguigu.springcloud.entity  #所有entity别名所在包
