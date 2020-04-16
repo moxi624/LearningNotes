@@ -1,0 +1,9 @@
+com\atguigu\springcloud\alibaba\controller\AccountController.class
+com\atguigu\springcloud\alibaba\service\impl\AccountServiceImpl.class
+com\atguigu\springcloud\alibaba\SeataAccountMainApp2003.class
+com\atguigu\springcloud\alibaba\domain\CommonResult.class
+com\atguigu\springcloud\alibaba\config\MyBatisConfig.class
+com\atguigu\springcloud\alibaba\domain\Account.class
+com\atguigu\springcloud\alibaba\service\AccountService.class
+com\atguigu\springcloud\alibaba\dao\AccountDao.class
+com\atguigu\springcloud\alibaba\config\DataSourceProxyConfig.class

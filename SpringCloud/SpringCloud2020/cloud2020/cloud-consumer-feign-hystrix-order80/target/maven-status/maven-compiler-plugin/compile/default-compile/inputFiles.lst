@@ -1,0 +1,4 @@
+C:\Users\Administrator\Desktop\LearningNotes\SpringCloud\SpringCloud2020\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\controller\OrderHystirxController.java
+C:\Users\Administrator\Desktop\LearningNotes\SpringCloud\SpringCloud2020\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\service\PaymentFallbackService.java
+C:\Users\Administrator\Desktop\LearningNotes\SpringCloud\SpringCloud2020\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\service\PaymentHystrixService.java
+C:\Users\Administrator\Desktop\LearningNotes\SpringCloud\SpringCloud2020\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\OrderHystrixMain80.java

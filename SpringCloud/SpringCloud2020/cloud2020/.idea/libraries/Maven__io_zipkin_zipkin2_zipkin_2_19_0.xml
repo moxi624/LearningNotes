@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.zipkin.zipkin2:zipkin:2.19.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/zipkin/zipkin2/zipkin/2.19.0/zipkin-2.19.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/io/zipkin/zipkin2/zipkin/2.19.0/zipkin-2.19.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/zipkin/zipkin2/zipkin/2.19.0/zipkin-2.19.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

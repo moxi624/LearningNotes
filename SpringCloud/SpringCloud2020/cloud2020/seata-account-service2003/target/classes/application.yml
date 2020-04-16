@@ -1,0 +1,32 @@
+server:
+  port: 2003
+
+spring:
+  application:
+    name: seata-account-service
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: fsp_tx_group
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seata_account
+    username: root
+    password: 123456
+
+feign:
+  hystrix:
+    enabled: false
+
+logging:
+  level:
+    io:
+      seata: info
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+
+

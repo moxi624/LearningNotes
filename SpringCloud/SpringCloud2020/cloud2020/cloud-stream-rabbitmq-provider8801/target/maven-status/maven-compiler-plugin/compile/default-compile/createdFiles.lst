@@ -1,0 +1,4 @@
+com\atguigu\springcloud\service\IMessageProvider.class
+com\atguigu\springcloud\service\impl\MessageProviderImpl.class
+com\atguigu\springcloud\controller\SendMessageController.class
+com\atguigu\springcloud\StreamMQMain8801.class
