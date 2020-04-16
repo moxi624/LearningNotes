@@ -74,13 +74,19 @@
 - [Hystrix中的服务降级和熔断](./SpringCloud/SpringCloud2020/7_Hystrix中的服务降级和熔断)
 - [服务网关Gateway](./SpringCloud/SpringCloud2020/8_服务网关Gateway)
 - [分布式配置中心SpringCloudConfig](./SpringCloud/SpringCloud2020/9_分布式配置中心SpringCloudConfig)
+- [消息总线Bus](./SpringCloud/SpringCloud2020/10_消息总线Bus)
+- [消息驱动SpringCloudStream](./SpringCloud/SpringCloud2020/11_消息驱动SpringCloudStream)
+- [SpringCloudSleuth分布式请求链路跟踪](./SpringCloud/SpringCloud2020/12_SpringCloudSleuth分布式请求链路跟踪)
+- [Nacos是什么](./SpringCloud/SpringCloud2020/13_Nacos是什么)
+- [SpringCloudAlibabaSentinel实现熔断和限流](./SpringCloud/SpringCloud2020/14_SpringCloudAlibabaSentinel实现熔断和限流)
+- [SpringCloudAlibabaSeata处理分布式事务](./SpringCloud/SpringCloud2020/15_SpringCloudAlibabaSeata处理分布式事务)
 - [源码](./SpringCloud/SpringCloud2020/SpringCloud2020)
 
 ## SpringBoot
 
 - [Eureka管理页面配置接口返回git信息](./SpringBoot/Eureka管理页面配置接口返回git信息)
 - [Java如何通过IP地址获取地区](./SpringBoot/Java如何通过IP地址获取地区)
-- [Spring Security造成无法使用iframe的内嵌页面的解决方法](./SpringBoot/Spring Security造成无法使用iframe的内嵌页面的解决方法)
+- [SpringSecurity造成无法使用iframe的内嵌页面的解决方法](./SpringBoot/SpringSecurity造成无法使用iframe的内嵌页面的解决方法)
 - [SpringBoot解决时区问题](./SpringBoot/SpringBoot解决时区问题)
 - [SpringBoot中使用注解的方式创建队列和交换机](./SpringBoot/SpringBoot中使用注解的方式创建队列和交换机)
 - [使用DevTool实现SpringBoot项目热部署](./使用DevTool实现SpringBoot项目热部署)
