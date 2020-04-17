@@ -49,4 +49,6 @@
 49. myisam：MySQL数据库引擎
 50. InnoDB：MySQL数据库引擎
 51. sleuth：侦探，侦察
+52. seata：分布式事务解决方案
+53. transaction：事务
 
