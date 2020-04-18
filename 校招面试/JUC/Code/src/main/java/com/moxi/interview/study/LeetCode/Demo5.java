@@ -41,11 +41,28 @@ public class Demo5 {
                 maxResult = result;
             }
         }
-        
-        return maxResult;
+
+        // 当没有找到回文时
+        String maxResult2 = "";
+        for(int a =0; a<chars.length -1; a++) {
+            if(chars[a] == chars[a+1]) {
+                int increment = a + 1;
+                int decrement = a;
+                String result = chars[a] + "" + chars[a+1];
+                while ( (decrement - 1) >= 0 && (increment + 1) < chars.length && (chars[decrement-1] == chars[increment + 1]) ) {
+                    result = chars[decrement - 1] + "" + result + chars[increment + 1];
+                    decrement--;
+                    increment++;
+                }
+                if(result.length() > maxResult2.length()) {
+                    maxResult2 = result;
+                }
+            }
+        }
+        return maxResult.length() > maxResult2.length()? maxResult: maxResult2;
     }
 
     public static void main(String[] args) {
-        System.out.println(longestPalindrome("cbbd"));
+        System.out.println(longestPalindrome("babad"));
     }
 }
