@@ -56,6 +56,6 @@ public class ClassLoaderDemo {
         System.out.println("===============");
 
         // 数组类引用，不会初始化
-        List<A> list = new ArrayList<>();
+        List<A> list = new ArrayList<A>();
     }
 }

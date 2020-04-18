@@ -51,4 +51,5 @@
 51. sleuth：侦探，侦察
 52. seata：分布式事务解决方案
 53. transaction：事务
+54. SnowFlake：雪花算法，分布式ID的解决策略
 
