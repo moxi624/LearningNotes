@@ -1,14 +1,31 @@
 # 学习笔记
 
-我的个人学习笔记，主要用于记录平时一些学习和项目中遇到的问题，同步更新在[蘑菇博客](http://www.moguit.cn)，如果对我的博客网站感兴趣的话，欢迎关注我的 [蘑菇博客源码](https://gitee.com/moxi159753/mogu_blog_v2)
+我的个人学习笔记，主要来源于B站上视频的学习，同时会记录平时一些学习和项目中遇到的问题，同步更新在[蘑菇博客](http://www.moguit.cn)，如果对我的博客网站感兴趣的话，欢迎关注我的 [蘑菇博客源码](https://gitee.com/moxi159753/mogu_blog_v2)
 
 笔记主要涵盖：Java，Spring，SpringCloud，计算机网络，操作系统，数据结构，Vue等
 
 如果笔记对您有帮助的话，欢迎star支持，谢谢~
 
+## 算法学习
+
+来源牛客网剑指offer的题目：[点我传送](https://www.nowcoder.com/ta/coding-interviews?page=1)
+
+Bilibili视频学习解题思路(Python版本)：[点我传送](https://www.bilibili.com/video/BV1K4411o7KP)
+
+- [斐波那契数列](./数据结构/1_斐波那契数列)
+- [青蛙跳台阶](./数据结构/2_青蛙跳台阶)
+- [找出丑数](./数据结构/3_找出丑数)
+- [二维数组中的查找](./数据结构/4_二维数组中的查找)
+- [替换空格](./数据结构/5_替换空格)
+- [两个栈实现一个队列](./数据结构/6_两个栈实现一个队列)
+- [动态规划算法](./数据结构/动态规划算法)
+- [源码](./数据结构/NowCode)
+
 ## Java相关
 
 ### 基础
+
+来源Bilibili尚硅谷周阳老师学习视频：[点我传送](https://www.bilibili.com/video/BV15J4112785)
 
 - [equals和等等的区别](./校招面试/基础面试题/1_equals和等等的区别)
 - [代码块](./校招面试/基础面试题/2_代码块)
@@ -17,6 +34,8 @@
 - [Java注解和反射](./校招面试/基础面试题/Java注解和反射)
 
 ### Java8新特性
+
+来源Bilibili尚硅谷李贺飞老师学习视频：[Java8新特性](https://www.bilibili.com/video/BV1ut411g7E9)
 
 - [HashMap变化](./校招面试/Java8新特性/1_HashMap变化)
 - [Lambda表达式](./校招面试/Java8新特性/2_Lambda表达式)
@@ -31,6 +50,8 @@
 - [NIO的使用案例](./校招面试/NIO/NIO的使用案例)
 
 ### JUC
+
+来源Bilibili尚硅谷周阳老师学习视频：[尚硅谷Java大厂面试题第二季](https://www.bilibili.com/video/BV18b411M7xz)
 
 - [Volatile和JMM内存模型的可见性](./校招面试/JUC/1_谈谈Volatile/1_Volatile和JMM内存模型的可见性)
 - [Volatile不保证原子性](./校招面试/JUC/1_谈谈Volatile/2_Volatile不保证原子性)
@@ -63,9 +84,19 @@
 - [乐观锁和悲观锁](./校招面试/JUC/15_乐观锁和悲观锁)
 - [源码](./校招面试/JUC/Code)
 
+## 中间件
+
+来源Bilibili中华石杉老师学习视频：[Java工程师面试突击](https://www.bilibili.com/video/BV1UJ411X7M1)
+
+- [消息队列的面试连环炮](./校招面试/面试扫盲学习/1_消息队列的面试连环炮)
+- [分布式搜索引擎的面试连环炮](./校招面试/面试扫盲学习/2_分布式搜索引擎的面试连环炮)
+- [分布式缓存](./校招面试/面试扫盲学习/3_分布式缓存)
+- [Redis的面试连环炮](./校招面试/面试扫盲学习/4_Redis的面试连环炮)
+
 ## SpringCloud
 
-- [使用Zipkin搭建蘑菇博客链路追踪](./SpringCloud/使用Zipkin搭建蘑菇博客链路追踪)
+来源Bilibili尚硅谷周阳老师学习视频：[尚硅谷2020最新版SpringCloud(H版&alibaba)框架](https://www.bilibili.com/video/BV18E411x7eT)
+
 - [SpringCloud是什么](./SpringCloud/SpringCloud2020/1_SpringCloud是什么)
 - [搭建Eureka集群](./SpringCloud/SpringCloud2020/3_搭建Eureka集群)
 - [Eureka停更后的替换](./SpringCloud/SpringCloud2020/4_Eureka停更后的替换)
@@ -80,6 +111,7 @@
 - [Nacos是什么](./SpringCloud/SpringCloud2020/13_Nacos是什么)
 - [SpringCloudAlibabaSentinel实现熔断和限流](./SpringCloud/SpringCloud2020/14_SpringCloudAlibabaSentinel实现熔断和限流)
 - [SpringCloudAlibabaSeata处理分布式事务](./SpringCloud/SpringCloud2020/15_SpringCloudAlibabaSeata处理分布式事务)
+- [使用Zipkin搭建蘑菇博客链路追踪](./SpringCloud/使用Zipkin搭建蘑菇博客链路追踪)
 - [源码](./SpringCloud/SpringCloud2020/SpringCloud2020)
 
 ## SpringBoot
@@ -126,7 +158,7 @@
 - [蘑菇博客配置域名解析](./杂记/蘑菇博客配置域名解析)
 - [蘑菇博客切换搜索模式](./杂记/蘑菇博客切换搜索模式)
 - [蘑菇博客如何部署到阿里云服务器](./杂记/蘑菇博客如何部署到阿里云服务器)
-- [蘑菇博客使用Github Action完成持续集成](./杂记/蘑菇博客使用Github Action完成持续集成)
+- [蘑菇博客使用GithubAction完成持续集成](./杂记/蘑菇博客使用GithubAction完成持续集成)
 - [蘑菇博客添加本地Markdown文件上传功能](./杂记/蘑菇博客添加本地Markdown文件上传功能)
 - [如何使用docsify给蘑菇博客编写开发文档](./杂记/如何使用docsify给蘑菇博客编写开发文档)
 - [如何制作github小徽章](./杂记/如何制作github小徽章)
