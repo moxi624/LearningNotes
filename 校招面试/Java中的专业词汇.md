@@ -53,4 +53,6 @@
 53. transaction：事务
 54. SnowFlake：雪花算法，分布式ID的解决策略
 55. confirm：确认，RabbitMQ中的确认机制
+56. redis replication ：redis主从复制
+57. Redis Cluster：Redis集群
 
