@@ -8,9 +8,9 @@
 
 ## 算法学习
 
-来源牛客网剑指offer的题目：[点我传送](https://www.nowcoder.com/ta/coding-interviews?page=1)
-
-Bilibili视频学习解题思路(Python版本)：[点我传送](https://www.bilibili.com/video/BV1K4411o7KP)
+> 来源牛客网剑指offer的题目：[点我传送](https://www.nowcoder.com/ta/coding-interviews?page=1)
+>
+> Bilibili视频学习解题思路(Python版本)：[点我传送](https://www.bilibili.com/video/BV1K4411o7KP)
 
 - [斐波那契数列](./数据结构/1_斐波那契数列)
 - [青蛙跳台阶](./数据结构/2_青蛙跳台阶)
@@ -22,6 +22,11 @@ Bilibili视频学习解题思路(Python版本)：[点我传送](https://www.bili
 - [调整数组顺序使奇数位于偶数前面](./数据结构/8_调整数组顺序使奇数位于偶数前面)
 - [包含min函数的栈](./数据结构/9_包含min函数的栈)
 - [栈的压入弹出序列](./数据结构/10_栈的压入弹出序列)
+- [从尾到头打印链表](./数据结构/11_从尾到头打印链表)
+- [链表中倒数第K个节点](./数据结构/12_链表中倒数第K个节点)
+- [反转链表](./数据结构/13_反转链表)
+- [合并两个排序的链表](./数据结构/14_合并两个排序的链表)
+- [复杂链表的复制](./数据结构/15_复杂链表的复制)
 - [动态规划算法](./数据结构/动态规划算法)
 - [源码](./数据结构/NowCode)
 
@@ -29,7 +34,7 @@ Bilibili视频学习解题思路(Python版本)：[点我传送](https://www.bili
 
 ### 基础
 
-来源Bilibili尚硅谷周阳老师学习视频：[点我传送](https://www.bilibili.com/video/BV15J4112785)
+> 来源Bilibili尚硅谷周阳老师学习视频：[点我传送](https://www.bilibili.com/video/BV15J4112785)
 
 - [equals和等等的区别](./校招面试/基础面试题/1_equals和等等的区别)
 - [代码块](./校招面试/基础面试题/2_代码块)
@@ -39,7 +44,7 @@ Bilibili视频学习解题思路(Python版本)：[点我传送](https://www.bili
 
 ### Java8新特性
 
-来源Bilibili尚硅谷李贺飞老师学习视频：[Java8新特性](https://www.bilibili.com/video/BV1ut411g7E9)
+> 来源Bilibili尚硅谷李贺飞老师学习视频：[Java8新特性](https://www.bilibili.com/video/BV1ut411g7E9)
 
 - [HashMap变化](./校招面试/Java8新特性/1_HashMap变化)
 - [Lambda表达式](./校招面试/Java8新特性/2_Lambda表达式)
@@ -55,7 +60,7 @@ Bilibili视频学习解题思路(Python版本)：[点我传送](https://www.bili
 
 ### JUC
 
-来源Bilibili尚硅谷周阳老师学习视频：[尚硅谷Java大厂面试题第二季](https://www.bilibili.com/video/BV18b411M7xz)
+>来源Bilibili尚硅谷周阳老师学习视频：[尚硅谷Java大厂面试题第二季](https://www.bilibili.com/video/BV18b411M7xz)
 
 - [Volatile和JMM内存模型的可见性](./校招面试/JUC/1_谈谈Volatile/1_Volatile和JMM内存模型的可见性)
 - [Volatile不保证原子性](./校招面试/JUC/1_谈谈Volatile/2_Volatile不保证原子性)
@@ -90,7 +95,7 @@ Bilibili视频学习解题思路(Python版本)：[点我传送](https://www.bili
 
 ## 中间件
 
-来源Bilibili中华石杉老师学习视频：[Java工程师面试突击](https://www.bilibili.com/video/BV1UJ411X7M1)
+>来源Bilibili中华石杉老师学习视频：[Java工程师面试突击](https://www.bilibili.com/video/BV1UJ411X7M1)
 
 - [消息队列的面试连环炮](./校招面试/面试扫盲学习/1_消息队列的面试连环炮)
 - [分布式搜索引擎的面试连环炮](./校招面试/面试扫盲学习/2_分布式搜索引擎的面试连环炮)
@@ -100,7 +105,7 @@ Bilibili视频学习解题思路(Python版本)：[点我传送](https://www.bili
 
 ## SpringCloud
 
-来源Bilibili尚硅谷周阳老师学习视频：[尚硅谷2020最新版SpringCloud(H版&alibaba)框架](https://www.bilibili.com/video/BV18E411x7eT)
+> 来源Bilibili尚硅谷周阳老师学习视频：[尚硅谷2020最新版SpringCloud(H版&alibaba)框架](https://www.bilibili.com/video/BV18E411x7eT)
 
 - [SpringCloud是什么](./SpringCloud/SpringCloud2020/1_SpringCloud是什么)
 - [搭建Eureka集群](./SpringCloud/SpringCloud2020/3_搭建Eureka集群)
