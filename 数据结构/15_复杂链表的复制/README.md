@@ -52,6 +52,10 @@ class Solution:
 
 
 
+完整图
+
+![image-20200426105420274](images/image-20200426105420274.png)
+
 完整代码
 
 ```python
