@@ -142,17 +142,29 @@
 ## Vue
 
 - [Axios中拦截器的使用](./Vue/Axios中拦截器的使用)
+
 - [ElementUI中Upload如何批量上传](./Vue/ElementUI中Upload如何批量上传)
+
 - [Vue对Element中的e-tag添加@click事件无效](./Vue/Vue对Element中的e-tag添加@click事件无效)
+
 - [Vue使用Echarts制作一个文章贡献度表](./Vue/Vue使用Echarts制作一个文章贡献度表)
+
 - [Vue中input框自动聚焦](./Vue/Vue中input框自动聚焦)
+
 - [Vue使用vue-count-to插件对数字显示美化](./Vue/Vue使用vue-count-to插件对数字显示美化)
+
 - [Vue项目如何关闭Eslint校验](./Vue/Vue项目如何关闭Eslint校验)
+
 - [Vue项目使用阿里巴巴矢量图标库](./Vue/Vue项目使用阿里巴巴矢量图标库)
+
 - [Vue制作一个评论模块](./Vue/Vue制作一个评论模块)
+
 - [Vue中对数组变化监听](./Vue/Vue中对数组变化监听)
+
 - [Vue中使用Vue-cropper进行图片裁剪](./Vue/Vue中使用Vue-cropper进行图片裁剪)
+
 - [Vuex学习指南-实现一个计数器](./Vue/VueX/Vuex学习指南-实现一个计数器)
+
 - [Vue如何使用G2绘制图片](./Ant/G2/Vue如何使用G2绘制图片)
 
 - ## 杂记
@@ -166,18 +178,33 @@
 - [Elasticsearch介绍与安装](./杂记/Elasticsearch介绍与安装)
 
 - [Github项目配置Actions](./杂记/Github项目配置Actions)
+
 - [SpringBoot+Vue如何集成第三方登录登录JustAuth](./杂记/SpringBoot+Vue如何集成第三方登录登录JustAuth)
+
 - [SpringBoot项目启动增加自定义Banner](./杂记/SpringBoot项目启动增加自定义Banner)
+
 - [蘑菇博客后台登录页面增加粒子特效](./杂记/蘑菇博客后台登录页面增加粒子特效)
+
 - [蘑菇博客集成MarkDown编辑器tui-editor](./杂记/蘑菇博客集成MarkDown编辑器tui-editor)
+
 - [蘑菇博客配置七牛云存储](./杂记/蘑菇博客配置七牛云存储)
+
 - [蘑菇博客配置域名解析](./杂记/蘑菇博客配置域名解析)
+
 - [蘑菇博客切换搜索模式](./杂记/蘑菇博客切换搜索模式)
+
 - [蘑菇博客如何部署到阿里云服务器](./杂记/蘑菇博客如何部署到阿里云服务器)
+
 - [蘑菇博客使用GithubAction完成持续集成](./杂记/蘑菇博客使用GithubAction完成持续集成)
+
 - [蘑菇博客添加本地Markdown文件上传功能](./杂记/蘑菇博客添加本地Markdown文件上传功能)
+
+- [蘑菇博客的七牛云配置防盗链](./杂记/蘑菇博客的七牛云配置防盗链)
+
 - [如何使用docsify给蘑菇博客编写开发文档](./杂记/如何使用docsify给蘑菇博客编写开发文档)
+
 - [如何制作github小徽章](./杂记/如何制作github小徽章)
+
 - [使用开源项目申请JetBrains全家桶](./杂记/使用开源项目申请JetBrains全家桶)
 
 ## 操作系统

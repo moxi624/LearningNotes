@@ -1,0 +1,94 @@
+booster[0]:
+0:leaf=0.0977642238
+booster[1]:
+0:leaf=0.097548984
+booster[2]:
+0:leaf=0.0972830877
+booster[3]:
+0:leaf=0.0969990268
+booster[4]:
+0:leaf=0.0966900438
+booster[5]:
+0:leaf=0.0963897929
+booster[6]:
+0:leaf=0.0958843604
+booster[7]:
+0:leaf=0.0955080464
+booster[8]:
+0:leaf=0.095148325
+booster[9]:
+0:leaf=0.0947331488
+booster[10]:
+0:leaf=0.0941635221
+booster[11]:
+0:leaf=0.0936791673
+booster[12]:
+0:leaf=0.0929041207
+booster[13]:
+0:leaf=0.0919906721
+booster[14]:
+0:leaf=0.0915225521
+booster[15]:
+0:leaf=0.0905743539
+booster[16]:
+0:leaf=0.0900501907
+booster[17]:
+0:[LSTAT<14.3999996] yes=1,no=2,missing=1
+	1:leaf=0.0904976875
+	2:leaf=0.0829958543
+booster[18]:
+0:[CRIM<6.8085351] yes=1,no=2,missing=1
+	1:leaf=0.0888830572
+	2:leaf=0.0764140636
+booster[19]:
+0:[CRIM<6.62824011] yes=1,no=2,missing=1
+	1:leaf=0.0879621729
+	2:leaf=0.0763117895
+booster[20]:
+0:[LSTAT<14.5100002] yes=1,no=2,missing=1
+	1:leaf=0.0876665041
+	2:[CRIM<33.5037994] yes=3,no=4,missing=3
+		3:leaf=0.0778934211
+		4:leaf=0.0283603501
+booster[21]:
+0:[CRIM<6.6863203] yes=1,no=2,missing=1
+	1:leaf=0.085592024
+	2:leaf=0.0703788251
+booster[22]:
+0:[LSTAT<15] yes=1,no=2,missing=1
+	1:leaf=0.0853524655
+	2:leaf=0.0742038712
+booster[23]:
+0:[RM<6.54699993] yes=1,no=2,missing=1
+	1:leaf=0.0774819776
+	2:leaf=0.0864845514
+booster[24]:
+0:[CRIM<5.80160522] yes=1,no=2,missing=1
+	1:[RM<6.59249973] yes=3,no=4,missing=3
+		3:leaf=0.0777305365
+		4:leaf=0.0859128237
+	2:leaf=0.0633746907
+booster[25]:
+0:[RM<6.52699995] yes=1,no=2,missing=1
+	1:leaf=0.0733538195
+	2:leaf=0.0840361491
+booster[26]:
+0:[CRIM<6.13259983] yes=1,no=2,missing=1
+	1:[RM<6.72249985] yes=3,no=4,missing=3
+		3:leaf=0.0744115561
+		4:leaf=0.0841618106
+	2:leaf=0.057748314
+booster[27]:
+0:[NOX<0.656999946] yes=1,no=2,missing=1
+	1:leaf=0.0764794275
+	2:leaf=0.0591536537
+booster[28]:
+0:[NOX<0.656999946] yes=1,no=2,missing=1
+	1:leaf=0.0745389611
+	2:leaf=0.0568215623
+booster[29]:
+0:[LSTAT<14.8000002] yes=1,no=2,missing=1
+	1:leaf=0.0739959031
+	2:[CRIM<32.1461983] yes=3,no=4,missing=3
+		3:leaf=0.0570863076
+		4:leaf=0.0114801312
