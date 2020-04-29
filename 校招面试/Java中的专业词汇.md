@@ -55,4 +55,5 @@
 55. confirm：确认，RabbitMQ中的确认机制
 56. redis replication ：redis主从复制
 57. Redis Cluster：Redis集群
+58. proxy：代理
 
