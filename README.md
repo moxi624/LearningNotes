@@ -48,8 +48,8 @@
 - [MySQL的存储引擎](./校招面试/基础面试题/4_MySQL的存储引擎)
 - [Java注解和反射](./校招面试/基础面试题/Java注解和反射)
 - [Java注解和反射](./校招面试/基础面试题/Java注解和反射)
-- [泛型的类型擦除](./java/泛型的类型擦除)
-- [Java使用Redis删除指定前缀Key](./java/Java使用Redis删除指定前缀Key)
+- [泛型的类型擦除](./Java/泛型的类型擦除)
+- [Java使用Redis删除指定前缀Key](./Java/Java使用Redis删除指定前缀Key)
 
 ### Java8新特性
 
@@ -148,7 +148,7 @@
 - [SpringBoot解决时区问题](./SpringBoot/SpringBoot解决时区问题)
 - [SpringBoot项目中使用字符串占位符](./SpringBoot/SpringBoot项目中使用字符串占位符)
 - [SpringBoot中使用注解的方式创建队列和交换机](./SpringBoot/SpringBoot中使用注解的方式创建队列和交换机)
-- [解决升级SpringBoot 2.X后无法向eureka注册服务的问题](./SpringBoot/解决升级SpringBoot 2.X后无法向eureka注册服务的问题)
+- [解决升级SpringBoot2.X后无法向eureka注册服务的问题](./SpringBoot/解决升级SpringBoot2.X后无法向eureka注册服务的问题)
 - [使用DevTool实现SpringBoot项目热部署](./SpringBoot/使用DevTool实现SpringBoot项目热部署)
 - [使用自定义日志接口收集用户访问日志](./SpringBoot/使用自定义日志接口收集用户访问日志)
 
