@@ -1,5 +1,7 @@
 # 学习笔记
 
+## 项目介绍
+
 我的个人学习笔记，主要来源于B站上视频的学习，同时会记录平时一些学习和项目中遇到的问题，同步更新在[蘑菇博客](http://www.moguit.cn)，如果对我的博客网站感兴趣的话，欢迎关注我的 [蘑菇博客源码](https://gitee.com/moxi159753/mogu_blog_v2)
 
 笔记主要涵盖：Java，Spring，SpringCloud，计算机网络，操作系统，数据结构，Vue等
@@ -261,9 +263,10 @@
 - [三次握手和四次挥手](./计算机网络/1_三次握手和四次挥手)
 - [https和http](./计算机网络/2_https和http)
 
+## 关注&交流
 
+刚刚创建了一个QQ群 (**加群备注**：`蘑菇博客`) <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=88bc57d77601a3c5ae97fe6d9c0bfa25c2ae166d8f0b9f6da6f7294097be6d08"><img border="0" src="./doc/images/qq/group.png" alt="蘑菇博客交流群" title="蘑菇博客交流群"></a>，目前项目还存在很多不足之处，欢迎各位老哥进群进行技术交流，为了防止广告进入，希望加群的时候能添加备注，谢谢~
 
-
-
-
-
+|             QQ群（加群备注：`蘑菇博客`）              |              QQ（备注：`蘑菇博客`）              |
+| :---------------------------------------------------: | :----------------------------------------------: |
+| <img src="./doc/images/qq/qqGroup.png" width="200" /> | <img src="./doc/images/qq/qq.png" width="200" /> |
