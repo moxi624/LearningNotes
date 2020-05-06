@@ -45,6 +45,9 @@
 - [分布式锁](./校招面试/基础面试题/3_分布式锁)
 - [MySQL的存储引擎](./校招面试/基础面试题/4_MySQL的存储引擎)
 - [Java注解和反射](./校招面试/基础面试题/Java注解和反射)
+- [Java注解和反射](./校招面试/基础面试题/Java注解和反射)
+- [【Java】泛型的类型擦除](./java/[Java]泛型的类型擦除)
+- [Java使用Redis删除指定前缀Key](./java/Java使用Redis删除指定前缀Key)
 
 ### Java8新特性
 
@@ -141,8 +144,11 @@
 - [Java如何通过IP地址获取地区](./SpringBoot/Java如何通过IP地址获取地区)
 - [SpringSecurity造成无法使用iframe的内嵌页面的解决方法](./SpringBoot/SpringSecurity造成无法使用iframe的内嵌页面的解决方法)
 - [SpringBoot解决时区问题](./SpringBoot/SpringBoot解决时区问题)
+- [SpringBoot项目中使用字符串占位符](./SpringBoot/SpringBoot项目中使用字符串占位符)
 - [SpringBoot中使用注解的方式创建队列和交换机](./SpringBoot/SpringBoot中使用注解的方式创建队列和交换机)
-- [使用DevTool实现SpringBoot项目热部署](./使用DevTool实现SpringBoot项目热部署)
+- [解决升级SpringBoot 2.X后，无法向eureka注册服务的问题](./SpringBoot/解决升级SpringBoot 2.X后，无法向eureka注册服务的问题)
+- [使用DevTool实现SpringBoot项目热部署](./SpringBoot/使用DevTool实现SpringBoot项目热部署)
+- [使用自定义日志接口收集用户访问日志](./SpringBoot/使用自定义日志接口收集用户访问日志)
 
 ## Vue
 
@@ -150,7 +156,13 @@
 
 - [ElementUI中Upload如何批量上传](./Vue/ElementUI中Upload如何批量上传)
 
+- [el-select因为绑定的值为整数而无法默认选择](./Vue/el-select因为绑定的值为整数而无法默认选择)
+
+- [Vue动态计算Table表格的高度](./Vue/Vue动态计算Table表格的高度)
+
 - [Vue对Element中的e-tag添加@click事件无效](./Vue/Vue对Element中的e-tag添加@click事件无效)
+
+- [Vue记一次诡异的错误Uncaught TypeError_ Cannot read property_disabled_of_null](./Vue/Vue记一次诡异的错误Uncaught TypeError_ Cannot read property_disabled_of_null)
 
 - [Vue使用Echarts制作一个文章贡献度表](./Vue/Vue使用Echarts制作一个文章贡献度表)
 
@@ -178,6 +190,8 @@
 
 - [Vue如何使用G2绘制图片](./Ant/G2/Vue如何使用G2绘制图片)
 
+- [使用Vuex进行两个页面逻辑交互](./Vue/使用Vuex进行两个页面逻辑交互)
+
 - ## 杂记
 
 - [CKEditor前端样式和编辑器的样式不一致的问题](./杂记/CKEditor前端样式和编辑器的样式不一致的问题)
@@ -194,6 +208,12 @@
 
 - [SpringBoot项目启动增加自定义Banner](./杂记/SpringBoot项目启动增加自定义Banner)
 
+- [Windows平台编写bat脚本让后台启动多个程序](./杂记/Windows平台编写bat脚本让后台启动多个程序)
+
+- [记一次蘑菇博客差点被删库的经历](./杂记/记一次蘑菇博客差点被删库的经历)
+
+- [解决git默认不区分大小写的问题](./杂记/解决git默认不区分大小写的问题)
+
 - [蘑菇博客后台登录页面增加粒子特效](./杂记/蘑菇博客后台登录页面增加粒子特效)
 
 - [蘑菇博客集成MarkDown编辑器tui-editor](./杂记/蘑菇博客集成MarkDown编辑器tui-editor)
@@ -208,6 +228,8 @@
 
 - [蘑菇博客使用GithubAction完成持续集成](./杂记/蘑菇博客使用GithubAction完成持续集成)
 
+- [蘑菇博客使用SQL语句进行搜索出的内容忽略大小写并添加高亮效果](./杂记/蘑菇博客使用SQL语句进行搜索出的内容忽略大小写并添加高亮效果)
+
 - [蘑菇博客添加本地Markdown文件上传功能](./杂记/蘑菇博客添加本地Markdown文件上传功能)
 
 - [如何给七牛云中的文件配置防盗链](./杂记/如何给七牛云中的文件配置防盗链)
@@ -217,6 +239,18 @@
 - [如何制作github小徽章](./杂记/如何制作github小徽章)
 
 - [使用开源项目申请JetBrains全家桶](./杂记/使用开源项目申请JetBrains全家桶)
+
+## Linux
+
+[Linux下查看文件和文件夹占用空间大小](./Linux/Linux下查看文件和文件夹占用空间大小)
+
+[记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历](./Linux/记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历)
+
+## JavaScript
+
+[Js设置二级域名和顶级域名下共享Cookie](./JavaScript/Js设置二级域名和顶级域名下共享Cookie)
+
+[如何通过Js将时间转换为刚刚_几分钟前_几小时前](./JavaScript/如何通过Js将时间转换为刚刚_几分钟前_几小时前)
 
 ## 操作系统
 
