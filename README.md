@@ -164,8 +164,6 @@
 
 - [Vue对Element中的e-tag添加@click事件无效](./Vue/Vue对Element中的e-tag添加@click事件无效)
 
-- [Vue记一次诡异的错误Uncaught TypeError_ Cannot read property_disabled_of_null](./Vue/Vue记一次诡异的错误Uncaught_TypeError_Cannot read property_disabled_of_null)
-
 - [Vue使用Echarts制作一个文章贡献度表](./Vue/Vue使用Echarts制作一个文章贡献度表)
 
 - [Vue中input框自动聚焦](./Vue/Vue中input框自动聚焦)
@@ -227,6 +225,8 @@
 - [蘑菇博客切换搜索模式](./杂记/蘑菇博客切换搜索模式)
 
 - [蘑菇博客如何部署到阿里云服务器](./杂记/蘑菇博客如何部署到阿里云服务器)
+
+- [蘑菇博客如何扩展新的功能和页面](./杂记/蘑菇博客如何扩展新的功能和页面)
 
 - [蘑菇博客使用GithubAction完成持续集成](./杂记/蘑菇博客使用GithubAction完成持续集成)
 
