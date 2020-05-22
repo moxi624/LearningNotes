@@ -10,12 +10,16 @@ CatBoost算法也是GBDT家族中的一种，是由俄罗斯大兄弟于2017年�
 
 ## 安装
 
-下面我们使用conda进行安装，首先需要配置国内镜像源，这里使用的是清华同方源
+下面我们使用conda进行安装，首先需要删除之前的 `.condarc` 文件，一般在 `C:\Users\Administrator` 目录
+
+![image-20200520181910922](images/image-20200520181910922.png)
+
+然后需要配置国内镜像源
 
 ```
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
 conda config --set show_channel_urls yes
 ```
 
