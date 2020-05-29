@@ -111,7 +111,7 @@ if __name__ == '__main__':
     t2.right = t5
     t3.left = t6
     t3.right = t7
-    t6.left = t8
+    t6.right = t8
 
     preOrderRecusive(t1)
     print()
@@ -132,4 +132,61 @@ if __name__ == '__main__':
 
 ## 非递归遍历
 
-递归和循环是可以互相转换的
+递归和循环是可以互相转换的，下面是非递归先序遍历，使用一个stack用于存储经过的节点，并且输出，但没有指针指向为空的时候，我们需要将stack中保存的节点，进行pop出栈，并把它的右节点，重新赋值给tempNode指针，直到所有节点都遍历完成为止。
+
+```
+# 非递归先序遍历
+def preOrder(root):
+    if root == None:
+        return None
+    stack = []
+    tempNode = root
+    while tempNode != None or stack:
+        print(tempNode.val, end=" ")
+        stack.append(tempNode)
+        tempNode = tempNode.left
+        while tempNode == None and stack != None:
+            tempNode = stack.pop()
+            tempNode = tempNode.right
+```
+
+```
+# 非递归中序遍历
+def midOrder(root):
+    if root == None:
+        return None
+    stack = []
+    tempNode = root
+    while tempNode != None or stack:
+        stack.append(tempNode)
+        tempNode = tempNode.left
+        while tempNode == None and stack != []:
+            tempNode = stack.pop()
+            print(tempNode.val, end=" ")
+            tempNode = tempNode.right
+```
+
+```
+# 非递归后序遍历
+def latOrder(root):
+    if root == None:
+        return None
+    stack = []
+    tempNode = root
+    while tempNode != None or stack:
+        stack.append(tempNode)
+        tempNode = tempNode.left
+        while tempNode == None and stack != []:
+            # 后序遍历，pop的方式有变化，不能在右子树不为空的时候pop
+            node = stack[-1] # 因此这里不出列
+            tempNode = node.right
+            # 当右节点没有的时候，才能够pop
+            if node.right == None:
+                print(node.val, end=" ")
+                node = stack.pop()
+                # 判断pop的节点，是否是上一个节点
+                while stack and node == stack[-1].right:
+                    node = stack.pop()
+                    print(node.val, end=" ")
+```
+
