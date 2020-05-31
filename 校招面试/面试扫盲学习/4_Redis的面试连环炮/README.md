@@ -22,6 +22,8 @@
 
 Redis最基本的一个内部原理和特点就是NIO异步的单线程工作模型。Memcache是早些年个大互联网公司常用的缓存方案，但是现在近几年都是使用的redis，没有什么公司使用Memcache了。
 
+注意：Redis中单个Value的大小最大为512MB，redis的key和string类型value限制均为512MB
+
 ## Redis和Memcache的区别
 
 从Redis作者给出的几个比较
