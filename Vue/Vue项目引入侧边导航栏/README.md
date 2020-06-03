@@ -95,16 +95,4 @@ export default {
 
 ## 注意
 
-我们在渲染侧边栏的时候，一定需要添加把代码添加到我们的setTimeout中，也就是放在下一次dom渲染的时候。例如，下面也是博客的渲染过程，同时也需要添加setTimeout
-
-```
-setTimeout(()=>{
-	this.blogDataContent = this.blogData.content
-},200);
-```
-
-其中这里设置的是200ms后进行渲染，但是这个可是也是可以设置的，但是需要在index.vue文件中修改
-
-![image-20200601203808970](images/image-20200601203808970.png)
-
-修改完成后，就能够正常显示我们的侧边栏了~
+我们在进行渲染的时候，需要把内容放在 mounted钩子函数中进行渲染，不能写在create钩子函数中，因为只有mounted函数才是在html渲染完成后调用的操作，然后在对dom节点进行操作，生成我们的目录
