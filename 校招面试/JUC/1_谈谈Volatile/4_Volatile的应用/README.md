@@ -174,9 +174,12 @@ public class SingletonDemo {
 
     public static SingletonDemo getInstance() {
         if(instance == null) {
-            // 同步代码段的时候，进行检测
-            synchronized (SingletonDemo.class) {
-                if(instance == null) {
+            // a 双重检查加锁多线程情况下会出现某个线程虽然这里已经为空，但是另外一个线程已经执行到d处
+            synchronized (SingletonDemo.class) //b
+            { 
+           //c不加volitale关键字的话有可能会出现尚未完全初始化就获取到的情况。原因是内存模型允许无序写入
+                if(instance == null) { 
+                	// d 此时才开始初始化
                     instance = new SingletonDemo();
                 }
             }
