@@ -41,7 +41,7 @@
 - [IO到NIO的演变](./校招面试/NIO/NIO的使用案例)&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=3f6a94823d2c586f7d5b1756312164f2)
 - IO与NIO的区别&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=28d61ec002594fc5a9c441ec8560f3ad)
 
-### JUC
+## JUC
 
 >来源Bilibili尚硅谷周阳老师学习视频：[尚硅谷Java大厂面试题第二季](https://www.bilibili.com/video/BV18b411M7xz)
 
@@ -93,8 +93,6 @@
 - [MySQL读写复制及主从同步时延](./校招面试/面试扫盲学习/12_MySQL读写复制及主从同步时延)
 - 常见的消息队列有哪些？&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=3a309d5c258c58e7b03a99cda13f650c)
 - 5个方案告诉你：高并发环境下，先操作数据库还是先操作缓存？&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=b73aba84b0890c3c282a18c4fb0aab3d)
-- [Redis中的数据结构](./Redis/Redis中的数据结构)
-- [Redis中的跳跃表](./Redis/Redis中的跳跃表)
 
 ## SpringCloud
 
@@ -283,6 +281,11 @@
 
 [记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历](./Linux/记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历)
 
+## Redis
+
+- [Redis中的数据结构](./Redis/Redis中的数据结构)
+- [Redis中的跳跃表](./Redis/Redis中的跳跃表)
+
 ## JavaScript
 
 [Js设置二级域名和顶级域名下共享Cookie](./JavaScript/Js设置二级域名和顶级域名下共享Cookie)
@@ -297,6 +300,9 @@
 
 - [三次握手和四次挥手](./计算机网络/1_三次握手和四次挥手)
 - [https和http](./计算机网络/2_https和http)
+- [TCP中的拥塞控制和流量控制](./计算机网络/3_TCP中的拥塞控制和流量控制)
+- [物理层](./计算机网络/4_物理层)
+- [数据链路层](./计算机网络/5_数据链路层)
 
 ## 关注&交流
 
