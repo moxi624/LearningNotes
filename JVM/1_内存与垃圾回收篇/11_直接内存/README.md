@@ -26,3 +26,18 @@ ByteBuffer byteBuffer = ByteBuffer.allocateDirect(BUFFER);
 
 NIO的方式使用了缓存区的概念
 
+## 存在的问题
+
+也可能导致outofMemoryError异常
+
+由于直接内存在Java堆外，因此它的大小不会直接受限于-xmx指定的最大堆大小，但是系统内存是有限的，Java堆和直接内存的总和依然受限于操作系统能给出的最大内存。
+缺点
+
+- 分配回收成本较高
+- 不受JVM内存回收管理
+
+直接内存大小可以通过MaxDirectMemorySize设置
+
+如果不指定，默认与堆的最大值-xmx参数值一致
+
+![image-20200709230647277](images/image-20200709230647277.png)
