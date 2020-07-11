@@ -19,10 +19,13 @@
 - [分布式锁](./校招面试/基础面试题/3_分布式锁)&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=a3be9bd4dc6e49023f14bbae853cecb3)
 - [MySQL的存储引擎](./校招面试/基础面试题/4_MySQL的存储引擎)&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=3d1cc9ce434aeaf2187692eb0feea294)
 - [JDK动态代理和CGLIB动态代理](./校招面试/基础面试题/5_JDK动态代理和CGLIB动态代理)&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=a67f6205748c19da1b5ba12c3a150569)
-- [Java注解和反射](./校招面试/Java注解和反射)&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=7a87151321f0b9adfb72f2d5dfb40815)
+- [Java注解和反射](./Java/Java注解和反射)&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=7a87151321f0b9adfb72f2d5dfb40815)
 - [泛型的类型擦除](./Java/泛型的类型擦除)&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=65a71eca758b9575508307f5d1111aad)
 - [Java使用Redis删除指定前缀Key](./Java/Java使用Redis删除指定前缀Key)&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=4952cb3cb0b5c7e17338bd559db9a930)
+- [前端的一些跨域问题](./Java/前端的一些跨域问题)
+- [使用Ip2region替代淘宝IP接口](./Java/使用Ip2region替代淘宝IP接口)
 - 聊一聊-Java泛型中的通配符T，E，K，V &#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=0aa459dc0ae9f9ad82cd22665d08a20d)
+- [谈谈你对ThreadLocal的理解](./Java/谈谈你对ThreadLocal的理解)
 
 ## Java8新特性
 
@@ -40,6 +43,24 @@
 - [NIO是什么](./校招面试/NIO/NIO是什么) &#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=f06ce24299bfcf17ce889182ea85875f)
 - [IO到NIO的演变](./校招面试/NIO/NIO的使用案例)&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=3f6a94823d2c586f7d5b1756312164f2)
 - IO与NIO的区别&#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=28d61ec002594fc5a9c441ec8560f3ad)
+
+## JVM
+
+> 来源Bilibili尚硅谷宋红康老师JVM教程：[硅谷2020最新版宋红康JVM教程](https://www.bilibili.com/video/BV1PJ411n7xZ)
+
+- [JVM与Java体系结构](./JVM/1_内存与垃圾回收篇/1_JVM与Java体系结构)
+- [类加载子系统](./JVM/1_内存与垃圾回收篇/2_类加载子系统)
+- [运行时数据区概述及线程](./JVM/1_内存与垃圾回收篇/3_运行时数据区概述及线程)
+- [程序计数器](./JVM/1_内存与垃圾回收篇/4_程序计数器)
+- [虚拟机栈](./JVM/1_内存与垃圾回收篇/5_虚拟机栈)
+- [本地方法接口](./JVM/1_内存与垃圾回收篇/6_本地方法接口)
+- [本地方法栈](./JVM/1_内存与垃圾回收篇/7_本地方法栈)
+- [堆](./JVM/1_内存与垃圾回收篇/8_堆)
+- [方法区](./JVM/1_内存与垃圾回收篇/9_方法区)
+- [对象实例化内存布局与访问定位](./JVM/1_内存与垃圾回收篇/10_对象实例化内存布局与访问定位)
+- [直接内存](./JVM/1_内存与垃圾回收篇/11_直接内存)
+- [执行引擎](./JVM/1_内存与垃圾回收篇/12_执行引擎)
+- [StringTable](./JVM/1_内存与垃圾回收篇/13_StringTable)
 
 ## JUC
 
