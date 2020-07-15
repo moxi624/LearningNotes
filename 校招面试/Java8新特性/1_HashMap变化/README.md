@@ -206,13 +206,13 @@ JDK1.8变为：数组 + 链表 + 红黑树
 
 链表的查询和删除的时间复杂度： O(n)，插入为：O(1)
 
-
-
 ### ConcurrentHashMap变化
 
 #### 为何JDK8要放弃分段锁？
 
 由原来的分段锁，变成了CAS，也就是通过无锁化设计替代了阻塞同步的加锁操作，性能得到了提高。
+
+- 通过使用Synchronized + CAS的方式实现并发访问
 
 通过分段锁的方式提高了并发度。分段是一开始就确定的了，后期不能再进行扩容的，其中的段Segment继承了重入锁ReentrantLock，有了锁的功能，同时含有类似HashMap中的数组加链表结构（这里没有使用红黑树），虽然Segment的个数是不能扩容的，但是单个Segment里面的数组是可以扩容的。
 
@@ -220,7 +220,95 @@ JDK1.8的ConcurrentHashMap摒弃了1.7的segment设计，而是JDK1.8版本的Ha
 
 至于为什么抛弃Segment的设计，是因为分段锁的这个段不太好评定，如果我们的Segment设置的过大，那么隔离级别也就过高，那么就有很多空间被浪费了，也就是会让某些段里面没有元素，如果太小容易造成冲突
 
+#### 弃用的原因
 
+通过上述描述以及查看官方文档，弃用分段锁的原因主要有以下几点
+
+- 加入多个分段锁 浪费了内存空间
+- 生产环境中，map在放入时 竞争同一个锁的概率非常小，分段锁反而会造成更新等操作的长时间等待
+- 为了提高GC的效率
+
+#### 新的同步方案
+
+既然弃用了分段锁，那么一定有新的线程安全方案，我们来看看源码是怎么解决线程安全的呢？
+
+> 源码保留segment代码，但是并没有使用
+
+首先通过hash找到对应链表后，查看是否第一个object，如果是直接用CAS原则插入，无需加锁
+
+```java
+Node<K,V> f; int n, i, fh; K fk; V fv;
+if (tab == null || (n = tab.length) == 0)
+    // 这里在整个map第一次操作时，初始化hash桶， 也就是一个table
+    tab = initTable(); 
+else if ((f = tabAt(tab, i = (n - 1) & hash)) == null) {
+    //如果是第一个object， 则直接cas放入， 不用锁
+    if (casTabAt(tab, i, null, new Node<K,V>(hash, key, value)))
+        break;                   
+}
+```
+
+然后， 如果不是链表第一个object， 则直接用链表第一个object加锁，这里加的锁是Synchronized，虽然效率不如 ReentrantLock， 但节约了空间，这里会一直用第一个object为锁， 直到重新计算map大小， 比如扩容或者操作了第一个object为止。
+
+```java
+// 这里的f即为第一个链表的object
+synchronized (f) {
+    if (tabAt(tab, i) == f) {
+        if (fh >= 0) {
+            binCount = 1;
+            for (Node<K,V> e = f;; ++binCount) {
+                K ek;
+                if (e.hash == hash &&
+                    ((ek = e.key) == key ||
+                     (ek != null && key.equals(ek)))) {
+                    oldVal = e.val;
+                    if (!onlyIfAbsent)
+                        e.val = value;
+                    break;
+                }
+                Node<K,V> pred = e;
+                if ((e = e.next) == null) {
+                    pred.next = new Node<K,V>(hash, key, value);
+                    break;
+                }
+            }
+        }
+        else if (f instanceof TreeBin) { // 太长会用红黑树
+            Node<K,V> p;
+            binCount = 2;
+            if ((p = ((TreeBin<K,V>)f).putTreeVal(hash, key,
+                                           value)) != null) {
+                oldVal = p.val;
+                if (!onlyIfAbsent)
+                    p.val = value;
+            }
+        }
+        else if (f instanceof ReservationNode)
+            throw new IllegalStateException("Recursive update");
+    }
+}
+```
+
+分段锁技术是在java8以前使用的，在java8已经弃用了，更新为synchronized+cas
+
+### ConcurrentHashMap为什么要使用synchronized而不是如ReentranLock这样的可重入锁？
+
+这个问题我们将要从几个角度来讨论
+
+- 锁的粒度
+  - 首先锁的粒度没有变粗，甚至变得更细了。每次扩容一次，ConcurrentHashMap的并发度就扩大
+- Hash冲突
+  - 在JDK1.7中，ConcurrentHashMap从二次hash方式（Segment - > HashEntry）能够快速的找到查找的元素，在JDK1.8中，通过链表+红黑树的形式，弥补了put、get时的性能差距。
+- 扩容
+  - JDK1.8中，在ConcurrentHashMap进行扩容时，其他线程可以通过检测数组中的节点决定是否对这条链表进行扩容，减少了扩容的粒度，提高了扩容的效率。
+
+**为什么是用Synchronized 而不是 ReentrantLock？**
+
+- 减少内存开销
+  - 假设使用可重入锁来获得同步支持，那么每个节点都需要通过继承AQS来获得同步支持。但并不是每个节点都需要同步支持，只有链表的头结点（红黑树的根节点）需要同步，这无疑带来了巨大的浪费
+- 获得JVM支持
+  - 可重入锁毕竟是API这个级别的，后续的性能优化空间 很小
+  - Synchronized则是由JVM直接支持，JVM能够在运行时做出对应的优化措施：锁粗化，锁消除，锁自旋等。这就是使得Synchronized能够随着JDK版本的升级而无需改动代码的前提下获得性能上的提升。
 
 ## 内存结构优化
 
