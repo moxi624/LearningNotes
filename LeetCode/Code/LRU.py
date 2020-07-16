@@ -1,5 +1,4 @@
 class LRUCache(object):
-
     def __init__(self, capacity):
         self.capacity = capacity
         self.map = {}
@@ -19,7 +18,13 @@ class LRUCache(object):
     def put(self, key, value):
         if self.size < self.capacity:
             if self.map.get(key):
+                # 将该元素移动到最新使用的
+                index = self.array.index(key)
+                del self.array[index]
+                self.array.append(key)
+                # 更新key
                 self.map[key] = value
+
             else:
                 self.map[key] = value
                 self.array.append(key)
