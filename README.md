@@ -8,8 +8,6 @@
 
 如果笔记对您有帮助的话，欢迎star支持，谢谢~
 
-
-
 ## Java相关
 
 > 来源Bilibili尚硅谷周阳老师学习视频：[点我传送](https://www.bilibili.com/video/BV15J4112785)
@@ -25,7 +23,10 @@
 - [前端的一些跨域问题](./Java/前端的一些跨域问题)
 - [使用Ip2region替代淘宝IP接口](./Java/使用Ip2region替代淘宝IP接口)
 - 聊一聊-Java泛型中的通配符T，E，K，V &#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=0aa459dc0ae9f9ad82cd22665d08a20d)
+- [JVM类加载机制](./Java/JVM类加载机制)
+- [VisualVM安装VisualGC插件](./Java/VisualVM安装VisualGC插件)
 - [谈谈你对ThreadLocal的理解](./Java/谈谈你对ThreadLocal的理解)
+- [ArrayList扩容机制](./Java/ArrayList扩容机制)
 
 ## Java8新特性
 
@@ -205,6 +206,7 @@
 - [解决升级SpringBoot2.X后无法向eureka注册服务的问题](./SpringBoot/解决升级SpringBoot2.X后无法向eureka注册服务的问题)
 - [使用DevTool实现SpringBoot项目热部署](./SpringBoot/使用DevTool实现SpringBoot项目热部署)
 - [使用自定义日志接口收集用户访问日志](./SpringBoot/使用自定义日志接口收集用户访问日志)
+- [Bean的生命周期](./SpringBoot/Bean的生命周期)
 
 ## Vue
 
@@ -345,7 +347,9 @@
 
 [字节跳动面试总结](./校招面试/面经汇总/2_字节跳动面试总结)
 
+[京东零售提前批Java一面](./校招面试/面经汇总/3_京东零售提前批Java一面)
 
+[京东零售提前批Java二面](./校招面试/面经汇总/4_京东零售提前批Java二面)
 
 ## 关注&交流
 
