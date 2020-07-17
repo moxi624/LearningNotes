@@ -1,0 +1,24 @@
+# 京东零售 提前批 Java 二面
+
+## 前言
+
+今天面试的是京东零售部门的二面，面试时间大概20分钟左右
+
+## 第二面
+
+- 自我介绍
+- 聊聊开源项目，里面有哪些功能呢？
+- 数据库用的什么？
+- 你用了SpringBoot么？谈谈SpringBoot核心注解
+- SpringBoot主类注解和配置类注解？
+- 谈谈SpringBoot的自动配置？
+- 谈谈SpringBoot的约定大于配置？
+- SpringBoot中的系统配置加载优先级，例如     Application.yml, Bootstrap.yml 以及.properties
+- 知道什么yaml? 以及它的优势是什么
+- 你刚刚说前台用vue，前端框架有很多，为什么采用的是Vue？
+- 你都用的Spring全家桶，为什么没有用SpringData？
+- 说说Mybatis和Hibernate的区别？
+- 谈谈什么是位图？
+- 字典树？它的优点是什么？
+- 算法题：假如有一个100层，有两个玻璃杯，也就是两次错误的机会，检测一下，玻璃杯从哪一层开始碎的？
+- 反问环节
