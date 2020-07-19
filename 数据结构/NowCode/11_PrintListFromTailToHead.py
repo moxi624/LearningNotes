@@ -20,7 +20,6 @@ class Solution:
         node = listNode
         list = []
         while node:
-            print(node.val)
             list.insert(0, node.val)
             node = node.next
         return list
