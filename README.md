@@ -12,6 +12,8 @@
 
 如果您要转载本仓库中的笔记到其它地方，欢迎添加笔记的仓库地址：[LearningNotes](https://gitee.com/moxi159753/LearningNotes)
 
+## Java
+
 > 来源Bilibili尚硅谷周阳老师学习视频：[点我传送](https://www.bilibili.com/video/BV15J4112785)
 
 - [equals和等等的区别](./校招面试/基础面试题/1_equals和等等的区别) &#x2003;&#x2003;[传送门](http://www.moguit.cn/#/info?blogUid=b573d1425ed2f46990813b043ea73cb3)
@@ -261,6 +263,10 @@
 - [如何制作github小徽章](./杂记/如何制作github小徽章)
 - [使用JustAuth集成QQ登录](./杂记/使用JustAuth集成QQ登录)
 - [使用开源项目申请JetBrains全家桶](./杂记/使用开源项目申请JetBrains全家桶)
+- [什么是CICD](./杂记/什么是CICD)
+- [罗技K380快捷键](./杂记/罗技K380快捷键)
+- [将PDF转换为Kindle能识别的MOBI格式](./杂记/将PDF转换为Kindle能识别的MOBI格式)
+- [OCR文字识别软件](./杂记/OCR文字识别软件)
 
 ## Linux
 
