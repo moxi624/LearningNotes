@@ -285,3 +285,111 @@ func Print2(x interface{})  {
 ### 值接收者
 
 如果结构体中的方法是值接收者，那么实例化后的结构体值类型和结构体指针类型都可以赋值给接口变量
+
+## 结构体实现多个接口
+
+实现多个接口的话，可能就同时用两个接口进行结构体的接受
+
+```go
+// 定义一个Animal的接口，Animal中定义了两个方法，分别是setName 和 getName，分别让DOg结构体和Cat结构体实现
+type Animal interface {
+	SetName(string)
+}
+
+// 接口2
+type Animal2 interface {
+	GetName()string
+}
+
+type Dog struct {
+	Name string
+}
+
+func (d *Dog) SetName(name string)  {
+	d.Name = name
+}
+func (d Dog)GetName()string {
+	return d.Name
+}
+
+func main() {
+	var dog = &Dog{
+		"小黑",
+	}
+	// 同时实现两个接口
+	var d1 Animal = dog
+	var d2 Animal2 = dog
+	d1.SetName("小鸡")
+	fmt.Println(d2.GetName())
+}
+```
+
+## 接口嵌套
+
+在golang中，允许接口嵌套接口，我们首先创建一个 Animal1 和 Animal2 接口，然后使用Animal接受刚刚的两个接口，实现接口的嵌套。
+
+```go
+// 定义一个Animal的接口，Animal中定义了两个方法，分别是setName 和 getName，分别让DOg结构体和Cat结构体实现
+type Animal1 interface {
+	SetName(string)
+}
+
+// 接口2
+type Animal2 interface {
+	GetName()string
+}
+
+type Animal interface {
+	Animal1
+	Animal2
+}
+
+type Dog struct {
+	Name string
+}
+
+func (d *Dog) SetName(name string)  {
+	d.Name = name
+}
+func (d Dog)GetName()string {
+	return d.Name
+}
+
+func main() {
+	var dog = &Dog{
+		"小黑",
+	}
+	// 同时实现两个接口
+	var d Animal = dog
+	d.SetName("小鸡")
+	fmt.Println(d.GetName())
+}
+```
+
+## Golang中空接口和类型断言
+
+```go
+// golang中空接口和类型断言
+var userInfo = make(map[string]interface{})
+userInfo["userName"] = "zhangsan"
+userInfo["age"] = 10
+userInfo["hobby"] = []string{"吃饭", "睡觉"}
+fmt.Println(userInfo["userName"])
+fmt.Println(userInfo["age"])
+fmt.Println(userInfo["hobby"])
+// 但是我们空接口如何获取数组中的值？发现 userInfo["hobby"][0]  这样做不行
+// fmt.Println(userInfo["hobby"][0])
+```
+
+也就是我们的空接口，无法直接通过索引获取数组中的内容，因此这个时候就需要使用类型断言了
+
+```go
+// 这个时候我们就可以使用类型断言了
+hobbyValue,ok := userInfo["hobby"].([]string)
+if ok {
+    fmt.Println(hobbyValue[0])
+}
+```
+
+通过类型断言返回来的值，我们就能够直接通过角标获取了。
+

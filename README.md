@@ -8,7 +8,9 @@
 
 如果笔记对您有帮助的话，欢迎star支持，谢谢~
 
-## Java相关
+本仓库有来源自己总结、网上收集、视频笔记，如果有侵权之处，可以联系我进行删除~
+
+如果您要转载本仓库中的笔记到其它地方，欢迎添加笔记的仓库地址：[LearningNotes](https://gitee.com/moxi159753/LearningNotes)
 
 > 来源Bilibili尚硅谷周阳老师学习视频：[点我传送](https://www.bilibili.com/video/BV15J4112785)
 
@@ -26,6 +28,7 @@
 - [JVM类加载机制](./Java/JVM类加载机制)
 - [VisualVM安装VisualGC插件](./Java/VisualVM安装VisualGC插件)
 - [谈谈你对ThreadLocal的理解](./Java/谈谈你对ThreadLocal的理解)
+- [谈谈你对AQS的理解](./Java/谈谈你对AQS的理解)
 - [ArrayList扩容机制](./Java/ArrayList扩容机制)
 
 ## Java8新特性
@@ -211,95 +214,52 @@
 ## Vue
 
 - [Axios中拦截器的使用](./Vue/Axios中拦截器的使用)
-
 - [ElementUI中Upload如何批量上传](./Vue/ElementUI中Upload如何批量上传)
-
 - [el-select因为绑定的值为整数而无法默认选择](./Vue/el-select因为绑定的值为整数而无法默认选择)
-
 - [Vue动态计算Table表格的高度](./Vue/Vue动态计算Table表格的高度)
-
 - [Vue对Element中的e-tag添加@click事件无效](./Vue/Vue对Element中的e-tag添加@click事件无效)
-
 - [Vue使用Echarts制作一个文章贡献度表](./Vue/Vue使用Echarts制作一个文章贡献度表)
-
 - [Vue中input框自动聚焦](./Vue/Vue中input框自动聚焦)
-
 - [Vue使用vue-count-to插件对数字显示美化](./Vue/Vue使用vue-count-to插件对数字显示美化)
-
 - [Vue项目如何关闭Eslint校验](./Vue/Vue项目如何关闭Eslint校验)
-
 - [Vue项目使用阿里巴巴矢量图标库](./Vue/Vue项目使用阿里巴巴矢量图标库)
-
 - [Vue项目引入CDN加速](./Vue/Vue项目引入CDN加速)
-
 - [Vue制作一个评论模块](./Vue/Vue制作一个评论模块)
-
 - [Vue中Html和Markdown互相转换](./Vue/Vue中Html和Markdown互相转换)
-
 - [Vue中对数组变化监听](./Vue/Vue中对数组变化监听)
-
 - [Vue中使用Vue-cropper进行图片裁剪](./Vue/Vue中使用Vue-cropper进行图片裁剪)
-
 - [Vuex学习指南-实现一个计数器](./Vue/VueX/Vuex学习指南-实现一个计数器)
-
 - [Vue中防止XSS脚本攻击](./Vue/VueX/Vue中防止XSS脚本攻击)
-
 - [Vue如何使用G2绘制图片](./Ant/G2/Vue如何使用G2绘制图片)
-
 - [使用Vuex进行两个页面逻辑交互](./Vue/使用Vuex进行两个页面逻辑交互)
 
-- ## 杂记
+## 杂记
 
 - [CKEditor前端样式和编辑器的样式不一致的问题](./杂记/CKEditor前端样式和编辑器的样式不一致的问题)
-
 - [Ckeidtor中上传图片添加token信息](./杂记/ckeidtor中上传图片添加token信息)
-
 - [CLion搭建C语言开发环境](./杂记/CLion搭建C语言开发环境)
-
 - [Elasticsearch介绍与安装](./杂记/Elasticsearch介绍与安装)
-
 - [Github项目配置Actions](./杂记/Github项目配置Actions)
-
 - [SpringBoot+Vue如何集成第三方登录登录JustAuth](./杂记/SpringBoot+Vue如何集成第三方登录登录JustAuth)
-
 - [SpringBoot项目启动增加自定义Banner](./杂记/SpringBoot项目启动增加自定义Banner)
-
 - [VSCode服务版搭建教程,让平板化为生产力工具](./杂记/VSCode服务版搭建教程)
-
 - [Windows平台编写bat脚本让后台启动多个程序](./杂记/Windows平台编写bat脚本让后台启动多个程序)
-
 - [记一次蘑菇博客差点被删库的经历](./杂记/记一次蘑菇博客差点被删库的经历)
-
 - [解决git默认不区分大小写的问题](./杂记/解决git默认不区分大小写的问题)
-
 - [蘑菇博客后台登录页面增加粒子特效](./杂记/蘑菇博客后台登录页面增加粒子特效)
-
 - [蘑菇博客集成MarkDown编辑器tui-editor](./杂记/蘑菇博客集成MarkDown编辑器tui-editor)
-
 - [蘑菇博客配置七牛云存储](./杂记/蘑菇博客配置七牛云存储)
-
 - [蘑菇博客配置域名解析](./杂记/蘑菇博客配置域名解析)
-
 - [蘑菇博客切换搜索模式](./杂记/蘑菇博客切换搜索模式)
-
 - [蘑菇博客如何部署到阿里云服务器](./杂记/蘑菇博客如何部署到阿里云服务器)
-
 - [蘑菇博客如何扩展新的功能和页面](./杂记/蘑菇博客如何扩展新的功能和页面)
-
 - [蘑菇博客使用GithubAction完成持续集成](./杂记/蘑菇博客使用GithubAction完成持续集成)
-
 - [蘑菇博客使用SQL语句进行搜索出的内容忽略大小写并添加高亮效果](./杂记/蘑菇博客使用SQL语句进行搜索出的内容忽略大小写并添加高亮效果)
-
 - [蘑菇博客添加本地Markdown文件上传功能](./杂记/蘑菇博客添加本地Markdown文件上传功能)
-
 - [如何给七牛云中的文件配置防盗链](./杂记/如何给七牛云中的文件配置防盗链)
-
 - [如何使用docsify给蘑菇博客编写开发文档](./杂记/如何使用docsify给蘑菇博客编写开发文档)
-
 - [如何制作github小徽章](./杂记/如何制作github小徽章)
-
 - [使用JustAuth集成QQ登录](./杂记/使用JustAuth集成QQ登录)
-
 - [使用开源项目申请JetBrains全家桶](./杂记/使用开源项目申请JetBrains全家桶)
 
 ## Linux
@@ -358,3 +318,12 @@
 |             QQ群（加群备注：`蘑菇博客`）              |              QQ（备注：`蘑菇博客`）              |
 | :---------------------------------------------------: | :----------------------------------------------: |
 | <img src="./doc/images/qq/qqGroup.png" width="200" /> | <img src="./doc/images/qq/qq.png" width="200" /> |
+
+## 赞赏
+
+如果觉得本仓库对您有帮助的话，希望朋友能够给博主喝一杯咖啡~（ps.. 小伙伴赞赏的时候可以备注一下下~）
+
+|                       微信                       |                      支付宝                       |
+| :----------------------------------------------: | :-----------------------------------------------: |
+| <img src="./doc/images/qq/wx.png" width="200" /> | <img src="./doc/images/qq/zfb.png" width="200" /> |
+
