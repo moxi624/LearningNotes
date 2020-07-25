@@ -11,11 +11,7 @@
 - 最大化减少空指针异常（Optional）
 - 。。。。
 
-
-
-## HashMap优化
-
-### HashMap1.7
+## HashMap1.7
 
 在JDK1.7 到 JDK1.8的时候，对HashMap做了优化
 
@@ -25,7 +21,7 @@
 
 ![image-20200405101639700](images/image-20200405101639700.png)
 
-### HashMap1.7存在死链问题
+## HashMap1.7存在死链问题
 
 参考：[hashmap扩容时死循环问题](https://blog.csdn.net/chenyiminnanjing/article/details/82706942)
 
@@ -165,7 +161,7 @@ e.next = newTable[i] 导致 key(3).next 指向了 key(7)
 
 线程2生成的e和next的关系影响到了线程1里面的情况。从而打乱了正常的e和next的链。于是，当我们的线程一调用到，HashTable.get(11)时，即又到了3这个位置，需要插入新的，那这会就e 和next就乱了
 
-### HashMap每次扩容为什么是2倍
+## HashMap每次扩容为什么是2倍
 
 参考：[HashMap初始容量为什么是2的n次幂](https://blog.csdn.net/apeopl/article/details/88935422)
 
@@ -191,8 +187,7 @@ HashMap的容量为什么是2的n次幂，和这个(n - 1) & hash的计算方法
 
 终上所述，HashMap计算添加元素的位置时，使用的位运算，这是特别高效的运算；另外，HashMap的初始容量是2的n次幂，扩容也是2倍的形式进行扩容，是因为容量是2的n次幂，可以使得添加的元素均匀分布在HashMap中的数组上，减少hash碰撞，避免形成链表的结构，使得查询效率降低
 
-
-### JDK1.8结构变化
+## JDK1.8结构变化
 
 由JDK1.7的，数组 + 链表 
 
@@ -206,9 +201,32 @@ JDK1.8变为：数组 + 链表 + 红黑树
 
 链表的查询和删除的时间复杂度： O(n)，插入为：O(1)
 
-### ConcurrentHashMap变化
+## 为什么HashMap使用红黑树而不是AVL树
 
-#### 为何JDK8要放弃分段锁？
+在JDK1.8版本后，Java对HashMap做了改进，在链表长度大于8的时候，将后面的数据由链表改成了红黑树，以加快检索的速度
+
+但是为什么使用的红黑树，而不是AVL树或者其它树呢？
+
+> 最主要的原因：在CurrentHashMap中加锁了，实际上就是读写锁，如果写冲突就会等待，如果插入的时间过长，必然会导致等待的时间变长，而红黑树相比于AVL树，它的插入更快。
+
+红黑树和AVL树都是常见的平衡二叉树，它们的查找，删除，修改的时间复杂度都是 O(log n)
+
+AVL树和红黑树相比有以下的区别
+
+- AVL树是更加严格的平衡，因此可以提供更快的查找速度，一般读取查找密集型任务，适用AVL树
+- 红黑树更适合插入修改密集型任务
+- 通常，AVL树的旋转比红黑树的旋转更加难以平衡和调试
+
+### 总结
+
+- AVL以及红黑树都是高度平衡的树形结构，它们非常的相似，真正的区别在于任何添加、删除操作时完成的旋转操作次数
+- 两种时间复杂度都是O(logN)，其中N是叶子的数量，但实际上AVL树在查找密集型任务上更快，利用更好的平衡，树遍历平均更短，另一方面，插入和删除上，AVL树较慢，因为需要更高的旋转次数才能在修改时正确地重新平衡数据结构
+- 在AVL树中，从根到任何叶子节点的最短路径和最长路径之间的差异最多为1，在红黑树中，差异可以是2倍
+- 两个都是O(logN)查找，但是平衡二叉树可能需要 O(logN)旋转，而红黑树需要最多两次旋转使其达到平衡（尽可能需要检查O(logN)节点以确定旋转的位置），旋转本身是O(1)操作，因为你只需要移动指针。
+
+## ConcurrentHashMap变化
+
+### 为何JDK8要放弃分段锁？
 
 由原来的分段锁，变成了CAS，也就是通过无锁化设计替代了阻塞同步的加锁操作，性能得到了提高。
 
@@ -220,7 +238,7 @@ JDK1.8的ConcurrentHashMap摒弃了1.7的segment设计，而是JDK1.8版本的Ha
 
 至于为什么抛弃Segment的设计，是因为分段锁的这个段不太好评定，如果我们的Segment设置的过大，那么隔离级别也就过高，那么就有很多空间被浪费了，也就是会让某些段里面没有元素，如果太小容易造成冲突
 
-#### 弃用的原因
+### 弃用的原因
 
 通过上述描述以及查看官方文档，弃用分段锁的原因主要有以下几点
 
@@ -228,7 +246,7 @@ JDK1.8的ConcurrentHashMap摒弃了1.7的segment设计，而是JDK1.8版本的Ha
 - 生产环境中，map在放入时 竞争同一个锁的概率非常小，分段锁反而会造成更新等操作的长时间等待
 - 为了提高GC的效率
 
-#### 新的同步方案
+### 新的同步方案
 
 既然弃用了分段锁，那么一定有新的线程安全方案，我们来看看源码是怎么解决线程安全的呢？
 
@@ -291,7 +309,7 @@ synchronized (f) {
 
 分段锁技术是在java8以前使用的，在java8已经弃用了，更新为synchronized+cas
 
-### ConcurrentHashMap为什么要使用synchronized而不是如ReentranLock这样的可重入锁？
+## ConcurrentHashMap为什么要使用synchronized而不是如ReentranLock这样的可重入锁？
 
 这个问题我们将要从几个角度来讨论
 
@@ -325,3 +343,9 @@ OOM错误发生概率降低
 > MetaspaceSize
 >
 > MaxMetaspaceSize
+
+## 参考
+
+- https://blog.csdn.net/zhangvalue/article/details/101483736
+- https://blog.csdn.net/apeopl/article/details/88935422
+- https://blog.csdn.net/chenyiminnanjing/article/details/82706942
