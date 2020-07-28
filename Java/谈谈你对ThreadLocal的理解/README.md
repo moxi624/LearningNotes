@@ -574,3 +574,91 @@ thresgold达到了rehash的条件，达到的话就会调用rehash函数执行�
 举个例子，假设当前table长度为16，也就是说如果计算出来key的hash值为14，如果table[14]上已经有值，并且其key与当前key不一致，那么就发生了hash冲突，这个时候将1401得到15，取table[15]进行判断，这个时候如果还是冲突会回到0，取table[0]，以此类推，直到可以插入。
 
 按照上面的描述，可以把Entry table看成一个环形数组。
+
+## ThreadLocal使用场景
+
+### 源码使用场景
+
+ThreadLocal的作用主要是做数据隔离，填充的数据只属于当前线程，变量的数据对别的线程而言是相对隔离的，在多线程环境下，如何防止自己的变量被其它线程篡改。
+
+例如，用于 Spring实现事务隔离级别的源码
+
+Spring采用Threadlocal的方式，来保证单个线程中的数据库操作使用的是同一个数据库连接，同时，采用这种方式可以使业务层使用事务时不需要感知并管理connection对象，通过传播级别，巧妙地管理多个事务配置之间的切换，挂起和恢复。
+
+Spring框架里面就是用的ThreadLocal来实现这种隔离，主要是在`TransactionSynchronizationManager`这个类里面，代码如下所示:
+
+```java
+private static final Log logger = LogFactory.getLog(TransactionSynchronizationManager.class);
+
+	private static final ThreadLocal<Map<Object, Object>> resources =
+			new NamedThreadLocal<>("Transactional resources");
+
+	private static final ThreadLocal<Set<TransactionSynchronization>> synchronizations =
+			new NamedThreadLocal<>("Transaction synchronizations");
+
+	private static final ThreadLocal<String> currentTransactionName =
+			new NamedThreadLocal<>("Current transaction name");
+```
+
+Spring的事务主要是ThreadLocal和AOP去做实现的，我这里提一下，大家知道每个线程自己的链接是靠ThreadLocal保存的就好了
+
+### 用户使用场景1
+
+ 除了源码里面使用到ThreadLocal的场景，你自己有使用他的场景么？
+
+之前我们上线后发现部分用户的日期居然不对了，排查下来是SimpleDataFormat的锅，当时我们使用SimpleDataFormat的parse()方法，内部有一个Calendar对象，调用SimpleDataFormat的parse()方法会先调用Calendar.clear（），然后调用Calendar.add()，如果一个线程先调用了add()然后另一个线程又调用了clear()，这时候parse()方法解析的时间就不对了。
+
+其实要解决这个问题很简单，让每个线程都new 一个自己的 SimpleDataFormat就好了，但是1000个线程难道new1000个SimpleDataFormat？
+
+所以当时我们使用了线程池加上ThreadLocal包装SimpleDataFormat，再调用initialValue让每个线程有一个SimpleDataFormat的副本，从而解决了线程安全的问题，也提高了性能。
+
+### 用户使用场景2
+
+我在项目中存在一个线程经常遇到横跨若干方法调用，需要传递的对象，也就是上下文（Context），它是一种状态，经常就是是用户身份、任务信息等，就会存在过渡传参的问题。
+
+使用到类似责任链模式，给每个方法增加一个context参数非常麻烦，而且有些时候，如果调用链有无法修改源码的第三方库，对象参数就传不进去了，所以我使用到了ThreadLocal去做了一下改造，这样只需要在调用前在ThreadLocal中设置参数，其他地方get一下就好了。
+
+```java
+before
+  
+void work(User user) {
+    getInfo(user);
+    checkInfo(user);
+    setSomeThing(user);
+    log(user);
+}
+
+then
+  
+void work(User user) {
+try{
+	  threadLocalUser.set(user);
+	  // 他们内部  User u = threadLocalUser.get(); 就好了
+    getInfo();
+    checkInfo();
+    setSomeThing();
+    log();
+    } finally {
+     threadLocalUser.remove();
+    }
+}
+```
+
+我看了一下很多场景的cookie，session等数据隔离都是通过ThreadLocal去做实现的
+
+在Android中，Looper类就是利用了ThreadLocal的特性，保证每个线程只存在一个Looper对象。
+
+```java
+static final ThreadLocal<Looper> sThreadLocal = new ThreadLocal<Looper>();
+private static void prepare(boolean quitAllowed) {
+    if (sThreadLocal.get() != null) {
+        throw new RuntimeException("Only one Looper may be created per thread");
+    }
+    sThreadLocal.set(new Looper(quitAllowed));
+}
+```
+
+## 参考
+
+https://blog.csdn.net/qq_35190492/article/details/107599875
+
