@@ -1,0 +1,10 @@
+# github.com/shopspring/decimal v1.2.0
+## explicit
+github.com/shopspring/decimal
+# github.com/tidwall/gjson v1.6.0
+## explicit
+github.com/tidwall/gjson
+# github.com/tidwall/match v1.0.1
+github.com/tidwall/match
+# github.com/tidwall/pretty v1.0.0
+github.com/tidwall/pretty
