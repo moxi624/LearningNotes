@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java学习笔记</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      coverpage: true, // 设置封面
+      onlyCover: true, // 只显示封面
+      loadSidebar: true, // 设置侧边栏
+      subMaxLevel: 3, //侧边栏显示当前页面的目录(标题)
+      loadNavbar: true, // 设置导航栏
+      // 完整配置参数
+      search: {
+        placeholder: '搜索', // 搜索提示框文字， 支持本地化，例子在下面
+        noData: '找不到结果!',
+        depth: 3,                       // 搜索标题的最大程级, 1 - 6
+      }
+    }
+  </script>
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/docsify/4.11.2/docsify.js"></script>
+
+<!-- 引入搜索模块 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/docsify/4.11.2/plugins/search.min.js"></script>
+
+<!-- 添加一键拷贝代码-->
+<script src="//unpkg.com/docsify-copy-code"></script></script>
+
+<!-- 添加代码高亮 -->
+<script src="//unpkg.com/prismjs/components/prism-bash.js"></script>  
+<script src="//unpkg.com/prismjs/components/prism-java.js"></script>  
+<script src="//unpkg.com/prismjs/components/prism-sql.js"></script>
+<script src="//unpkg.com/prismjs/components/prism-java.js"></script>
+<script src="//unpkg.com/prismjs/components/prism-sql.js"></script>
+
+</body>
+</html>
