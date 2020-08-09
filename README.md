@@ -8,6 +8,8 @@ Java学习笔记，面试突击宝典，主要来源于B站上视频的学习，
 
 本仓库有来源自己总结、网上收集、视频笔记，如果有侵权之处，可以联系我进行删除~
 
+因个人能力有限，笔记中可能还有很多错误的地方，还请大家能够多多指出交流~，也欢迎各位小伙伴能够提交pull request请求进行完善~
+
 如果您要转载本仓库中的笔记到其它地方，欢迎添加笔记的仓库地址：[LearningNotes](https://gitee.com/moxi159753/LearningNotes)
 
 ## 文档
@@ -316,6 +318,29 @@ Java学习笔记，面试突击宝典，主要来源于B站上视频的学习，
 - [京东零售提前批Java一面](./校招面试/面经汇总/3_京东零售提前批Java一面/README.md)
 - [京东零售提前批Java二面](./校招面试/面经汇总/4_京东零售提前批Java二面/README.md)
 - [滴滴出行提前批Java123面](./校招面试/面经汇总/5_滴滴出行提前批Java123面/README.md)
+
+## Golang基础
+
+> 来源Bilibili IT营 大地老师学习视频：[点我传送](https://www.bilibili.com/video/BV14T4y1g7h9)
+
+- [Go语言的安装](./Golang/Golang基础/0_Go语言的安装/README.md)
+- [Go语言发展简史](./Golang/Golang基础/1_Go语言发展简史/README.md)
+- [Go的变量](./Golang/Golang基础/2_Go的变量/README.md)
+- [Go的数据类型](./Golang/Golang基础/3_Go的数据类型/README.md)
+- [Go的运算符](./Golang/Golang基础/4_Go的运算符/README.md)
+- [Go的流程控制](./Golang/Golang基础/5_Go的流程控制/README.md)
+- [Go的数组](./Golang/Golang基础/6_Go的数组/README.md)
+- [Go的切片](./Golang/Golang基础/7_Go的切片/README.md)
+- [Go的map](./Golang/Golang基础/8_Go的map/README.md)
+- [Go的函数](./Golang/Golang基础/9_Go的函数/README.md)
+- [Go中的日期函数](./Golang/Golang基础/10_Go中的日期函数/README.md)
+- [Go中的指针](./Golang/Golang基础/11_Go中的指针/README.md)
+- [Go中的结构体](./Golang/Golang基础/12_Go中的结构体/README.md)
+- [Go中的包以及GoMod](./Golang/Golang基础/13_Go中的包以及GoMod/README.md)
+- [Go中的接口](./Golang/Golang基础/14_Go中的接口/README.md)
+- [goroutine实现并行和并发](./Golang/Golang基础/15_goroutine实现并行和并发/README.md)
+- [Golang中的反射](./Golang/Golang基础/16_Golang中的反射/README.md)
+- [源码](./Golang/Golang基础/Code)
 
 ## 关注&交流
 
