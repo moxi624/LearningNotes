@@ -100,3 +100,27 @@ mkdir /home/ssl/uniapp/web
 ```
 
 配置完成后，我们通过https，即可访问我们的项目了~
+
+同理，如果配置  https://apipicture.moguit.cn 我们也是按照上述的操作再次执行一遍，然后最后在nginx中添加如下的配置信息
+
+```bash
+    server {
+        listen       443 ssl;
+        server_name  apipicture.moguit.cn;
+        ssl on;
+
+        ssl_certificate  /home/ssl/uniapp/picture/1_apipicture.moguit.cn_bundle.crt;
+        ssl_certificate_key /home/ssl/uniapp/picture/2_apipicture.moguit.cn.key;
+
+        ssl_session_timeout  5m;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_prefer_server_ciphers  on;
+        location / {
+           proxy_pass   http://127.0.0.1:8602;
+        }
+
+    }
+```
+

@@ -254,6 +254,10 @@ Java学习笔记，面试突击宝典，主要来源于B站上视频的学习，
 - [Windows平台编写bat脚本让后台启动多个程序](./杂记/Windows平台编写bat脚本让后台启动多个程序/README.md)
 - [记一次蘑菇博客差点被删库的经历](./杂记/记一次蘑菇博客差点被删库的经历/README.md)
 - [解决git默认不区分大小写的问题](./杂记/解决git默认不区分大小写的问题/README.md)
+- [蘑菇博客从Eureka迁移到Nacos](./杂记/蘑菇博客从Eureka迁移到Nacos/README.md)
+- [蘑菇博客Nacos安装指南](./杂记/蘑菇博客Nacos安装指南/README.md)
+- [蘑菇博客Sentinel安装指南](./杂记/蘑菇博客Sentinel安装指南/README.md)
+- [蘑菇博客QQ小程序发布指南](./杂记/蘑菇博客QQ小程序发布指南/README.md)
 - [蘑菇博客后台登录页面增加粒子特效](./杂记/蘑菇博客后台登录页面增加粒子特效/README.md)
 - [蘑菇博客集成MarkDown编辑器tui-editor](./杂记/蘑菇博客集成MarkDown编辑器tui-editor/README.md)
 - [蘑菇博客配置七牛云存储](./杂记/蘑菇博客配置七牛云存储/README.md)
@@ -273,11 +277,13 @@ Java学习笔记，面试突击宝典，主要来源于B站上视频的学习，
 - [罗技K380快捷键](./杂记/罗技K380快捷键/README.md)
 - [将PDF转换为Kindle能识别的MOBI格式](./杂记/将PDF转换为Kindle能识别的MOBI格式/README.md)
 - [OCR文字识别软件](./杂记/OCR文字识别软件/README.md)
+- 
 
 ## Linux
 
 - [Linux下查看文件和文件夹占用空间大小](./Linux/Linux下查看文件和文件夹占用空间大小/README.md)
 - [Linux下通过nginx配置https](./Linux/Linux下通过nginx配置https/README.md)
+- [CentOS下如何安装Nginx](./Linux/CentOS下如何安装Nginx/README.md)
 - [记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历](./Linux/记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历/README.md)
 
 ## Redis
