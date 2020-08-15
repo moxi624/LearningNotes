@@ -243,6 +243,8 @@ Java学习笔记，面试突击宝典，主要来源于B站上视频的学习，
 
 ## 杂记
 
+- [Windows环境下搭建蘑菇博客](./杂记/Windows环境下搭建蘑菇博客/README.md)
+- [Docker搭建蘑菇博客](./杂记/Docker搭建蘑菇博客/README.md)
 - [CKEditor前端样式和编辑器的样式不一致的问题](./杂记/CKEditor前端样式和编辑器的样式不一致的问题/README.md)
 - [Ckeidtor中上传图片添加token信息](./杂记/ckeidtor中上传图片添加token信息/README.md)
 - [CLion搭建C语言开发环境](./杂记/CLion搭建C语言开发环境/README.md)
