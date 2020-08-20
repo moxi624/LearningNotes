@@ -295,6 +295,7 @@ Java学习笔记，面试突击宝典，主要来源于B站上视频的学习，
 - [Redis缓存穿透-布隆过滤器](./Redis/Redis缓存穿透-布隆过滤器/README.md)
 - [大白话谈IO模型](./Redis/大白话谈IO模型/README.md)
 - [IO多路复用底层原理](./Redis/IO多路复用底层原理/README.md)
+- [Redis实现分布式锁](./Redis/Redis实现分布式锁/README.md)
 
 ## JavaScript
 
