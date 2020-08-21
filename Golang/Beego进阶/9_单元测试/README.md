@@ -2,7 +2,9 @@
 
 ## 来源
 
-https://www.liwenzhou.com/posts/Go/16_test/
+单元测试：https://www.liwenzhou.com/posts/Go/16_test/
+
+性能测试：https://www.liwenzhou.com/posts/Go/performance_optimisation/
 
 ## 前言
 
@@ -375,7 +377,9 @@ func TestSplit(t *testing.T) {
 }
 ```
 
-我们都知道可以通过`-run=RegExp`来指定运行的测试用例，还可以通过`/`来指定要运行的子测试用例，例如：`go test -v -run=Split/simple`只会运行`simple`对应的子测试用例。
+我们都知道可以通过`-run=RegExp`来指定运行的测试用例，还可以通过`/`来指定要运行的子测试用例，
+
+例如：`go test -v -run=Split/simple` 只会运行`simple`对应的子测试用例。
 
 ## 测试覆盖率
 
