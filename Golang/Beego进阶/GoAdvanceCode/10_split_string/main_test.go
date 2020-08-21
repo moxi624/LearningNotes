@@ -13,4 +13,5 @@ func TestSplit(t *testing.T) {
 		// 测试用例失败了
 		t.Error("want: %v but got: %v", want, ret)
 	}
+
 }
