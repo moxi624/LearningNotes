@@ -287,6 +287,7 @@ Java学习笔记，面试突击宝典，主要来源于B站上视频的学习，
 - [Linux下通过nginx配置https](./Linux/Linux下通过nginx配置https/README.md)
 - [CentOS下如何安装Nginx](./Linux/CentOS下如何安装Nginx/README.md)
 - [记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历](./Linux/记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历/README.md)
+- [CentOS下安装Nacos](./Linux/CentOS下安装Nacos/README.md)
 
 ## Redis
 
