@@ -42,6 +42,7 @@ func query()  {
 	sqlStr := "select id, name, age from user where id > ?"
 	rows, err := db.Query(sqlStr, 0)
 	if err != nil {
+		fmt.Println()
 		fmt.Printf("query failed, err:%v\n", err)
 		return
 	}
