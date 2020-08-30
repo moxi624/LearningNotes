@@ -135,8 +135,6 @@ func initDB()(err error)  {
 		fmt.Printf("open %s failed, err: %v \n", dsn, err)
 		return
 	}
-	// 注意这行代码要写在上面err判断的下面
-	defer db.Close()
 
 	// 尝试连接数据库
 	err = db.Ping()
@@ -147,9 +145,35 @@ func initDB()(err error)  {
 	fmt.Println("连接数据库成功")
 	return
 }
+
+type user struct {
+	id   string
+	name  string
+	age int
+}
+
 // 查询操作
 func query()  {
-	
+	sqlStr := "select id, name, age from user where id > ?"
+	rows, err := db.Query(sqlStr, 0)
+	if err != nil {
+		fmt.Println()
+		fmt.Printf("query failed, err:%v\n", err)
+		return
+	}
+	// 非常重要：关闭rows释放持有的数据库链接
+	defer rows.Close()
+
+	// 循环读取结果集中的数据
+	for rows.Next() {
+		var u user
+		err := rows.Scan(&u.id, &u.name, &u.age)
+		if err != nil {
+			fmt.Printf("scan failed, err:%v\n", err)
+			return
+		}
+		fmt.Printf("id:%d name:%s age:%d\n", u.id, u.name, u.age)
+	}
 }
 
 // Go连接MySQL
@@ -158,6 +182,9 @@ func main() {
 	if err != nil {
 		fmt.Println("数据库初始化失败")
 	}
+
+	// 查询单条记录
+	query()
 
 }
 ```
@@ -171,6 +198,17 @@ func (db *DB) SetMaxOpenConns(n int)
 ```
 
 `SetMaxOpenConns`设置与数据库建立连接的最大数目。 如果n大于0且小于最大闲置连接数，会将最大闲置连接数减小到匹配最大开启连接数的限制。 如果n<=0，不会限制最大开启连接数，默认为0（无限制）。
+
+> 需要注意的是，我们再查询完成后，需要使用Scan进行连接的释放
+>
+> ```go
+> // 调用Scan才会释放我们的连接
+> err := rows.Scan(&u.id, &u.name, &u.age)
+> if err != nil {
+>     fmt.Printf("scan failed, err:%v\n", err)
+>     return
+> }
+> ```
 
 ### SetMaxIdleConns
 
@@ -577,6 +615,6 @@ func transactionDemo() {
 
 [更强大、更好用的sqlx库](https://www.liwenzhou.com/posts/Go/sqlx/)
 
-# 练习题
+## 练习题
 
 1. 结合`net/http`和`database/sql`实现一个使用MySQL存储用户信息的注册及登陆的简易web程序。
