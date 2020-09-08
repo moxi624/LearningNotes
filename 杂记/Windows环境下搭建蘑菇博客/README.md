@@ -4,7 +4,7 @@
 
 码云上最近有些小伙伴们问到了蘑菇博客的详细配置信息，突然想想之前本来打算写来着，但是因为各种各样的问题搁置了，现在就在win10环境下对博客的配置进行详细的说明了。
 
-tip: 如遇到启动失败的,请先maven clean install 后再尝试启动
+> Tip: 如遇到启动失败的,请先maven clean install 后再尝试启动
 
 IDE得装lombok插件：[IDEA中引入Lombok](http://moguit.cn/#/info?blogUid=4ccb7df5d537f52d954eb15f094c90a3) 
 
@@ -13,6 +13,17 @@ IDE得装lombok插件：[IDEA中引入Lombok](http://moguit.cn/#/info?blogUid=4c
 参考：[蘑菇博客切换搜索模式](http://moguit.cn/#/info?blogUid=4042b4f4088e4e37e95d9fc75d97298b)，完成蘑菇博客的搜索引擎切换，目前支持Solr、ElasticSearch、mysql的方式，一般因为服务器配置文件，选择一种搜索方式即可
 
 参考：[蘑菇博客切换七牛云存储](http://moguit.cn/#/info?blogUid=735ed389c4ad1efd321fed9ac58e646b)，配置文件的七牛云对象存储，及本地文件存储
+
+## 视频教程
+
+特别感谢 [俺是程序狮](https://space.bilibili.com/277038643) 在B站上给蘑菇博客录制的视频教程，里面介绍了windows环境下配置蘑菇博客，如果参考文档遇到了问题的话，可以参考视频进行部署（ps：视频教程基于Eureka版）
+
+- [项目介绍](https://www.bilibili.com/video/BV1Si4y1u7H4)
+- [结构介绍与本地Nginx本地图片服务器启动](https://www.bilibili.com/video/BV1AA411e7W5)
+- [mysql脚本准备](https://www.bilibili.com/video/BV1kv411v7ND)
+- [后台服务启动](https://www.bilibili.com/video/BV1Nv411i7wu)
+- [RabbitMQ启动](https://www.bilibili.com/video/BV1mD4y1U7GT)
+- [前端项目启动](https://www.bilibili.com/video/BV1B541187Ez)
 
 ## 配置JDK
 
@@ -65,6 +76,8 @@ file:
 
 ![image-20200209121341204](images/image-20200209121341204.png)
 
+> 注意，如果使用docker的方法安装的蘑菇博客镜像，里面设置了默认的密码mogu2018，如果直接复制的本地配置，还需要修改一下默认密码
+
 ## 配置RabbitMq
 
 RabbitMQ是一款比较优秀的消息中间件，在这里主要用于同步solr索引和ElasticSearch索引，redis缓存更新，以及邮件和验证码发送等功能。
@@ -83,7 +96,7 @@ RabbitMQ是一款比较优秀的消息中间件，在这里主要用于同步sol
 
 注意：需要修改schema.xml文件
 
-最近很多小伙伴说solr不好配置，所以我特意把solr的上传到百度云和七牛云了，小伙伴只需要下载后，放到tomcat的webapps目录下，然后修改一下solrhome的配置即可
+> 最近很多小伙伴说solr不好配置，所以我特意把solr的上传到百度云和七牛云了，小伙伴只需要下载后，放到tomcat的webapps目录下，然后修改一下solrhome的配置即可
 
 百度云：
 
@@ -172,11 +185,37 @@ http://localhost:5601/
 git clone https://gitee.com/moxi159753/mogu_blog_v2.git
 ```
 
-然后找到目录下的doc文件夹，里面有个数据库脚本，里面有两个数据库，我们需要提前创建好 mogu_blog 、mogu_picture 这里两个数据库，然后把备份脚本导入即可。
+然后找到目录下的doc文件夹，里面有个数据库脚本，里面有两个数据库，我们需要提前创建好 mogu_blog 、mogu_picture 、nacos_config这里三个数据库，然后把备份脚本导入即可。
+
+![image-20200908083757671](images/image-20200908083757671.png)
+
+- mogu_blog.sql：代表mogu_blog数据库的文件
+- mogu_blog_update.sql：代表mogu_blog在后续开发时候更新的字段（首次无需导入）
+- mogu_picture.sql：代表mogu_picture数据库文件
+- mogu_picture_update.sql：代表mogu_picture在后续开发时候更新的字段（首次不需要导入）
+- nacos_config.sql：代表nacos的配置信息，用来存放每个模块的配置信息
+
+首次导入数据库文件的时候，我们只需要执行mogu_blog.sql 、 mogu_picture.sql、nacos_config即可！！
+
+如果你在之前已经部署了本项目，那么你需要在对应的update.sql文件中，打开后，从中找到没有的字段，复制上执行即可，里面每个字段的添加，都会有对应的日期提示，如果有些字段是你clone项目后添加的，那么你就需要执行它们一遍即可
+
+![image-20200908084447425](images/image-20200908084447425.png)
 
 同时设置数据库访问账户和密码为： admin  admin
 
 当然不设置也没关系，就是后面修改yml文件里面的配置即可
+
+## 配置zipkin链路追踪（非必须）
+
+Zipkin是一个开源的分布式的链路追踪系统，每个微服务都会向zipkin报告计时数据，聚合各业务系统调用延迟数据，达到链路调用监控跟踪。
+
+参考博客：[使用Zipkin搭建蘑菇博客链路追踪](http://www.moguit.cn/#/info?blogUid=35bd93cabc08611c7f74ce4564753ef9)
+
+链路追踪服务可以选择安装，不过如果没有安装的话，在启动的时候会出现这样一个错误，不过该错误不会影响正常使用，可以忽略
+
+```bash
+I/O error on POSt request for "http://localhost:9411/api/v2/span" ：connect timeout
+```
 
 ## 配置Nacos注册中心和配置中心（Nacos分支需安装）
 
@@ -262,15 +301,30 @@ mogu_eureka -> mogu_picture -> mogu_sms -> mogu_admin -> mogu_web（上述模块
 
 启动成功后，我们应该能够查看到对应的Swagger接口文档
 
+> tip：需要注意，swagger-ui在nacos版本和eureka版本使用的不一致
+>
+> eureka版本：swagger-ui使用的是2.X，访问的页面是  http://localhost:8601/swagger-ui.html
+>
+> nacos版本：swagger-ui使用的是3.X，访问的页面是 http://localhost:8601/swagger-ui/index.html
+
 ```
-# admin端swagger-ui.html
+############ admin端swagger ##################
+# Eureka分支
 http://localhost:8601/swagger-ui.html
+# Nacos分支
+http://localhost:8601/swagger-ui/index.html
 
-# picture端swagger-ui.html
+############ picture端swagger ##################
+# Eureka分支
 http://localhost:8602/swagger-ui.html
+# Nacos分支
+http://localhost:8602/swagger-ui/index.html
 
-# web端swagger-ui.html
+############ web端swagger ##################
+# Eureka分支
 http://localhost:8603/swagger-ui.html
+# Nacos分支
+http://localhost:8603/swagger-ui/index.html
 ```
 
  
@@ -304,6 +358,9 @@ node官网：https://nodejs.org/en/
 进入vue_mogu_admin 文件夹内，使用下面命令进行安装
 
 ```bash
+# 指定node-sass的国内镜像源
+npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass
+
 # 使用淘宝镜像源进行依赖安装，解决国内下载缓慢的问题(出现警告可以忽略)
 npm install --registry=https://registry.npm.taobao.org
 
@@ -329,6 +386,9 @@ Windows 用户若安装不成功，很大概率是`node-sass`安装失败，[解
 这个步骤其实和admin端的安装时一致的，这里就不做过多的叙述
 
 ```bash
+# 指定node-sass的国内镜像源
+npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass
+
 # 使用淘宝镜像源进行依赖安装，解决国内下载缓慢的问题(出现警告可以忽略)
 npm install --registry=https://registry.npm.taobao.org
 
@@ -345,10 +405,22 @@ npm run build
 
 ![image-20200209121819581](images/image-20200209121819581.png)
 
+tip：特别注意！！！！！首次部署完成，如果图片无法显示，那是因为本地没有对应的图片，需要做的事是查看nginx是否启动，然后就是在后台添加图片进行上传
+
+![image-20200908085423131](images/image-20200908085423131.png)
+
+然后进行图片上传
+
+![image-20200908085438033](images/image-20200908085438033.png)
+
+上传完毕后，再到博客管理页面，修改博客标题图，然后保存即可
+
+![image-20200908085522052](images/image-20200908085522052.png)
+
 ## 写在后面的话
 
 关于我本机的配置，是使用的8G内存，项目所需的全部软件开启后，占用率大概到达了95%，所以微服务还是挺吃内存的。
 
-关于服务器的配置，使用的是1核2G的学生价格服务器，目前来说，在增加虚拟内存后，能够正常的运行项目，内存不够的小伙伴，可以参考这篇博客。[CentOS如何增加虚拟内存？](http://www.moguit.cn/#/info?blogUid=36ee5efa56314807a9b6f1c1db508871)
+关于服务器的配置，使用的是[1核2G的学生价格服务器](https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.10695662.1244717.1.641e5a06KpmU4A&accounttraceid=3ac1b990a4f445859080d2555566af8fiirr?userCode=w7aungxw&tag=share_component&share_source=copy_link?userCode=w7aungxw&tag=share_component&share_source=copy_link?userCode=w7aungxw&tag=share_component&share_source=copy_link&userCode=w7aungxw&tag=share_component&share_source=copy_link&share_source=copy_link)，目前来说，在增加虚拟内存后，能够正常的运行项目，内存不够的小伙伴，可以参考这篇博客。[CentOS如何增加虚拟内存？](http://www.moguit.cn/#/info?blogUid=36ee5efa56314807a9b6f1c1db508871)
 
 好了，关于博客的配置就到这里了，如果有问题的话，欢迎提出~

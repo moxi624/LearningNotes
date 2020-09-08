@@ -210,7 +210,7 @@
   - [记一次蘑菇博客差点被删库的经历](./杂记/记一次蘑菇博客差点被删库的经历/README.md)
   - [解决git默认不区分大小写的问题](./杂记/解决git默认不区分大小写的问题/README.md)
   - [蘑菇博客从Eureka迁移到Nacos](./杂记/蘑菇博客从Eureka迁移到Nacos/README.md)
-  - [Docker搭建蘑菇博客](./杂记/Docker搭建蘑菇博客/README.md)
+  - [Docker搭建蘑菇博客(Eureka版)](./杂记/Docker搭建蘑菇博客(Eureka版)/README.md)
   - [Docker搭建蘑菇博客(Nacos版)](./杂记/Docker搭建蘑菇博客(Nacos版)/README.md)
   - [蘑菇博客Nacos安装指南](./杂记/蘑菇博客Nacos安装指南/README.md)
   - [蘑菇博客Sentinel安装指南](./杂记/蘑菇博客Sentinel安装指南/README.md)
