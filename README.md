@@ -2,7 +2,7 @@
 
 ## 项目介绍
 
-Java学习笔记，面试突击宝典，主要来源于B站上视频的学习，同时会记录平时一些学习和项目中遇到的问题，同步更新在 [蘑菇博客](http://www.moguit.cn)，如果对我的博客网站感兴趣的话，欢迎关注我的 [蘑菇博客源码](https://gitee.com/moxi159753/mogu_blog_v2)，如果笔记对您有帮助的话，欢迎star支持，谢谢~
+Java学习笔记，主要来源于B站上视频的学习，同时会记录平时一些学习和项目中遇到的问题，同步更新在 [蘑菇博客](http://www.moguit.cn)，如果对我的博客网站感兴趣的话，欢迎关注我的 [蘑菇博客源码](https://gitee.com/moxi159753/mogu_blog_v2)，如果笔记对您有帮助的话，欢迎star支持，谢谢~
 
 笔记主要涵盖：Java，JVM、JUC、Spring，SpringCloud，计算机网络，操作系统，数据结构，Vue等
 
@@ -17,6 +17,23 @@ Java学习笔记，面试突击宝典，主要来源于B站上视频的学习，
 为了更方便小伙伴的复习和查询，把本仓库做成一个在线的文档
 
 - 在线文档：http://moxi159753.gitee.io/learningnotes
+
+## 仓库地址
+
+本仓库同步托管在Github和Gitee中
+
+- Gitee仓库：https://gitee.com/moxi159753/LearningNotes
+- Github仓库：https://github.com/moxi624/LearningNotes
+
+## 个人博客搭建
+
+如果想搭建个人的博客系统，可以购买优惠服务器后，参考 [教程](http://www.moguit.cn/#/info?blogUid=8100dcb585fff77e3fa25eed50e3708e) 在服务器搭建 [蘑菇博客项目](https://gitee.com/moxi159753/mogu_blog_v2) 用于知识点的梳理
+
+> 【阿里云】 限量爆款低至91.8元/年 [点我进入](https://www.aliyun.com/minisite/goods?userCode=w7aungxw)
+>
+> 【腾讯云】十周年感恩回馈，1核2G云服务器首年95元 [点我进入](https://cloud.tencent.com/act/cps/redirect?redirect=1067&cps_key=4e9b8ce643afe47621493331d101dd6e&from=console)
+>
+> 【阿里云翼计划】 轻量级应用服务器 1核2G 5M / 年 (博主目前使用的) 仅需114元 [点我进入 ](https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.10695662.1244717.1.641e5a06KpmU4A&accounttraceid=3ac1b990a4f445859080d2555566af8fiirr?userCode=w7aungxw&tag=share_component&share_source=copy_link?userCode=w7aungxw&tag=share_component&share_source=copy_link?userCode=w7aungxw&tag=share_component&share_source=copy_link&userCode=w7aungxw&tag=share_component&share_source=copy_link)`(仅限学生或未满24岁的用户)`
 
 ## Java
 
