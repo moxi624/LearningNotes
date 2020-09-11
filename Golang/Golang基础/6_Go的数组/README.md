@@ -27,7 +27,7 @@ arr3[1] = 2
 arr3[2] = 3
 fmt.Println(arr3)
 
-// 第二种初始化数组的犯法
+// 第二种初始化数组的方法
 var arr4 = [4]int {10, 20, 30, 40}
 fmt.Println(arr4)
 
