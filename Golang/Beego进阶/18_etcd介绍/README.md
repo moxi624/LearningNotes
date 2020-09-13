@@ -81,7 +81,7 @@ etcd 实现的这些功能，ZooKeeper都能实现。那么为什么要用etcd �
 
 etcd作为一个高可用键值存储系统，天生就是为集群化而设计的，由于Raft算法在做决策时需要多数节点投票，所以etcd一般部署集群推荐奇数个节点，推荐的数量为3、5或者7个节点构成一个集群。
 
-## 搭建一个3节点集群示例：
+## 搭建一个3节点集群示例
 
 在每个etcd节点指定集群成员，为了区分不同的集群最好同时配置一个独一无二的token。
 
@@ -103,3 +103,196 @@ etcd作为一个高可用键值存储系统，天生就是为集群化而设计�
 
 etcd官网提供了一个公网访问的etcd存储地址，你可以通过如下命令得到etcd服务的目录，并把它作为-discovery参数使用
 
+## etcd部署
+
+### 下载
+
+找到对应的 **Github官网**，到相应的releases，找到windows平台的压缩包进行下载
+
+![image-20200911084346199](images/image-20200911084346199.png)
+
+解压完成后的目录
+
+![image-20200911084441272](images/image-20200911084441272.png)
+
+### 启动
+
+双击etcd.exe就是启动了etcd。其它平台解压之后在bin目录下找etcd可执行文件。
+
+默认会在2379端口监听客户端通信，在2380端口监听节点间的通信。
+
+![image-20200911084639443](images/image-20200911084639443.png)
+
+etcdctl.ext可以理解为一个客户端或者本机etcd的控制端
+
+### 连接
+
+默认的etcdctrl使用的是v2版本的命令，我们需要设置环境变量ETCDCTL_API=3来使用v3版本的API，而默认的也就是环境变量为ETCDCTL_API=2是使用v2版本的API
+
+修改环境变量指定使用API的版本
+
+```bash
+SET_ETCDCTL_API=3
+```
+
+### 简单使用
+
+#### put：设置
+
+```bash
+.\etcdctl.exe --endpoints=http://127.0.0.1:2379 put baodelu "dsb"
+```
+
+![image-20200911085617469](images/image-20200911085617469.png)
+
+显示设置成功~
+
+#### get：获取
+
+```bash
+.\etcdctl.exe --endpoints=http://127.0.0.1:2379 get baodelu
+```
+
+#### del：删除
+
+```bash
+.\etcdctl.exe --endpoints=http://127.0.0.1:2379 del baodelu
+```
+
+## Go操作etcd
+
+### 安装依赖
+
+这里使用官方的 etcd/clientv3包来连接etcd并进行相关操作
+
+```bash
+go get go.etcd.io/etcd/clientv3
+```
+
+### put和get操作
+
+put命令用来设置键值对数据，get命令用来根据key获取值
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"go.etcd.io/etcd/clientv3"
+	"time"
+)
+
+func main() {
+	cli, err := clientv3.New(clientv3.Config {
+		Endpoints: []string{"127.0.0.1:2379"}, // etcd的节点，可以传入多个
+		DialTimeout: 5*time.Second, // 连接超时时间
+	})
+
+	if err != nil {
+		fmt.Printf("connect to etcd failed, err: %v \n", err)
+		return
+	}
+	fmt.Println("connect to etcd success")
+
+	// 延迟关闭
+	defer cli.Close()
+
+	// put操作  设置1秒超时
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	_, err = cli.Put(ctx, "moxi", "lalala")
+	cancel()
+	if err != nil {
+		fmt.Printf("put to etcd failed, err:%v \n", err)
+		return
+	}
+
+	// get操作，设置1秒超时
+	ctx, cancel = context.WithTimeout(context.Background(), time.Second)
+	resp, err := cli.Get(ctx, "q1mi")
+	cancel()
+	if err != nil {
+		fmt.Printf("get from etcd failed, err:%v \n", err)
+		return
+	}
+	fmt.Println(resp)
+}
+```
+
+### 错误实例
+
+在我们运行代码的时候，突然出错了，undefined: resolver.BuildOption
+
+经过排查，是因为 google.golang.org/grpc 1.26后的版本不支持clientv3的
+
+所以我们只能将其改成1.26版本的就可以了，具体操作需要在go.mod上加上以下代码
+
+```bash
+replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
+```
+
+![image-20200911092218954](images/image-20200911092218954.png)
+
+### watch
+
+使用watch可以做服务的热更新
+
+```go
+import (
+	"context"
+	"fmt"
+	"go.etcd.io/etcd/clientv3"
+	"time"
+)
+// etcd 的watch操作
+func main() {
+	cli, err := clientv3.New(clientv3.Config {
+		Endpoints: []string{"127.0.0.1:2379"}, // etcd的节点，可以传入多个
+		DialTimeout: 5*time.Second, // 连接超时时间
+	})
+
+	if err != nil {
+		fmt.Printf("connect to etcd failed, err: %v \n", err)
+		return
+	}
+	fmt.Println("connect to etcd success")
+	defer cli.Close()
+
+	// watch
+	// 派一个哨兵，一直监视着 moxi 这个key的变化（新增，修改，删除），返回一个只读的chan
+	ch := cli.Watch(context.Background(), "moxi")
+
+	// 从通道中尝试获取值（监视的信息）
+	for wresp := range ch{
+		for _, evt := range wresp.Events{
+			fmt.Printf("Type:%v key:%v value:%v \n", evt.Type, evt.Kv.Key, evt.Kv.Value)
+		}
+	}
+}
+```
+
+然后我们往etcd中插入数据的时候
+
+![image-20200911115618754](images/image-20200911115618754.png)
+
+我们的代码就会监听到数据的变化
+
+![image-20200911115648301](images/image-20200911115648301.png)
+
+## 使用etcd优化日志项目
+
+
+
+## logagent根据etcd的配置创建多个tailtask
+
+
+
+**见代码部分 18_LogAgent**
+
+
+
+etcd底层如何实现watch给客户端发通知（websocket）
+
+
+
+## logagent根据IP拉取配置
