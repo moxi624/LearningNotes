@@ -24,8 +24,6 @@ Elasticsearch（ES）是一个基于Lucene构建的开源、分布式、RESTful�
 
 图形化展示
 
-
-
 ## ElasticSearch安装
 
 去官网下载 [ElasticSearch](https://www.elastic.co/cn/elasticsearch/) ，下载完成后，到bin目录，双击启动
@@ -185,6 +183,13 @@ curl -H "ContentType:application/json" -X PUT 127.0.0.1:9200/user/person/4 -d '
 我们使用第三方库https://github.com/olivere/elastic来连接ES并进行操作。
 
 注意下载与你的ES相同版本的client，例如我们这里使用的ES是7.2.1的版本，那么我们下载的client也要与之对应为`github.com/olivere/elastic/v7`。
+
+```bash
+# 初始化mod
+go mod init es
+# 下载依赖
+go get github.com/olivere/elastic/v7
+```
 
 使用`go.mod`来管理依赖：
 
