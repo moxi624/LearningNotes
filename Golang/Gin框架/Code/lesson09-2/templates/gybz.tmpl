@@ -1,0 +1,78 @@
+{{define "gybz.tmpl"}}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>杨青青个人博客</title>
+<link href="/static/css/base.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/nav.js"></script>
+</head>
+<body>
+<header>
+  <div class="touxiang"><i><img src="/static/images/yangqq.png" alt="杨青青"></i>
+    <h2>杨青青</h2>
+    <p>一个爱好前端设计的80后女站长。</p>
+  </div>
+  <p class="guanzhu">关注我<img src="/static/images/wx.png" alt="杨青青个人微信号：476847113" class="weixin"></p>
+  <nav>
+    <ul>
+      <li><a href="index">网站首页</a></li>
+      <li><a href="sysy">碎言碎语</a></li>
+      <li><a href="bkrj">博客日记</a></li>
+      <li><a href="wdxc">我的相册</a></li>
+      <li><a href="sjz">时间轴</a></li>
+      <li><a href="gybz">关于博主</a></li>
+      <li><a href="info">详情页</a></li>
+    </ul>
+  </nav>
+</header>
+<!--header end-->
+<main>
+  <p class="weizhi">您现在的位置是：<a href="/" target="_blank">网站首页</a>><a href="/" target="_blank">我的相册</a></p>
+  
+  <!--页面主体内容-->
+  <article>
+    <div class="about">
+      <p>这是一个前所未有、波澜壮阔的时代。七十载奋斗成就斐然，国人居住环境发生了天翻地覆的变化，从平房到筒子楼、单元楼，再到高层住宅、花园洋房、高端别墅，“居者有其屋”的朴素愿望已成昨天。何其有幸，我们生活成长在这样的七十年：搭乘时代的快车，见证了幸福的开花。</p>
+      <h2>越努力越幸运</h2>
+      <!--一个文章中常用的标题标签--> 
+      <img alt="人生就是越努力越幸运！" src="http://bkrs.ip3q.com/skin/html//static/images/2.jpg" width=100 height="340"> 
+      <!--alt 常用于seo优化，在图片没有加载的时候，会以文字的形式显示 -->
+      <p>幸福生活的创造，离不开每一位奋斗者的努力。七十年来，一代又一代奋斗者将对“国”的情意融入对品质的执着，对客户的珍视和对社会的担当。过去如此，未来亦然。</p>
+      <p>这些奋斗者不论职位高低，不论年龄大小，有来自一线的建筑工人，有发挥创意的建筑设计师，有兢兢业业的项目经理，有忘我工作的销售顾问，有踏实进取的经纪人。他们在自己平凡的岗位上默默付出，用点滴日夜里的细细耕作，融入美好时代的伟大进程。</p>
+    </div>
+  </article>
+  
+  <!--文章侧栏-->
+  <aside>
+    <div class="aside_right">
+      <h2>我的兴趣爱好</h2>
+      <ul>
+        <li>读书</li>
+        <li>旅游</li>
+        <li>户外运动</li>
+      </ul>
+      <!-- ul 无序列表-->
+      <h2>学习计划</h2>
+      <ol>
+        <!--序号从第五开始-->
+        <li>第一天：学习html5标签</li>
+        <li>第二天：学习css3样式</li>
+        <li>第三天：学习js应用</li>
+      </ol>
+      <!-- ol 有序列表--> 
+    </div>
+  </aside>
+</main>
+<footer>
+  <p> © 2019-2020qingqingblog.com 版权所有：<a href="https://www.qingqingblog.com" target="_blank">杨青青个人博客</a></p>
+  <p><span><a href="/" target="_blank">XML网站地图</a></span><span>备案号：<a href="/">津ICP备19004899</a></span><span><img src="/static/images/ga.png">公安备案号 12011602000311</span></p>
+  <p></p>
+</footer>
+<!--footer end-->
+
+</body>
+</html>
+{{end}}
