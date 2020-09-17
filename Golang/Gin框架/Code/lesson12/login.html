@@ -1,0 +1,22 @@
+{{define "login.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <form action="/login" method="post">
+        <div>
+            <label for="username">username:</label>
+            <input type="text" name="username" id="username">
+        </div>
+        <div>
+            <label for="password">password:</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <input type="submit" value="登录">
+    </form>
+</body>
+</html>
+{{end}}
