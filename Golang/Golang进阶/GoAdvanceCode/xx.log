@@ -1,0 +1,100 @@
+[2020-08-16 09:45:51] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:45:51] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:45:51] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:45:51] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:45:51] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:45:52] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:45:52] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:45:52] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:45:52] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:45:52] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:45:53] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:45:53] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:45:53] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:45:53] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:45:53] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:45:54] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:45:54] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:45:54] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:45:54] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:45:54] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:45:55] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:45:55] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:45:55] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:45:55] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:45:55] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:45:56] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:45:56] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:45:56] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:45:56] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:45:56] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:21] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:22] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:22] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:22] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:22] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:23] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:23] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:23] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:23] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:23] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:24] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:24] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:24] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:24] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:24] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:25] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:25] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:25] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:25] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:25] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:26] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:26] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:26] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:26] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:26] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:27] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:27] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:27] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:27] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:27] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:28] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:28] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:28] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:28] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:28] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:29] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:29] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:29] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:29] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:29] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:30] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:30] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:30] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:30] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:30] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:31] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:31] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:31] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:31] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:31] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:32] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:32] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:32] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:32] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:32] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:33] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:33] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:33] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:33] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:33] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:34] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:34] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:34] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:34] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:34] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
+[2020-08-16 09:46:35] [debug] [MyLogger.go:main.main:167] 这是一条DEBUG日志: [123] 
+[2020-08-16 09:46:35] [info] [MyLogger.go:main.main:168] 这是一条INFO日志 
+[2020-08-16 09:46:35] [warning] [MyLogger.go:main.main:169] 这是一条WARNING日志 
+[2020-08-16 09:46:35] [error] [MyLogger.go:main.main:170] 这是一条ERROR日志 
+[2020-08-16 09:46:35] [fatal] [MyLogger.go:main.main:171] 这是一条FATAL日志 
