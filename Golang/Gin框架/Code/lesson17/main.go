@@ -1,5 +1,5 @@
 /**
- * @Description Gin框架中的 Gin路由
+ * @Description Gin框架中的 Gin路由 和 路由组
  * @Author 陌溪
  * @Date 2020年9月17日18:36:05
  **/
@@ -22,32 +22,81 @@ func main() {
 
 
 	/**
-	 * @Description 请求重定向
+	 * @Description 访问/index的GET请求会走这一条处理逻辑【】
 	 * @Param 
 	 * @return 
 	 **/
-	r.GET("/baidu", func(context *gin.Context) {
-		context.Redirect(http.StatusMovedPermanently, "http://www.baidu.com")
-	})
-
-	/**
-	 * @Description 请求重定向【返回的是/b的数据】
-	 * @Param
-	 * @return
-	 **/
-	r.GET("/a", func(context *gin.Context) {
-		// 把请求的URI修改
-		context.Request.URL.Path = "/b"
-		// 继续后续的处理，重新请求 /b
-		r.HandleContext(context)
-	})
-
-	r.GET("/b", func(context *gin.Context) {
+	r.GET("/index", func(context *gin.Context) {
 		context.JSON(http.StatusOK, gin.H{
-			"success": "我是/b",
+			"code": "success",
+			"message": "GET",
 		})
 	})
 
+	r.POST("/index", func(context *gin.Context) {
+		context.JSON(http.StatusOK, gin.H{
+			"code": "success",
+			"message": "POST",
+		})
+	})
+
+	/**
+	 * @Description PUT是更新操作
+	 * @Param 
+	 * @return 
+	 **/
+	r.PUT("/index", func(context *gin.Context) {
+		context.JSON(http.StatusOK, gin.H{
+			"code": "success",
+			"message": "PUT",
+		})
+	})
+
+	/**
+	 * @Description DELETE是删除操作
+	 * @Param
+	 * @return
+	 **/
+	r.DELETE("/index", func(context *gin.Context) {
+		context.JSON(http.StatusOK, gin.H{
+			"code": "success",
+			"message": "DELETE",
+		})
+	})
+
+	/**
+	 * @Description 当所有的路由都没匹配，返回404页面
+	 * @Param
+	 * @return 
+	 **/
+	r.NoRoute(func(context *gin.Context) {
+		context.JSON(http.StatusNotFound, gin.H{
+			"code": "404",
+			"message": "NoRoute",
+		})
+	})
+
+	// 路由组，把共用的前缀提取出来，创建一个路由组
+	videoGroup := r.Group("/video")
+	{
+		videoGroup.GET("/index", func(context *gin.Context) {
+			context.JSON(http.StatusOK, gin.H{
+				"msg": "/video/index",
+			})
+		})
+		videoGroup.GET("/about", func(context *gin.Context) {
+			context.JSON(http.StatusOK, gin.H{
+				"msg": "/video/about",
+			})
+		})
+		videoGroup.GET("/home", func(context *gin.Context) {
+			context.JSON(http.StatusOK, gin.H{
+				"msg": "/video/home",
+			})
+		})
+	}
+
+
 	// 启动Server
-	r.Run(":9090")
+	r.Run(":8080")
 }
