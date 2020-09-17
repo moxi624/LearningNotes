@@ -884,6 +884,14 @@ func StatCost() gin.HandlerFunc {
 
 在gin框架中，我们可以为每个路由添加任意数量的中间件。
 
+![image-20200917210942305](images/image-20200917210942305.png)
+
+![image-20200917211033323](images/image-20200917211033323.png)
+
+中间的这个通过 Abort() 可以阻止执行
+
+![image-20200917211259531](images/image-20200917211259531.png)
+
 #### 为全局路由注册
 
 ```go
@@ -1037,5 +1045,3 @@ func main() {
 	}
 }
 ```
-
-[4](https://github.com/Q1mi/BlogComments/issues/27) 条评论
