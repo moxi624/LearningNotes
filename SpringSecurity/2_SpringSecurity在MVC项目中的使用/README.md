@@ -1,5 +1,9 @@
 # SpringSecurity认证过程
 
+## 参考
+
+来源于黑马程序员： [手把手教你精通新版SpringSecurity](https://www.bilibili.com/video/BV1EE411u7YV?p=17)
+
 ## 设置用户状态
 
 用户认证业务里，我们封装User对象时，选择了三个构造参数的构造方法，其实还有另一个构造方法：

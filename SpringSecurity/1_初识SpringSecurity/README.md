@@ -1,5 +1,9 @@
 # 初识SpringSecurity
 
+## 参考
+
+来源于黑马程序员： [手把手教你精通新版SpringSecurity](https://www.bilibili.com/video/BV1EE411u7YV?p=1)
+
 ## 权限管理概念
 
 权限管理，一般指根据系统设置的安全规则或者安全策略，用户可以访问而且只能访问自己被授权的资源。权限管

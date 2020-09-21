@@ -169,6 +169,16 @@ Java学习笔记，主要来源于B站上视频的学习，同时会记录平时
 - [使用Zipkin搭建蘑菇博客链路追踪](./SpringCloud/使用Zipkin搭建蘑菇博客链路追踪/README.md)
 - [源码](./SpringCloud/SpringCloud2020/SpringCloud2020)
 
+## SpringSecurity
+
+> 来源Bilibili黑马程序员视频教程：[手把手教你精通新版SpringSecurity](https://www.bilibili.com/video/BV1EE411u7YV)
+
+- [初识SpringSecurity](./SpringSecurity/1_初识SpringSecurity/README.md)
+- [SpringSecurity在MVC项目中的使用](./SpringSecurity/2_SpringSecurity在MVC项目中的使用/README.md)
+- [SpringSecurity在单机环境下的使用](./SpringSecurity/3_SpringSecurity在单机环境下的使用/README.md)
+- [SpringSecurity在分布式环境下的使用](./SpringSecurity/4_SpringSecurity在分布式环境下的使用/README.md)
+- [OAuth2.0介绍](./SpringSecurity/5_OAuth2.0介绍/README.md)
+
 ## 算法学习
 
 > 来源牛客网剑指offer的题目：&#x2003;&#x2003;[点我传送](https://www.nowcoder.com/ta/coding-interviews?page=1)
@@ -296,7 +306,6 @@ Java学习笔记，主要来源于B站上视频的学习，同时会记录平时
 - [罗技K380快捷键](./杂记/罗技K380快捷键/README.md)
 - [将PDF转换为Kindle能识别的MOBI格式](./杂记/将PDF转换为Kindle能识别的MOBI格式/README.md)
 - [OCR文字识别软件](./杂记/OCR文字识别软件/README.md)
-- 
 
 ## Linux
 
