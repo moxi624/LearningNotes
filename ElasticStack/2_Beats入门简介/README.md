@@ -1,4 +1,6 @@
-# Nginx日志分析系统
+# Beats入门简介
+
+使用Beat收集nginx日志和指标数据
 
 ## 项目需求
 
@@ -563,17 +565,17 @@ vim metricbeat.yml
 
 ```yml
 metricbeat.config.modules:
-path: ${path.config}/modules.d/*.yml
-reload.enabled: false
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
 setup.template.settings:
-index.number_of_shards: 1
-index.codec: best_compression
+  index.number_of_shards: 1
+  index.codec: best_compression
 setup.kibana:
 output.elasticsearch:
-hosts: [""127.0.0.1:9200"]
+  hosts: [""127.0.0.1:9200"]
 processors:
-- add_host_metadata: ~
-- add_cloud_metadata: ~
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
 ```
 
 默认会指定的配置文件，就是在
