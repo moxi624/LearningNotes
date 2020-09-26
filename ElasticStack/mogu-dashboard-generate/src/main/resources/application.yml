@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: mogu-log
+
+logging:
+  config: classpath:logback-boot.xml
