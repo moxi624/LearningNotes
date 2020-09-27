@@ -65,6 +65,13 @@ Filebeat是一个轻量级的日志采集器
 
 ![image-20200924092551044](images/image-20200924092551044.png)
 
+### 为什么要用Filebeat？
+
+当你面对成百上千、甚至成千上万的服务器、虚拟机和溶气气生成的日志时，请告别SSH吧！Filebeat将为你提供一种轻量型方法，用于转发和汇总日志与文件，让简单的事情不再繁华，关于Filebeat的记住以下两点：
+
+- 轻量级日志采集器
+- 输送至ElasticSearch或者Logstash，在Kibana中实现可视化
+
 ### 架构
 
 用于监控、收集服务器日志文件.
@@ -291,21 +298,43 @@ echo "hello mogublog" >> a.log
 
 ### Filebeat工作原理
 
-Filebeat由两个主要组件组成：prospector 和 harvester两个
+Filebeat主要由下面几个组件组成： harvester、prospector 、input
 
-- harvester：
-  - 负责读取单个文件的内容
-  - 如果文件在读取时被删除或重命名，Filebeat将继续读取文件
-- prospector
-  - prospector负责管理harvester并找到所有要读取的文件来源
-  - 如果输入类型为日志，则查找器将查找路径匹配的所有文件，并为每个文件启动一个harvester
-  - Filebeat目前支持两种prospector类型：log和stdin
+#### harvester
+
+- 负责读取单个文件的内容
+- harvester逐行读取每个文件（一行一行读取），并把这些内容发送到输出
+- 每个文件启动一个harvester，并且harvester负责打开和关闭这些文件，这就意味着harvester运行时文件描述符保持着打开的状态。
+- 在harvester正在读取文件内容的时候，文件被删除或者重命名了，那么Filebeat就会续读这个文件，这就会造成一个问题，就是只要负责这个文件的harvester没用关闭，那么磁盘空间就不会被释放，默认情况下，Filebeat保存问价你打开直到close_inactive到达
+
+#### prospector
+
+- prospector负责管理harvester并找到所有要读取的文件来源
+- 如果输入类型为日志，则查找器将查找路径匹配的所有文件，并为每个文件启动一个harvester
+- Filebeat目前支持两种prospector类型：log和stdin
+
 - Filebeat如何保持文件的状态
   - Filebeat保存每个文件的状态并经常将状态刷新到磁盘上的注册文件中
   - 该状态用于记住harvester正在读取的最后偏移量，并确保发送所有日志行。
   - 如果输出（例如ElasticSearch或Logstash）无法访问，Filebeat会跟踪最后发送的行，并在输出再次可以用时继续读取文件。
   - 在Filebeat运行时，每个prospector内存中也会保存的文件状态信息，当重新启动Filebat时，将使用注册文件的数量来重建文件状态，Filebeat将每个harvester在从保存的最后偏移量继续读取
   - 文件状态记录在data/registry文件中
+
+### input
+
+- 一个input负责管理harvester，并找到所有要读取的源
+- 如果input类型是log，则input查找驱动器上与已定义的glob路径匹配的所有文件，并为每个文件启动一个harvester
+
+- 每个input都在自己的Go例程中运行
+- 下面的例子配置Filebeat从所有匹配指定的glob模式的文件中读取行
+
+```yml
+filebeat.inputs:
+- type: log
+  paths:
+    - /var/log/*.log
+    - /var/path2/*.log
+```
 
 ### 启动命令
 
@@ -755,3 +784,9 @@ html
 更多的Module使用参见官方文档：
 
 https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html
+
+## 参考
+
+ [Filebeat 模块与配置](https://www.cnblogs.com/cjsblog/p/9495024.html)
+
+[Elastic Stack（ELK）从入门到实践](https://www.bilibili.com/video/BV1iJ411c7Az)
