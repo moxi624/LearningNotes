@@ -121,6 +121,7 @@
   - [Kibana安装与介绍](./ElasticStack/3_Kibana安装与介绍)
   - [Logstash入门简介](./ElasticStack/4_Logstash入门简介)
   - [ElasticStack综合案例](./ElasticStack/5_ElasticStack综合案例)
+  - [使用ELK搭建蘑菇博客日志收集](./ElasticStack/6_使用ELK搭建蘑菇博客日志收集)
 - **算法学习**
   - [斐波那契数列](./数据结构/1_斐波那契数列/README.md)
   - [青蛙跳台阶](./数据结构/2_青蛙跳台阶/README.md)

@@ -17,4 +17,5 @@ ElasticStack =  ElasticSearch + Logstash + Kibana + Beats
 - [Kibana安装与介绍](./3_Kibana安装与介绍)
 - [Logstash入门简介](./4_Logstash入门简介)
 - [ElasticStack综合案例](./5_ElasticStack综合案例)
+- [使用ELK搭建蘑菇博客日志收集](./6_使用ELK搭建蘑菇博客日志收集)
 - [源码](./Study_ElasticSearch_Code)

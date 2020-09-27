@@ -188,6 +188,7 @@ Java学习笔记，主要来源于B站上视频的学习，同时会记录平时
 - [Kibana安装与介绍](./ElasticStack/3_Kibana安装与介绍)
 - [Logstash入门简介](./ElasticStack/4_Logstash入门简介)
 - [ElasticStack综合案例](./ElasticStack/5_ElasticStack综合案例)
+- [使用ELK搭建蘑菇博客日志收集](./ElasticStack/6_使用ELK搭建蘑菇博客日志收集)
 
 ## 算法学习
 
