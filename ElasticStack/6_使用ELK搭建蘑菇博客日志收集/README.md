@@ -93,6 +93,9 @@ cd elsearch
 
 # 启动
 ./bin/elasticsearch
+
+# 后台启动
+./bin/elasticsearch -d
 ```
 
 启动完成后，我们就可以看到ElasticSearch运行在9200端口上
@@ -160,11 +163,47 @@ filter {
 #}
 
 output {
-  elasticsearch {
-    hosts => [ "127.0.0.1:9200"]
-  }
+    if [from] == 'mogu_web' {
+        elasticsearch {
+          hosts => ["127.0.0.1:9200"]
+          index => "logstash_mogu_web_%{+YYYY.MM.dd}"
+        }
+    }
+
+    if [from] == "mogu_admin" {
+        elasticsearch {
+          hosts => ["127.0.0.1:9200"]
+          index => "logstash_mogu_admin_%{+YYYY.MM.dd}"
+        }
+    }
+
+    if [from] == "mogu_sms" {
+        elasticsearch {
+          hosts => ["127.0.0.1:9200"]
+          index => "logstash_mogu_sms_%{+YYYY.MM.dd}"
+        }
+    }
+
+    if [from] == "mogu_picture" {
+        elasticsearch {
+          hosts => ["127.0.0.1:9200"]
+          index => "logstash_mogu_picture_%{+YYYY.MM.dd}"
+        }
+    }
+    
+    if [from] == "mogu_nginx" {
+        elasticsearch {
+          hosts => ["127.0.0.1:9200"]
+          index => "logstash_mogu_nginx_%{+YYYY.MM.dd}"
+        }
+    }
 }
+
 ```
+
+> 我们可以通过获取到传递过来的from字段，就是在filebeat时候指定的 一个字段，代表是这条日志属于哪个模块的，然后在根据logstash的if判断，然后生成不同的ElasticSearch索引
+
+![image-20200927144647484](images/image-20200927144647484.png)
 
 下面，我们指定该配置文件后，然后启动项目
 
@@ -177,6 +216,77 @@ output {
 ![image-20200925210154370](images/image-20200925210154370.png)
 
 启动完成后，会占用9600端口~，同时经过logstash的数据都会发送到ElasticSearch中
+
+## 启动Beats
+
+### 启动filebeat
+
+filebeat是一个轻量级的日志文件收集器，主要用于收集我们的一些日志文件
+
+> 需要注意，Beats不在我们ELK服务器上进行启动了，我们需要到部署蘑菇博客的服务器上，然后找到Beats目录
+
+```bash
+# 进入到filebeat目录
+cd /soft/beats/filebeat
+```
+
+然后查看我们的配置文件
+
+```bash
+vim mogu-dashboard.yml
+```
+
+然后修改我们配置文件中logstash的地址，我们要把它改成刚刚部署的logstash服务器的ip即可
+
+```bash
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /home/mogu_blog/mogu_web/catalina.out
+  fields:
+    from: mogu_web
+  fields_under_root: true
+
+- type: log
+  enabled: true
+  paths:
+    - /home/mogu_blog/mogu_admin/catalina.out
+  fields:
+    from: mogu_admin
+  fields_under_root: true
+
+- type: log
+  enabled: true
+  paths:
+    - /home/mogu_blog/mogu_sms/catalina.out
+  fields:
+    from: mogu_sms
+  fields_under_root: true
+
+- type: log
+  enabled: true
+  paths:
+    - /home/mogu_blog/mogu_picture/catalina.out
+  fields:
+    from: mogu_picture
+  fields_under_root: true
+
+setup.template.settings:
+  index.number_of_shards: 1
+output.logstash:
+  hosts: ["101.132.122.175:5044"]
+```
+
+然后启动我们的filebeat
+
+```bash
+./filebeat -e -c mogu-dashboard.yml
+```
+
+启动完成后，我们能够看到日志文件已经被加载
+
+![image-20200927144808408](images/image-20200927144808408.png)
 
 ## 启动Kibana
 
@@ -213,46 +323,6 @@ http://your_ip:5601
 
 
 
-## 启动Beats
+我们找到dashboard就可以看到蘑菇博客的日志记录了【小伙伴也看自己按照需求扩展自己的仪表盘】
 
-### 启动filebeat
-
-filebeat是一个轻量级的日志文件收集器，主要用于收集我们的一些日志文件
-
-需要注意，Beats不在我们ELK服务器上进行启动了，我们需要到部署蘑菇博客的服务器上，然后找到Beats目录
-
-```bash
-# 进入到filebeat目录
-cd /soft/beats/filebeat
-```
-
-然后查看我们的配置文件
-
-```bash
-vim mogu-dashboard.yml
-```
-
-然后修改我们配置文件中logstash的地址，我们要把它改成刚刚部署的logstash服务器的ip即可
-
-```bash
-filebeat.inputs:
-- type: log
-  enabled: true
-  paths:
-    - /home/mogu_blog/*/logs/*/*.log
-setup.template.settings:
-  index.number_of_shards: 1
-output.logstash:
-  hosts: ["your_ip:5044"]
-```
-
-然后启动我们的filebeat
-
-```bash
-./filebeat -e -c mogu-dashboard.yml
-```
-
-启动完成后，我们能够看到日志文件已经被加载
-
-![image-20200925213245747](images/image-20200925213245747.png)
-
+![image-20200927145854642](images/image-20200927145854642.png)
