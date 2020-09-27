@@ -4,11 +4,11 @@
 
 前阵子学习了ElasticStack的技术栈，其中包括ElasticSearch 、Beats、Kibana、Logstash。因为打算将其用于蘑菇博客的项目中，关于ElasticStack的技术栈学习，可以参考前面写的博客~
 
-- [ElasticSearch介绍与安装](./1_ElasticSearch介绍与安装)
-- [Beats入门简介](./2_Beats入门简介)
-- [Kibana安装与介绍](./3_Kibana安装与介绍)
-- [Logstash入门简介](./4_Logstash入门简介)
-- [ElasticStack综合案例](./5_ElasticStack综合案例)
+- [ElasticSearch介绍与安装](../1_ElasticSearch介绍与安装)
+- [Beats入门简介](../2_Beats入门简介)
+- [Kibana安装与介绍](../3_Kibana安装与介绍)
+- [Logstash入门简介](../4_Logstash入门简介)
+- [ElasticStack综合案例](../5_ElasticStack综合案例)
 
 ## 拉取ElasticStack镜像
 
@@ -208,7 +208,11 @@ output {
 下面，我们指定该配置文件后，然后启动项目
 
 ```bash
+# 前台启动
 ./bin/logstash -f ./mogu-dashboard.conf
+
+# 后台启动
+nohup ./bin/logstash -f ./mogu-dashboard.conf  > catalina.out  2>&1 &
 ```
 
 注意：logstash的启动可能会比较慢，需要耐心的等待一会~
@@ -281,7 +285,12 @@ output.logstash:
 然后启动我们的filebeat
 
 ```bash
+# 前台启动
 ./filebeat -e -c mogu-dashboard.yml
+
+# 后台启动
+#!/bin/bash 
+nohup ./filebeat -e -c mogu-dashboard.yml > catalina.out  2>&1 &
 ```
 
 启动完成后，我们能够看到日志文件已经被加载
