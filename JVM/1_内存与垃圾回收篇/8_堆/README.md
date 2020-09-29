@@ -115,7 +115,7 @@ public class HeapSpaceInitial {
 如何查看堆内存的内存分配情况
 
 ```
-jps  ->  staat -gc  进程id
+jps  ->  jstat -gc 进程id
 ```
 
 ![image-20200706205756045](images/image-20200706205756045.png)
