@@ -4,13 +4,15 @@
 
 前阵子学习了ElasticStack的技术栈，其中包括ElasticSearch 、Beats、Kibana、Logstash。因为打算将其用于蘑菇博客的项目中，关于ElasticStack的技术栈学习，可以参考前面写的博客~
 
-- [ElasticSearch介绍与安装](../1_ElasticSearch介绍与安装)
-- [Beats入门简介](../2_Beats入门简介)
-- [Kibana安装与介绍](../3_Kibana安装与介绍)
-- [Logstash入门简介](../4_Logstash入门简介)
-- [ElasticStack综合案例](../5_ElasticStack综合案例)
+- [ElasticSearch介绍与安装](../1_ElasticSearch介绍与安装/README.md)
+- [Beats入门简介](../2_Beats入门简介/README.md)
+- [Kibana安装与介绍](../3_Kibana安装与介绍/README.md)
+- [Logstash入门简介](../4_Logstash入门简介/README.md)
+- [ElasticStack综合案例](../5_ElasticStack综合案例/README.md)
 
 ## 拉取ElasticStack镜像
+
+通过本教程，可以非常方便的给蘑菇博客项目，集成ELK用于分布式日志收集
 
 为了更加方便的部署ELK环境，我已经提前将环境打包成了Docker镜像，发布到了DockerHub中，所以我们只需要拉取我提前制作的ElasticStack镜像即可
 
@@ -45,7 +47,7 @@ docker run --privileged -d -it -h elastic_stack --name elastic_stack -v /etc/loc
 
 ![image-20200925204214191](images/image-20200925204214191.png)
 
-然后我们就可以通过在启动一个xshell窗口，连接我们的宿主机了
+然后我们就可以通过在启动一个xshell窗口，连接我们的容器了
 
 ![image-20200925204336586](images/image-20200925204336586.png)
 
@@ -56,12 +58,10 @@ docker run --privileged -d -it -h elastic_stack --name elastic_stack -v /etc/loc
 
 即可进入到我们的容器内部，我们到/soft目录下，能看到里面安装的软件
 
-![image-20200925204519265](images/image-20200925204519265.png)
+![image-20200930092513748](images/image-20200930092513748.png)
 
 
 
-- app：之前用于存放java应用程序的
-- beats：用于日志文件收集
 - ElasticSearch：分布式搜索引擎
 - jdk：java1.8
 - kibana：图形化工具
@@ -225,9 +225,13 @@ nohup ./bin/logstash -f ./mogu-dashboard.conf  > catalina.out  2>&1 &
 
 ### 启动filebeat
 
-filebeat是一个轻量级的日志文件收集器，主要用于收集我们的一些日志文件
+filebeat是一个轻量级的日志文件收集器，主要用于收集我们的一些日志文件【它和应用服务器存放在一起】
 
 > 需要注意，Beats不在我们ELK服务器上进行启动了，我们需要到部署蘑菇博客的服务器上，然后找到Beats目录
+
+![image-20200930092617884](images/image-20200930092617884.png)
+
+我们首先需要到我们应用服务器中，然后启动filebeats 【如果你的目录下没有，可以参考 [Beats入门简介](../2_Beats入门简介/README.md) 安装】
 
 ```bash
 # 进入到filebeat目录
@@ -299,7 +303,7 @@ nohup ./filebeat -e -c mogu-dashboard.yml > catalina.out  2>&1 &
 
 ## 启动Kibana
 
-Kibana的作用就是对我们的数据进行图形化的显示，首先我们到Kibana目录
+Kibana的作用就是对我们的数据进行图形化的显示，首先我们到Kibana目录 【回到ELK目录下】
 
 ```bash
 # 到kibana安装目录
@@ -332,6 +336,8 @@ http://your_ip:5601
 
 
 
-我们找到dashboard就可以看到蘑菇博客的日志记录了【小伙伴也看自己按照需求扩展自己的仪表盘】
+我们找到dashboard就可以看到蘑菇博客的日志记录了
 
 ![image-20200927145854642](images/image-20200927145854642.png)
+
+> tip：这里就只介绍了ElasticStack的日志收集，关于更多的Kibana图形化页面，小伙伴可以参考其它文件进行配置，这里就不列举出来啦~

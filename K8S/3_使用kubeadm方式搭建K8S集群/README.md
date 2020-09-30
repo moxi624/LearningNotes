@@ -60,6 +60,10 @@ EOF
 202.193.57.254
 202.193.64.62
 
+192.168.31.216
+192.168.31.1
+192.168.31.1
+
 
 # 将桥接的IPv4流量传递到iptables的链
 cat > /etc/sysctl.d/k8s.conf << EOF
@@ -166,6 +170,9 @@ systemctl enable kubelet
 
 ```bash
 kubeadm init --apiserver-advertise-address=202.193.57.11 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.18.0 --service-cidr=10.96.0.0/12  --pod-network-cidr=10.244.0.0/16
+
+
+kubeadm init --apiserver-advertise-address=192.168.31.216 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.18.0 --service-cidr=10.96.0.0/12  --pod-network-cidr=10.244.0.0/16
 ```
 
 由于默认拉取镜像地址k8s.gcr.io国内无法访问，这里指定阿里云镜像仓库地址，【执行上述命令会比较慢，因为后台其实已经在拉取镜像了】，我们 docker images 命令即可查看已经拉取的镜像
