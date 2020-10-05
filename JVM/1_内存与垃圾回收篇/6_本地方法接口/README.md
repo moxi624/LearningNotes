@@ -2,11 +2,11 @@
 
 ## 什么是本地方法
 
-简单地讲，一个Native Methodt是一个Java调用非Java代码的接囗。一个Native Method是这样一个Java方法：该方法的实现由非Java语言实现，比如C。这个特征并非Java所特有，很多其它的编程语言都有这一机制，比如在C++中，你可以用extern "c" 告知c++编译器去调用一个c的函数。
+简单地讲，一个Native Method是一个Java调用非Java代码的接囗。一个Native Method是这样一个Java方法：该方法的实现由非Java语言实现，比如C。这个特征并非Java所特有，很多其它的编程语言都有这一机制，比如在C++中，你可以用extern "c" 告知c++编译器去调用一个c的函数。
 
 "A native method is a Java method whose implementation is provided by non-java code."（本地方法是一个非Java的方法，它的具体实现是非Java代码的实现）
 
-在定义一个native method时，并不提供实现体（有些像定义一个Java interface），因为其实现体是由非java语言在外面实现的。
+在定义一个native method时，并不提供实现体（有些像定义一个Java interface），因为其实现体是由非Java语言在外面实现的。
 
 本地接口的作用是融合不同的编程语言为Java所用，它的初衷是融合C/C++程序。
 
@@ -29,7 +29,7 @@ public class IhaveNatives {
 }
 ```
 
-> 需要注意的是：标识符native可以与其它java标识符连用，但是abstract除外
+> 需要注意的是：标识符native可以与其它Java标识符连用，但是abstract除外
 
 ## 为什么使用Native Method？
 
@@ -45,7 +45,7 @@ JVM支持着Java语言本身和运行时库，它是Java程序赖以生存的平
 
 ### Sun's Java
 
-Sun的解释器是用C实现的，这使得它能像一些普通的C一样与外部交互。jre大部分是用Java实现的，它也通过一些本地方法与外界交互。例如：类java.lang.Thread的setpriority（）方法是用Java实现的，但是它实现调用的是该类里的本地方法setpriorityo（）。这个本地方法是用C实现的，并被植入JVM内部，在Windows 95的平台上，这个本地方法最终将调用Win32 setpriority（）ApI。这是一个本地方法的具体实现由JVM直接提供，更多的情况是本地方法由外部的动态链接库（external dynamic link library）提供，然后被JVw调用。
+Sun的解释器是用C实现的，这使得它能像一些普通的C一样与外部交互。jre大部分是用Java实现的，它也通过一些本地方法与外界交互。例如：类java.lang.Thread的setPriority（）方法是用Java实现的，但是它实现调用的是该类里的本地方法setPriority0（）。这个本地方法是用C实现的，并被植入JVM内部，在Windows 95的平台上，这个本地方法最终将调用Win32 setPriority（）API。这是一个本地方法的具体实现由JVM直接提供，更多的情况是本地方法由外部的动态链接库（external dynamic link library）提供，然后被JVM调用。
 
 ## 现状
 

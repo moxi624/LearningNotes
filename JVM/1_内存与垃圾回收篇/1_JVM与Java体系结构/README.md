@@ -7,7 +7,7 @@
 运行着的线上系统突然卡死，系统无法访问，甚至直接OOMM！
 
 - 想解决线上JVM GC问题，但却无从下手。
-- 新项目上线，对各种JVM参数设置一脸茫然，直接默认吧然后就JJ了
+- 新项目上线，对各种JVM参数设置一脸茫然，直接默认吧然后就GG了
 - 每次面试之前都要重新背一遍JVM的一些原理概念性的东西，然而面试官却经常问你在实际项目中如何调优VM参数，如何解决GC、OOM等问题，一脸懵逼。
 
 ![image-20200704111417472](images/image-20200704111417472.png)
@@ -61,10 +61,10 @@ Java是目前应用最为广泛的软件开发平台之一。随着Java以及Jav
 - 作为一个平台，Java虚拟机扮演着举足轻重的作用
   - Groovy、Scala、JRuby、Kotlin等都是Java平台的一部分
 
-- 作为灯种文化，Java几乎成为了“开源”的代名词。
+- 作为一种文化，Java几乎成为了“开源”的代名词。
   - 第三方开源软件和框架。如Tomcat、Struts，MyBatis，Spring等。
-  - 就连JDK和JVM自身也有不少开源的实现，如openJDK、Harmony。
-- 作为一个社区，Java拥有全世界最多的技术拥护者和开源社区支持，有数不清的论坛和资料。从桌面应用软件、嵌入式开发到企业级应用、后台服务器、中间件，都可以看到Java的身影。其应用形式之复杂、参与人数之众多也令人咋舌。
+  - 就连JDK和JVM自身也有不少开源的实现，如OpenJDK、Harmony。
+- 作为一个社区，Java拥有全世界最多的技术拥护者和开源社区支持，有数不清的论坛和资料。从桌面应用软件、嵌入式开发到企业级应用、后台服务器、中间件，都可以看到Java的身影。其应用形式之复杂、参与人数之众多也令人咂舌。
 
 ![image-20200704151731216](images/image-20200704151731216.png)
 
@@ -78,7 +78,7 @@ Java虚拟机根本不关心运行在其内部的程序到底是使用何种编�
 
 ## 字节码
 
-我们平时说的java字节码，指的是用java语言编译成的字节码。准确的说任何能在jvm平台上执行的字节码格式都是一样的。所以应该统称为：jvm字节码。
+我们平时说的Java字节码，指的是用Java语言编译成的字节码。准确的说任何能在JVM平台上执行的字节码格式都是一样的。所以应该统称为：JVM字节码。
 
 不同的编译器，可以编译出相同的字节码文件，字节码文件也可以在不同的JVM上运行。
 
@@ -96,29 +96,29 @@ Java平台上的多语言混合编程正成为主流，通过特定领域的语�
 
 - 1990年，在Sun计算机公司中，由Patrick Naughton、MikeSheridan及James Gosling领导的小组Green Team，开发出的新的程序语言，命名为oak，后期命名为Java
 - 1995年，Sun正式发布Java和HotJava产品，Java首次公开亮相。
-- 1996年1月23日sun Microsystems发布了JDK 1.0。
-- 1998年，JDK1.2版本发布。同时，sun发布了JSP/Servlet、EJB规范，以及将Java分成了J2EE、J2SE和J2ME。这表明了Java开始向企业、桌面应用和移动设备应用3大领域挺进。
+- 1996年1月23日Sun Microsystems发布了JDK 1.0。
+- 1998年，JDK1.2版本发布。同时，Sun发布了JSP/Servlet、EJB规范，以及将Java分成了J2EE、J2SE和J2ME。这表明了Java开始向企业、桌面应用和移动设备应用3大领域挺进。
 - 2000年，JDK1.3发布，Java HotSpot Virtual Machine正式发布，成为Java的默认虚拟机。
 - 2002年，JDK1.4发布，古老的Classic虚拟机退出历史舞台。
 - 2003年年底，Java平台的scala正式发布，同年Groovy也加入了Java阵营。
 - 2004年，JDK1.5发布。同时JDK1.5改名为JavaSE5.0。
-- 2006年，JDK6发布。同年，Java开源并建立了openJDK。顺理成章，Hotspot虚拟机也成为了openJDK中的默认虚拟机。
+- 2006年，JDK6发布。同年，Java开源并建立了OpenJDK。顺理成章，HotSpot虚拟机也成为了OpenJDK中的默认虚拟机。
 
 - 2007年，Java平台迎来了新伙伴Clojure。
-- 2008年，oracle收购了BEA，得到了JRockit虚拟机。
+- 2008年，Oracle收购了BEA，得到了JRockit虚拟机。
 - 2009年，Twitter宣布把后台大部分程序从Ruby迁移到scala，这是Java平台的又一次大规模应用。
-- 2010年，oracle收购了sun，获得Java商标和最真价值的HotSpot虚拟机。此时，oracle拥有市场占用率最高的两款虚拟机HotSpot和JRockit，并计划在未来对它们进行整合：HotRockit
+- 2010年，Oracle收购了Sun，获得Java商标和最真价值的HotSpot虚拟机。此时，Oracle拥有市场占用率最高的两款虚拟机HotSpot和JRockit，并计划在未来对它们进行整合：HotRockit
 - 2011年，JDK7发布。在JDK1.7u4中，正式启用了新的垃圾回收器G1。
 - 2017年，JDK9发布。将G1设置为默认Gc，替代CMS
 - 同年，IBM的J9开源，形成了现在的open J9社区
-- 2018年，Android的Java侵权案判决，Google赔偿oracle计88亿美元
-- 同年，oracle宣告JavagE成为历史名词JDBC、JMS、Servlet赠予Eclipse基金会
+- 2018年，Android的Java侵权案判决，Google赔偿Oracle计88亿美元
+- 同年，Oracle宣告JavagE成为历史名词JDBC、JMS、Servlet赠予Eclipse基金会
 - 同年，JDK11发布，LTS版本的JDK，发布革命性的zGc，调整JDK授权许可
 - 2019年，JDK12发布，加入RedHat领导开发的shenandoah GC
 
 ![image-20200704182035810](images/image-20200704182035810.png)
 
-在JDK11之前，oracleJDK中还会存在一些openJDK中没有的、闭源的功能。但在JDK11中，我们可以认为openJDK和oracleJDK代码实质上已经完全一致的程度。
+在JDK11之前，OracleJDK中还会存在一些OpenJDK中没有的、闭源的功能。但在JDK11中，我们可以认为OpenJDK和OracleJDK代码实质上已经完全一致的程度。
 
 ## 虚拟机与Java虚拟机
 
@@ -126,7 +126,7 @@ Java平台上的多语言混合编程正成为主流，通过特定领域的语�
 
 所谓虚拟机（Virtual Machine），就是一台虚拟的计算机。它是一款软件，用来执行一系列虚拟计算机指令。大体上，虚拟机可以分为系统虚拟机和程序虚拟机。
 
-- 大名鼎鼎的Visual Box，Mware就属于系统虚拟机，它们完全是对物理计算机的仿真，提供了一个可运行完整操作系统的软件平台。
+- 大名鼎鼎的Visual Box，VMware就属于系统虚拟机，它们完全是对物理计算机的仿真，提供了一个可运行完整操作系统的软件平台。
 - 程序虚拟机的典型代表就是Java虚拟机，它专门为执行单个计算机程序而设计，在Java虚拟机中执行的指令我们称为Java字节码指令。
 
 无论是系统虚拟机还是程序虚拟机，在上面运行的软件都被限制于虚拟机提供的资源中。
@@ -190,7 +190,7 @@ Java编译器输入的指令流基本上是一种基于栈的指令集架构，�
 - 指令集架构则完全依赖硬件，可移植性差
 - 性能优秀和执行更高效
 - 花费更少的指令去完成一项操作。
-- 在大部分情况下，基于寄存器架构的指令集往往都以一地址指令、二地址指令和三地址指令为主，而基于栈式架构的指令集却是以零地址指令为主方水洋
+- 在大部分情况下，基于寄存器架构的指令集往往都以一地址指令、二地址指令和三地址指令为主，而基于栈式架构的指令集却是以零地址指令为主
 
 ### 举例
 
@@ -232,7 +232,7 @@ public class StackStruTest {
 }
 ```
 
-然后我们找到编译后的 class文件，使用下列命令进行反编译
+然后我们找到编译后的class文件，使用下列命令进行反编译
 
 ```bash
 javap -v StackStruTest.class
@@ -301,45 +301,45 @@ Java虚拟机的启动是通过引导类加载器（bootstrap class loader）创
 
 - 程序在执行过程中遇到了异常或错误而异常终止
 - 由于操作系统用现错误而导致Java虚拟机进程终止
-- 某线程调用Runtime类或system类的exit方法，或Runtime类的halt方法，并且Java安全管理器也允许这次exit或halt操作。
+- 某线程调用Runtime类或System类的exit方法，或Runtime类的halt方法，并且Java安全管理器也允许这次exit或halt操作。
 - 除此之外，JNI（Java Native Interface）规范描述了用JNI Invocation API来加载或卸载 Java虚拟机时，Java虚拟机的退出情况。
 
 ## JVM发展历程
 
 ### Sun Classic VM
 
-- 早在1996年Java1.0版本的时候，Sun公司发布了一款名为sun classic VM的Java虚拟机，它同时也是世界上第一款商用Java虚拟机，JDK1.4时完全被淘汰。
+- 早在1996年Java1.0版本的时候，Sun公司发布了一款名为Sun classic VM的Java虚拟机，它同时也是世界上第一款商用Java虚拟机，JDK1.4时完全被淘汰。
 - 这款虚拟机内部只提供解释器。现在还有及时编译器，因此效率比较低，而及时编译器会把热点代码缓存起来，那么以后使用热点代码的时候，效率就比较高。
 - 如果使用JIT编译器，就需要进行外挂。但是一旦使用了JIT编译器，JIT就会接管虚拟机的执行系统。解释器就不再工作。解释器和编译器不能配合工作。
-- 现在hotspot内置了此虚拟机。
+- 现在HotSpot内置了此虚拟机。
 
 ### Exact VM
 
-为了解决上一个虚拟机问题，jdk1.2时，sun提供了此虚拟机。
+为了解决上一个虚拟机问题，jdk1.2时，Sun提供了此虚拟机。
 Exact Memory Management：准确式内存管理
 
 - 也可以叫Non-Conservative/Accurate Memory Management
-- 虚拟机可以知道内存中某个位置的数据具体是什么类型。|
+- 虚拟机可以知道内存中某个位置的数据具体是什么类型。
 
 具备现代高性能虚拟机的维形
 
 - 热点探测（寻找出热点代码进行缓存）
 - 编译器与解释器混合工作模式
 
-只在solaris平台短暂使用，其他平台上还是classic vm，英雄气短，终被Hotspot虚拟机替换
+只在solaris平台短暂使用，其他平台上还是classic vm，英雄气短，终被HotSpot虚拟机替换
 
 ### HotSpot VM
 
 HotSpot历史
 - 最初由一家名为“Longview Technologies”的小公司设计
-- 1997年，此公司被sun收购；2009年，Sun公司被甲骨文收购。
+- 1997年，此公司被Sun收购；2009年，Sun公司被甲骨文收购。
 - JDK1.3时，HotSpot VM成为默认虚拟机
 
-目前Hotspot占有绝对的市场地位，称霸武林。
+目前HotSpot占有绝对的市场地位，称霸武林。
 
 - 不管是现在仍在广泛使用的JDK6，还是使用比例较多的JDK8中，默认的虚拟机都是HotSpot
-- Sun/oracle JDK和openJDK的默认虚拟机
-- 因此本课程中默认介绍的虚拟机都是HotSpot，相关机制也主要是指HotSpot的Gc机制。（比如其他两个商用虚机都没有方法区的概念）
+- Sun/Oracle JDK和OpenJDK的默认虚拟机
+- 因此本课程中默认介绍的虚拟机都是HotSpot，相关机制也主要是指HotSpot的GC机制。（比如其他两个商用虚机都没有方法区的概念）
 
 从服务器、桌面到移动端、嵌入式都有应用。
 
@@ -363,9 +363,9 @@ HotSpot历史
 - JRockit面向延迟敏感型应用的解决方案JRockit Real Time提供以毫秒或微秒级的JVM响应时间，适合财务、军事指挥、电信网络的需要
 - MissionControl服务套件，它是一组以极低的开销来监控、管理和分析生产环境中的应用程序的工具。
 
-2008年，JRockit被oracle收购。
+2008年，JRockit被Oracle收购。
 
-oracle表达了整合两大优秀虚拟机的工作，大致在JDK8中完成。整合的方式是在HotSpot的基础上，移植JRockit的优秀特性。
+Oracle表达了整合两大优秀虚拟机的工作，大致在JDK8中完成。整合的方式是在HotSpot的基础上，移植JRockit的优秀特性。
 
 高斯林：目前就职于谷歌，研究人工智能和水下机器人
 
@@ -381,9 +381,9 @@ oracle表达了整合两大优秀虚拟机的工作，大致在JDK8中完成。�
 
 OpenJDK   -> 是JDK开源了，包括了虚拟机
 
-### KVM和CDC / CLDC  Hotspot
+### KVM和CDC / CLDC  HotSpot
 
-oracle在Java ME产品线上的两款虚拟机为：CDC/CLDC HotSpot Implementation VM KVM（Kilobyte）是CLDC-HI早期产品目前移动领域地位尴尬，智能机被Angroid和ioS二分天下。
+Oracle在Java ME产品线上的两款虚拟机为：CDC/CLDC HotSpot Implementation VM KVM（Kilobyte）是CLDC-HI早期产品目前移动领域地位尴尬，智能机被Angroid和ioS二分天下。
 
 KVM简单、轻量、高度可移植，面向更低端的设备上还维持自己的一片市场
 
@@ -397,9 +397,9 @@ KVM简单、轻量、高度可移植，面向更低端的设备上还维持自�
 前面三大“高性能Java虚拟机”使用在通用硬件平台上这里Azu1VW和BEALiquid VM是与特定硬件平台绑定、软硬件配合的专有虚拟机I
 - 高性能Java虚拟机中的战斗机。
 
-Azul VM是Azu1Systems公司在HotSpot基础上进行大量改进，运行于Azul Systems公司的专有硬件Vega系统上的ava虚拟机。
+Azul VM是Azu1Systems公司在HotSpot基础上进行大量改进，运行于Azul Systems公司的专有硬件Vega系统上的Java虚拟机。
 
-每个Azu1VM实例都可以管理至少数十个CPU和数百GB内存的硬件资源，并提供在巨大内存范围内实现可控的GC时间的垃圾收集器、专有硬件优化的线程调度等优秀特性。
+每个AzulVM实例都可以管理至少数十个CPU和数百GB内存的硬件资源，并提供在巨大内存范围内实现可控的GC时间的垃圾收集器、专有硬件优化的线程调度等优秀特性。
 
 2010年，AzulSystems公司开始从硬件转向软件，发布了自己的zing JVM，可以在通用x86平台上提供接近于Vega系统的特性。
 
@@ -411,13 +411,13 @@ BEA公司开发的，直接运行在自家Hypervisor系统上Liquid VM即是现�
 
 Liquid VM不需要操作系统的支持，或者说它自己本身实现了一个专用操作系统的必要功能，如线程调度、文件系统、网络支持等。
 
-随着JRockit虚拟机终止开发，Liquid vM项目也停止了。
+随着JRockit虚拟机终止开发，Liquid VM项目也停止了。
 
 ### Apache Marmony
 
 Apache也曾经推出过与JDK1.5和JDK1.6兼容的Java运行平台Apache Harmony。
 
-它是IElf和Inte1联合开发的开源JVM，受到同样开源的openJDK的压制，Sun坚决不让Harmony获得JCP认证，最终于2011年退役，IBM转而参与OpenJDK
+它是IElf和Inte1联合开发的开源JVM，受到同样开源的OpenJDK的压制，Sun坚决不让Harmony获得JCP认证，最终于2011年退役，IBM转而参与OpenJDK
 
 虽然目前并没有Apache Harmony被大规模商用的案例，但是它的Java类库代码吸纳进了Android SDK。
 
@@ -427,15 +427,15 @@ Apache也曾经推出过与JDK1.5和JDK1.6兼容的Java运行平台Apache Harmon
 
 只能在window平台下运行。但确是当时Windows下性能最好的Java VM。
 
-1997年，sun以侵犯商标、不正当竞争罪名指控微软成功，赔了sun很多钱。微软windowsXPSP3中抹掉了其VM。现在windows上安装的jdk都是HotSpot。
+1997年，Sun以侵犯商标、不正当竞争罪名指控微软成功，赔了Sun很多钱。微软windowsXPSP3中抹掉了其VM。现在Windows上安装的JDK都是HotSpot。
 
 ### Taobao JVM
 
 由AliJVM团队发布。阿里，国内使用Java最强大的公司，覆盖云计算、金融、物流、电商等众多领域，需要解决高并发、高可用、分布式的复合问题。有大量的开源产品。
 
-基于openJDK开发了自己的定制版本AlibabaJDK，简称AJDK。是整个阿里Java体系的基石。
+基于OpenJDK开发了自己的定制版本AlibabaJDK，简称AJDK。是整个阿里Java体系的基石。
 
-基于openJDK Hotspot VM发布的国内第一个优化、深度定制且开源的高性能服务器版Java虚拟机。
+基于OpenJDK HotSpot VM发布的国内第一个优化、深度定制且开源的高性能服务器版Java虚拟机。
 
 - 创新的GCIH（GCinvisible heap）技术实现了off-heap，即将生命周期较长的Java对象从heap中移到heap之外，并且Gc不能管理GCIH内部的Java对象，以此达到降低GC的回收频率和提升Gc的回收效率的目的。
 - GCIH中的对象还能够在多个Java虚拟机进程中实现共享
@@ -445,17 +445,17 @@ Apache也曾经推出过与JDK1.5和JDK1.6兼容的Java运行平台Apache Harmon
 
 taobao vm应用在阿里产品上性能高，硬件严重依赖inte1的cpu，损失了兼容性，但提高了性能
 
-目前已经在淘宝、天猫上线，把oracle官方JvM版本全部替换了。
+目前已经在淘宝、天猫上线，把Oracle官方JvM版本全部替换了。
 
 ### Dalvik VM
 
 谷歌开发的，应用于Android系统，并在Android2.2中提供了JIT，发展迅猛。
 
-Dalvik y只能称作虚拟机，而不能称作“Java虚拟机”，它没有遵循 Java虚拟机规范
+Dalvik 只能称作虚拟机，而不能称作“Java虚拟机”，它没有遵循 Java虚拟机规范
 
 不能直接执行Java的Class文件
 
-基于寄存器架构，不是jvm的栈架构。
+基于寄存器架构，不是JVM的栈架构。
 
 执行的是编译以后的dex（Dalvik Executable）文件。执行效率比较高。
 
@@ -465,7 +465,7 @@ Android 5.0使用支持提前编译（Ahead of Time Compilation，AoT）的ART V
 
 ### Graal VM
 
-2018年4月，oracle Labs公开了GraalvM，号称 "Run Programs Faster Anywhere"，勃勃野心。与1995年java的”write once，run anywhere"遥相呼应。
+2018年4月，Oracle Labs公开了Graal VM，号称 "Run Programs Faster Anywhere"，勃勃野心。与1995年java的”write once，run anywhere"遥相呼应。
 
 GraalVM在HotSpot VM基础上增强而成的跨语言全栈虚拟机，可以作为“任何语言”
 的运行平台使用。语言包括：Java、Scala、Groovy、Kotlin；C、C++、Javascript、Ruby、Python、R等
@@ -474,8 +474,8 @@ GraalVM在HotSpot VM基础上增强而成的跨语言全栈虚拟机，可以作
 
 工作原理是将这些语言的源代码或源代码编译后的中间格式，通过解释器转换为能被Graal VM接受的中间表示。Graal VM提供Truffle工具集快速构建面向一种新语言的解释器。在运行时还能进行即时编译优化，获得比原生编译器更优秀的执行效率。
 
-如果说HotSpot有一天真的被取代，Graalvm希望最大。但是Java的软件生态没有丝毫变化。
+如果说HotSpot有一天真的被取代，Graal VM希望最大。但是Java的软件生态没有丝毫变化。
 
 ### 总结
 
-具体JVM的内存结构，其实取决于其实现，不同厂商的JVM，或者同一厂商发布的不同版本，都有可能存在一定差异。主要以oracle HotSpot VM为默认虚拟机。
+具体JVM的内存结构，其实取决于其实现，不同厂商的JVM，或者同一厂商发布的不同版本，都有可能存在一定差异。主要以Oracle HotSpot VM为默认虚拟机。
