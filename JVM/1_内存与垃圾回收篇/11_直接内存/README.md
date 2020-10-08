@@ -26,7 +26,7 @@ ByteBuffer byteBuffer = ByteBuffer.allocateDirect(BUFFER);
 
 NIO 的方式使用了直接缓存区的概念
 
-![](images/Snipaste_2020-10-08_11-14-47.png)
+![Snipaste_2020-10-08_11-14-47.png](images/Snipaste_2020-10-08_11-14-47.png)
 
 ## 存在的问题
 
