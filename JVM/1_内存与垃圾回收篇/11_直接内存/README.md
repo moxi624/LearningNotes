@@ -2,7 +2,7 @@
 
 不是虚拟机运行时数据区的一部分，也不是《Java虚拟机规范》中定义的内存区域。
 
-直接内存是在 Java 堆外的、直接向系统申请的内存区间。
+**直接内存是在 Java 堆外的、直接向系统申请的内存区间。**
 
 来源于 NIO ，通过存在堆中的 DirectByteBuffer 操作 Native 内存
 
@@ -14,7 +14,7 @@
 使用下列代码，直接分配本地内存空间
 
 ```java
-int BUFFER = 1024*1024*1024; // 1GB
+int BUFFER = 1024 * 1024 * 1024; // 1GB
 ByteBuffer byteBuffer = ByteBuffer.allocateDirect(BUFFER);
 ```
 

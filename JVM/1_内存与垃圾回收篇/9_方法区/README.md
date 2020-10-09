@@ -1,14 +1,14 @@
 # 方法区
 
-## 前言
+## 栈、堆、方法区的交互关系
 
 这次所讲述的是运行时数据区的最后一个部分——方法区
 
-![image-20200708093918121](images/image-20200708093918121.png)
+![image-20200708093918121](https://gitee.com/xlshi/blog_img/raw/master/img/20201009161540.png)
 
 从线程共享与否的角度来看
 
-![image-20200708094507624](images/image-20200708094507624.png)
+![image-20200708094507624](https://gitee.com/xlshi/blog_img/raw/master/img/20201009161543.png)
 
 ThreadLocal：如何保证多个线程在并发环境下的安全性？典型应用就是数据库连接管理，以及会话管理
 
@@ -16,7 +16,7 @@ ThreadLocal：如何保证多个线程在并发环境下的安全性？典型应
 
 下面就涉及了对象的访问定位
 
-![image-20200708094747667](images/image-20200708094747667.png)
+![image-20200708094747667](https://gitee.com/xlshi/blog_img/raw/master/img/20201009161601.png)
 
 - Person：存放在元空间，也可以说方法区
 - person：存放在 Java 栈的局部变量表中
@@ -28,33 +28,33 @@ ThreadLocal：如何保证多个线程在并发环境下的安全性？典型应
 
 所以，**方法区看作是一块独立于 Java 堆的内存空间。**
 
-![image-20200708095853544](images/image-20200708095853544.png)
+![image-20200708095853544](https://gitee.com/xlshi/blog_img/raw/master/img/20201009161711.png)
 
 方法区主要存放的是 Class ，而堆中主要存放的是实例化的对象
 
 - 方法区（Method Area）与 Java 堆一样，是各个线程共享的内存区域。
 - 方法区在 JVM 启动的时候被创建，并且它的实际的物理内存空间中和 Java 堆区一样都可以是不连续的（逻辑上连续，物理上可以不连续）。
 - 方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。
-- 方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存溢出错误：java.lang.OutOfMemoryError：**PermGen space** 或者java.lang.OutOfMemoryError：**Metaspace**
+- 方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存溢出错误：java.lang.OutOfMemoryError：**PermGen space** 或者 java.lang.OutOfMemoryError：**Metaspace**
   - 加载大量的第三方的 jar 包
   - Tomcat 部署的工程过多（30~50个）
   - 大量动态的生成反射类
 - 关闭 JVM 就会释放这个区域的内存。
 
-### HotSpot中方法区的演进
+### HotSpot 中方法区的演进
 
 在 JDK 7 及以前，习惯上把方法区，称为永久代。 JDK 8 开始，使用元空间取代了永久代。
 
 - JDK 1.8 后，元空间存放在堆外内存中（In JDK 8, classes metadata is now stored in the **native heap** and this space is called **Metaspace**.）
 
-本质上，方法区和永久代并不等价。仅是对 HotSpot 而言的。《Java虚拟机规范》对如何实现方法区，不做统一要求。例如：BEAJRockit / IBM J9 中不存在永久代的概念。            
+本质上，方法区和永久代并不等价，仅是对 HotSpot 而言的。《Java虚拟机规范》对如何实现方法区，不做统一要求。例如：BEAJRockit / IBM J9 中不存在永久代的概念。            
 >现在来看，当年使用永久代，不是好的idea。导致 Java 程序更容易 OOM （超过-XX:MaxPermsize上限）
 
-![image-20200708102919149](images/image-20200708102919149.png)
+![image-20200708102919149](https://gitee.com/xlshi/blog_img/raw/master/img/20201009161858.png)
 
 而到了 JDK 8 ，终于完全废弃了永久代的概念，改用与 JRockit、J9 一样在**本地内存**中实现的元空间（Metaspace）来代替
 
-![image-20200708103055914](images/image-20200708103055914.png)
+![image-20200708103055914](https://gitee.com/xlshi/blog_img/raw/master/img/20201009161906.png)
 
 元空间的本质和永久代类似，都是对 JVM 规范中方法区的实现。不过元空间与永久代最大的区别在于：**元空间不在虚拟机设置的内存中，而是使用本地内存**
 
@@ -62,23 +62,23 @@ ThreadLocal：如何保证多个线程在并发环境下的安全性？典型应
 
 根据《Java虚拟机规范》的规定，如果方法区无法满足新的内存分配需求时，将抛出 OOM 异常
 
-## 设置方法区大小与OOM
+## 设置方法区大小与 OOM
 
 方法区的大小不必是固定的， JVM 可以根据应用的需要动态调整。 
 
 ### JDK 7 及以前
 
-- 通过 -XX:PermSize 来设置永久代初始分配空间。默认值是20.75M
--  -XX:MaxPermSize 来设定永久代最大可分配空间。32位机器默认是64M，64位机器模式是82M
+- **通过 -XX:PermSize 来设置永久代初始分配空间。默认值是20.75M**
+-  **-XX:MaxPermSize 来设定永久代最大可分配空间。32位机器默认是64M，64位机器模式是82M**
 - 当 JVM 加载的类信息容量超过了这个值，会报异常 OutOfMemoryError:PermGen space。
 
-![image-20200708111756800](images/image-20200708111756800.png)
+![image-20200708111756800](https://gitee.com/xlshi/blog_img/raw/master/img/20201009162349.png)
 
 ### JDK 8 以后
 
 元数据区大小可以使用参数 -XX:MetaspaceSize 和 -XX:MaxMetaspaceSize 指定
 
-默认值依赖于平台。*windows下，-XX:MetaspaceSize 是21M，-XX:MaxMetaspaceSize 的值是-1，即没有限制。*
+默认值依赖于平台。**windows下，-XX:MetaspaceSize 是21M，-XX:MaxMetaspaceSize 的值是-1，即没有限制。**
 
 与永久代不同，如果不指定大小，默认情况下，虚拟机会耗尽所有的可用系统内存。如果元数据区发生溢出，虚拟机一样会抛出异常 OutOfMemoryError:Metaspace
 
@@ -86,9 +86,36 @@ ThreadLocal：如何保证多个线程在并发环境下的安全性？典型应
 
 如果初始化的高水位线设置过低，上述高水位线调整情况会发生很多次。通过垃圾回收器的日志可以观察到 Full GC 多次调用。为了避免频繁地 GC ，建议将 -XX:MetaspaceSize 设置为一个相对较高的值。
 
-### 如何解决这些OOM
+```java
+public class OOMTest extends ClassLoader {
+    public static void main(String[] args) {
+        int j = 0;
+        try {
+            OOMTest test = new OOMTest();
+            for (int i = 0; i < 10000; i++) {
+                //创建ClassWriter对象，用于生成类的二进制字节码
+                ClassWriter classWriter = new ClassWriter(0);
+                //指明版本号，public，类名，包名，父类，接口
+                classWriter.visit(Opcodes.V1_8, Opcodes.ACC_PUBLIC, "Class" + i, null, "java/lang/Object", null);
+                byte[] code = classWriter.toByteArray();
+                //类的加载
+                test.defineClass("Class" + i, code, 0, code.length);
+                j++;
+            }
+        } finally {
+            System.out.println(j);
+        }
+    }
+}
+```
 
-- 要解决 OOM 异常或 Heap Space 的异常，一般的手段是首先通过内存映像分析工具（如Eclipse Memory Analyzer）对 dump 出来的堆转储快照进行分析，重点是确认内存中的对象是否是必要的，也就是要先分清楚到底是出现了内存泄漏（Memory Leak）还是内存溢出（Memory Overflow）
+运行结果：
+
+![image-20201009163450844](https://gitee.com/xlshi/blog_img/raw/master/img/20201009163452.png)
+
+### 如何解决这些 OOM
+
+- 要解决 OOM 异常或 Heap Space 的异常，一般的手段是首先通过内存映像分析工具（如 Eclipse Memory Analyzer）对 dump 出来的堆转储快照进行分析，重点是确认内存中的对象是否是必要的，也就是要先分清楚到底是出现了内存泄漏（Memory Leak）还是内存溢出（Memory Overflow）
   - 内存泄漏就是有大量的引用指向某些对象，但是这些对象以后不会使用了，但是因为它们还和 GC ROOT 有关联，所以导致以后这些对象也不会被回收，这就是内存泄漏的问题
   - 内存泄漏得不到解决，从而占据满整个内存空间就会造成内存溢出
   
@@ -98,11 +125,11 @@ ThreadLocal：如何保证多个线程在并发环境下的安全性？典型应
 
 ## 方法区的内部结构
 
-![image-20200708161728320](images/image-20200708161728320.png)
+![image-20200708161728320](https://gitee.com/xlshi/blog_img/raw/master/img/20201009163702.png)
 
 《深入理解Java虚拟机》书中对方法区（Method Area）存储内容描述如下：它用于存储已被虚拟机加载的**类型信息、常量、静态变量、即时编译器编译后的代码缓存等。**
 
-![image-20200708161856504](images/image-20200708161856504.png)
+![image-20200708161856504](https://gitee.com/xlshi/blog_img/raw/master/img/20201009163705.png)
 
 ### 类型信息
 
@@ -117,7 +144,7 @@ ThreadLocal：如何保证多个线程在并发环境下的安全性？典型应
 
 JVM 必须在方法区中保存类型的所有域的相关信息以及域的声明顺序。
 
-域的相关信息包括：域名称、域类型、域修饰符（public，private，protected，static，final，volatile，transient的某个子集）
+域的相关信息包括：域名称、域类型、域修饰符（public，private，protected，static，final，volatile，transient 的某个子集）
 
 ### 方法（Method）信息
 
@@ -140,19 +167,26 @@ JVM 必须保存所有方法的以下信息，同域信息一样包括声明顺�
 ```java
 public class MethodAreaTest {
     public static void main(String[] args) {
-        Order order = new Order();
+        Order order = null;
         order.hello();
         System.out.println(order.count);
     }
 }
- 
+
 class Order {
     public static int count = 1;
-    public static final int number = 2;
+
     public static void hello() {
-        System.out.println("hello!");
+        System.out.println("Hello!");
     }
 }
+```
+
+运行结果：
+
+```
+Hello!
+1
 ```
 
 如上代码所示，即使我们把 order 设置为 null ，也不会出现空指针异常
@@ -167,7 +201,7 @@ class Order {
 
 运行时常量池，就是运行时常量池
 
-![image-20200708171151384](images/image-20200708171151384.png)
+![image-20200708171151384](https://gitee.com/xlshi/blog_img/raw/master/img/20201009164843.png)
 
 - 方法区，内部包含了运行时常量池
 - 字节码文件，内部包含了常量池
@@ -176,7 +210,7 @@ class Order {
 
 ### 常量池
 
-![image-20200708172357052](images/image-20200708172357052.png)
+![image-20200708172357052](https://gitee.com/xlshi/blog_img/raw/master/img/20201009170851.png)
 
 一个有效的字节码文件中除了包含类的版本信息、字段、方法以及接口等描述符信息外，还包含一项信息就是常量池表（Constant Pool Table），包括各种字面量和对类型、域和方法的符号引用
 
@@ -219,9 +253,9 @@ public class MethodAreaTest2 {
 `Object obj = new Object();`将会被翻译成如下字节码
 
 ```bash
-new #2  
+new #2  //Class java/lang/Object
 dup
-invokespecial
+invokespecial	//Method java/lang/Object "<init>"()V
 ```
 
 #### 小结
@@ -239,10 +273,10 @@ invokespecial
 - JVM 为每个已加载的类型（类或接口）都维护一个常量池。池中的数据项像数组项一样，是通过**索引访问**的。
 
 - 运行时常量池中包含多种不同的常量，包括编译期就已经明确的数值字面量，也包括到运行期解析后才能够获得的方法或者字段引用。此时不再是常量池中的符号地址了，这里换为真实地址。
-  - 运行时常量池，相对于Class文件常量池的另一重要特征是：**具备动态性**。
+  - 运行时常量池，相对于 Class 文件常量池的另一重要特征是：**具备动态性**。
     - String.intern()
 
-- 运行时常量池类似于传统编程语言中的符号表（symbol table），但是它所包含的数据却比符号表要更加丰富一些。
+- 运行时常量池类似于传统编程语言中的符号表（Symbol Table），但是它所包含的数据却比符号表要更加丰富一些。
 
 - 当创建类或接口的运行时常量池时，如果构造运行时常量池所需的内存空间超过了方法区所能提供的最大值，则 JVM 会抛 OutOfMemoryError 异常。
 
@@ -264,35 +298,35 @@ public class MethodAreaDemo {
 
 字节码执行过程展示
 
-![image-20200708204750374](images/image-20200708204750374.png)
+![image-20200708204750374](https://gitee.com/xlshi/blog_img/raw/master/img/20201009173956.png)
 
 首先现将操作数500放入到操作数栈中
 
-![image-20200708204953552](images/image-20200708204953552.png)
+![image-20200708204953552](https://gitee.com/xlshi/blog_img/raw/master/img/20201009173954.png)
 
 然后存储到局部变量表中
 
-![image-20200708205029376](images/image-20200708205029376.png)
+![image-20200708205029376](https://gitee.com/xlshi/blog_img/raw/master/img/20201009173950.png)
 
 然后重复一次，把100放入局部变量表中，最后再将变量表中的500和100取出，进行操作
 
-![image-20200708205221737](images/image-20200708205221737.png)
+![image-20200708205221737](https://gitee.com/xlshi/blog_img/raw/master/img/20201009173950.png)
 
 将500和100进行一个除法运算，在把结果入栈
 
-![image-20200708205413721](images/image-20200708205413721.png)
+![image-20200708205413721](https://gitee.com/xlshi/blog_img/raw/master/img/20201009173949.png)
 
 在最后就是输出流，需要调用运行时常量池的常量
 
-![image-20200708205708057](images/image-20200708205708057.png)
+![image-20200708205708057](https://gitee.com/xlshi/blog_img/raw/master/img/20201009173947.png)
 
 最后调用 invokevirtual（虚方法调用），然后返回
 
-![image-20200708205909176](images/image-20200708205909176.png)
+![image-20200708205909176](https://gitee.com/xlshi/blog_img/raw/master/img/20201009173946.png)
 
 返回时
 
-![image-20200708210540696](images/image-20200708210540696.png)
+![image-20200708210540696](https://gitee.com/xlshi/blog_img/raw/master/img/20201009173944.png)
 
 程序计数器始终计算的都是当前代码运行的位置，目的是为了方便记录方法调用后能够正常返回，或者是进行了CPU 切换后，也能回来到原来的代码进行执行。
 
@@ -309,21 +343,21 @@ HotSpot 中方法区的变化：
 
 JDK 6 的时候
 
-![image-20200708211541300](images/image-20200708211541300.png)
+![image-20200708211541300](https://gitee.com/xlshi/blog_img/raw/master/img/20201009174318.png)
 
 JDK 7 的时候
 
-![image-20200708211609911](images/image-20200708211609911.png)
+![image-20200708211609911](https://gitee.com/xlshi/blog_img/raw/master/img/20201009174316.png)
 
 JDK 8 的时候，元空间大小只受物理内存影响
 
-![image-20200708211637952](images/image-20200708211637952.png)
+![image-20200708211637952](https://gitee.com/xlshi/blog_img/raw/master/img/20201009174314.png)
 
 ### 为什么永久代要被元空间替代？
 
 JRockit 是和 HotSpot 融合后的结果，因为 JRockit 没有永久代，所以他们不需要配置永久代
 
-随着 Java 8 的到来，HotSpot VM 中再也见不到永久代了。但是这并不意味着类的元数据信息也消失了。这些数据被移到了一个与堆不相连的本地内存区域，这个区域叫做元空间（Metaspace）。
+随着 Java 8 的到来，HotSpot VM 中再也见不到永久代了。但是这并不意味着类的元数据信息也消失了。这些数据被移到了一个与**堆不相连的本地内存区域，这个区域叫做元空间（Metaspace）。**
 
 由于类的元数据分配在本地内存中，元空间的最大可分配空间就是系统可用内存空间，这项改动是很有必要的，原因有：
 
@@ -341,7 +375,7 @@ JRockit 是和 HotSpot 融合后的结果，因为 JRockit 没有永久代，所
   - 主要是为了降低 Full GC
 
 有些人认为方法区（如 HotSpot 虚拟机中的元空间或者永久代）是没有垃圾收集行为的，其实不然。《Java虚拟机规范》对方法区的约束是非常宽松的，提到过可以不要求虚拟机在方法区中实现垃圾收集。事实上也确实有未实现或未能完整实现方法区类型卸载的收集器存在（如 JDK 11 时期的 ZGC 收集器就不支持类卸载）。
-一般来说*这个区域的回收效果比较难令人满意，尤其是类型的卸载，条件相当苛刻*。但是这部分区域的回收有时又确实是必要的。以前 Sun 公司的 Bug 列表中，曾出现过的若干个严重的 Bug 就是由于低版本的 HotSpot 虚拟机对此区域未完全回收而导致内存泄漏
+一般来说**这个区域的回收效果比较难令人满意，尤其是类型的卸载，条件相当苛刻**。但是这部分区域的回收有时又确实是必要的。以前 Sun 公司的 Bug 列表中，曾出现过的若干个严重的 Bug 就是由于低版本的 HotSpot 虚拟机对此区域未完全回收而导致内存泄漏
 
 方法区的垃圾收集主要回收两部分内容：**常量池中废弃的常量和不在使用的类型**
 
@@ -388,7 +422,7 @@ staticObj 随着 Test 的类型信息存放在方法区，instanceObj 随着 Tes
 
 接着，找到了一个引用该 staticObj 对象的地方，是在一个 java.lang.Class 的实例里，并且给出了这个实例的地址，通过Inspector查看该对象实例，可以清楚看到这确实是一个 java.lang.Class 类型的对象实例，里面有一个名为 staticObj 的实例字段：
 
-![image-20200708215218078](images/image-20200708215218078.png)
+![image-20200708215218078](https://gitee.com/xlshi/blog_img/raw/master/img/20201009175431.png)
 
 从《Java虚拟机规范》所定义的概念模型来看，所有 Class 相关的信息都应该存放在方法区之中，但方法区该如何实现，《Java虚拟机规范》并未做出规定，这就成了一件允许不同虚拟机自己灵活把握的事情。JDK 7 及其以后版本的 HotSpot 虚拟机选择把静态变量与类型在 Java 语言一端的映射 Class 对象存放在一起，存储于 Java 堆之中，从我们的实验中也明确验证了这一点
 
@@ -396,7 +430,7 @@ staticObj 随着 Test 的类型信息存放在方法区，instanceObj 随着 Tes
 
 有些人认为方法区（如 HotSpot 虚拟机中的元空间或者永久代）是没有垃圾收集行为的，其实不然。《Java虚拟机规范》对方法区的约束是非常宽松的，提到过可以不要求虚拟机在方法区中实现垃圾收集。事实上也确实有未实现或未能完整实现方法区类型卸载的收集器存在（如 JDK 11 时期的 ZGC 收集器就不支持类卸载）。
 
-一般来说这个区域的回收效果比较难令人满意，尤其是类型的卸载，条件相当苛刻。但是这部分区域的回收有时又确实是必要的。以前 Sun 公司的 Bug 列表中，曾出现过的若干个严重的 Bug 就是由于低版本的 HotSpot 虚拟机对此区域未完全回收而导致内存泄漏。
+一般来说**这个区域的回收效果比较难令人满意，尤其是类型的卸载，条件相当苛刻。**但是这部分区域的回收**有时又确实是必要**的。以前 Sun 公司的 Bug 列表中，曾出现过的若干个严重的 Bug 就是由于低版本的 HotSpot 虚拟机对此区域未完全回收而导致内存泄漏。
 
 **方法区的垃圾收集主要回收两部分内容：常量池中废弃的常量和不再使用的类型。**
 
@@ -412,7 +446,7 @@ HotSpot 虚拟机对常量池的回收策略是很明确的，**只要常量池�
 
 判定一个常量是否“废弃”还是相对简单，而要判定一个类型是否属于“不再被使用的类”的条件就比较苛刻了。需要同时满足下面三个条件：
 
-- 该类所有的实例都已经被回收，也就是Java堆中不存在该类及其任何派生子类的实例。
+- 该类所有的实例都已经被回收，也就是 Java 堆中不存在该类及其任何派生子类的实例。
 - 加载该类的类加载器已经被回收，这个条件除非是经过精心设计的可替换类加载器的场景，如 OSGi、JSP 的重加载等，否则通常是很难达成的。
 - 该类对应的 java.lang.Class 对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。
 
@@ -422,7 +456,7 @@ Java 虚拟机被允许对满足上述三个条件的无用类进行回收，这
 
 ## 总结
 
-![image-20200708220303243](images/image-20200708220303243.png)
+![image-20200708220303243](https://gitee.com/xlshi/blog_img/raw/master/img/20201009175509.png)
 
 ### 常见面试题
 
