@@ -190,24 +190,6 @@ Java 8 元空间，字符串常量在堆
 
 Java 语言规范里要求完全相同的字符串字面量，应该包含同样的 Unicode 字符序列（包含同一份码点序列的常量），并且必须是指向同一个 String 类实例。
 
-```java
-class Memory {
-  public static void main(String[] args) {
-    int i = 1;
-    Object obj = new Object();
-    Memory mem = new Memory();
-    mem.foo(obj);
-  }
-  
-  private void foo(Object param) {
-    String str = param.toString();
-    System.out.println(str);
-  }
-}
-```
-
-![image-20201008215541278](images/image-20201008215541278.png)
-
 ## 字符串拼接操作
 
 - 常量与常量的拼接结果在常量池，原理是编译期优化
