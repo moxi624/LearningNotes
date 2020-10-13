@@ -8,7 +8,7 @@ class Solution:
         if n == 1:
             return 1;
         if n > 0:
-            return self.Fibonacci(n - 1) + self.Fibonacci(n -2);
+            return self.Fibonacci(n - 1) + self.Fibonacci(n - 2);
         else:
             return None
 
@@ -25,11 +25,31 @@ class Solution:
         ret = 0
         a = 1
         b = 0
-        for i in range(0, n-1):
+        for i in range(0, n - 1):
             ret = a + b
             b = a
             a = ret
         return ret
 
+    # 记忆化搜索，保留中间结果
+    map = {}
+    def Fibonacci3(self, n):
+        if n == 0:
+            return 0
+        if n == 1:
+            return 1
+        if self.map.get(n) == None:
+            self.map[n] = self.Fibonacci3(n - 1) + self.Fibonacci3(n - 2)
+        return self.map[n]
+
+    # 动态规划
+    map2 = {}
+    def Fibonacci4(self, n):
+        self.map2[0] = 0
+        self.map2[1] = 1
+        for i in range(2, n+1):
+            self.map2[i] = self.map2.get(i-1) + self.map2.get(i - 2)
+        return self.map2.get(n)
+
 if __name__ == '__main__':
-    print(Solution().Fibonacci2(10))
+    print(Solution().Fibonacci4(10))
