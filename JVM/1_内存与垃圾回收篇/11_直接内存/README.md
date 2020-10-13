@@ -22,11 +22,11 @@ ByteBuffer byteBuffer = ByteBuffer.allocateDirect(BUFFER);
 
 原来采用 BIO 的架构，我们需要从用户态切换成内核态
 
-![image-20200709170907611](images/image-20200709170907611.png)
+![image-20200709170907611](https://gitee.com/xlshi/blog_img/raw/master/img/20201012110421.png)
 
 NIO 的方式使用了直接缓存区的概念
 
-![Snipaste_2020-10-08_11-14-47.png](images/Snipaste_2020-10-08_11-14-47.png)
+![Snipaste_2020-10-08_11-14-47.png](https://gitee.com/xlshi/blog_img/raw/master/img/20201012110433.png)
 
 ## 存在的问题
 
@@ -43,4 +43,4 @@ NIO 的方式使用了直接缓存区的概念
 
 如果不指定，默认与堆的最大值 -Xmx 参数值一致
 
-![image-20200709230647277](images/image-20200709230647277.png)
+![image-20200709230647277](https://gitee.com/xlshi/blog_img/raw/master/img/20201012110436.png)
