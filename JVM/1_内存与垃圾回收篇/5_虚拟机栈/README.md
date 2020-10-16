@@ -592,4 +592,3 @@ public class StringBuilderTest {
 | 本地方法栈   | 是            | 否         |
 | 方法区       | 是（OOM）     | 是         |
 | 堆           | 是            | 是         |
-
