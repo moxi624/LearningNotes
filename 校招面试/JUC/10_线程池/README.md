@@ -156,6 +156,7 @@ Java中线程池是通过Executor框架实现的，该框架中用到了Executor
 - Executors.newCacheThreadPool();  创建一个可扩容的线程池
   - 执行很多短期异步的小程序或者负载教轻的服务器
   - 创建一个可缓存线程池，如果线程长度超过处理需要，可灵活回收空闲线程，如无可回收，则新建新线程
+- Executors.newScheduledThreadPool(int corePoolSize)：线程池支持定时以及周期性执行任务，创建一个corePoolSize为传入参数，最大线程数为整形的最大数的线程池
 
 具体使用，首先我们需要使用Executors工具类，进行创建线程池，这里创建了一个拥有5个线程的线程池
 
@@ -245,6 +246,74 @@ pool-1-thread-5	 给用户:6 办理业务
 ```
 
 我们能够看到，一共有5个线程，在给10个用户办理业务
+
+
+
+### 创建周期性执行任务的线程池
+
+Executors.newScheduledThreadPool(int corePoolSize)：
+
+**线程池支持定时以及周期性执行任务，创建一个corePoolSize为传入参数，最大线程数为整形的最大数的线程池**
+
+底层使用 ScheduledThreadPoolExecutor 来实现 ScheduledThreadPoolExecutor 为ThreadPoolExecutor子类
+
+```java
+public ScheduledThreadPoolExecutor(int corePoolSize) {
+        super(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS,
+              new DelayedWorkQueue());
+}
+```
+
+#### 执行方法
+
+```java
+    /**
+     * @throws RejectedExecutionException {@inheritDoc}
+     * @throws NullPointerException       {@inheritDoc}
+     * command：执行的任务 Callable或Runnable接口实现类
+	 * delay：延时执行任务的时间
+	 * unit：延迟时间单位
+     */
+    public ScheduledFuture<?> schedule(Runnable command,
+                                       long delay,
+                                       TimeUnit unit)
+```
+
+
+
+```java
+    /**
+     * @throws RejectedExecutionException {@inheritDoc}
+     * @throws NullPointerException       {@inheritDoc}
+     * @throws IllegalArgumentException   {@inheritDoc}
+     * command：执行的任务 Callable或Runnable接口实现类
+	 * initialDelay 第一次执行任务延迟时间
+	 * period 连续执行任务之间的周期，从上一个任务开始执行时计算延迟多少开始执行下一个任务，但是还会等上一个任务结束之后。
+	 * unit：延迟时间单位
+     */
+    public ScheduledFuture<?> scheduleAtFixedRate(Runnable command,
+                                                  long initialDelay,
+                                                  long period,
+                                                  TimeUnit unit)
+```
+
+
+
+```java
+    /**
+     * @throws RejectedExecutionException {@inheritDoc}
+     * @throws NullPointerException       {@inheritDoc}
+     * @throws IllegalArgumentException   {@inheritDoc}
+     * command：执行的任务 Callable或Runnable接口实现类
+	 * initialDelay 第一次执行任务延迟时间
+	 * delay：连续执行任务之间的周期，从上一个任务全部执行完成时计算延迟多少开始执行下一个任务
+	 * unit：延迟时间单位
+     */
+    public ScheduledFuture<?> scheduleWithFixedDelay(Runnable command,
+                                                     long initialDelay,
+                                                     long delay,
+                                                     TimeUnit unit)
+```
 
 ## 底层实现
 
@@ -508,6 +577,3 @@ IO密集时，大部分线程都被阻塞，故需要多配置线程数：
 参考公式：CPU核数 / (1 - 阻塞系数)      阻塞系数在0.8 ~ 0.9左右
 
 例如：8核CPU：8/ (1 - 0.9) = 80个线程数
-
-
-

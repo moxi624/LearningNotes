@@ -1,6 +1,6 @@
 # 对象存储MinIO入门介绍
 
-## 几种常见的对象存储方式
+## 常见的对象存储方式对比
 
 - 直接将图片保存到服务的硬盘
   - 优点：开发便捷，成本低
@@ -54,7 +54,7 @@ mkdir -p /home/minio/config
 然后我们启动我们的容器，后面有个目录，就是我们需要挂载的硬盘目录
 
 ```bash
-docker run -p 9000:9000 --name minio \
+docker run -p 9090:9000 --name minio \
 -e "MINIO_ACCESS_KEY=mogu2018" \
 --privileged=true \
 -e "MINIO_SECRET_KEY=mogu2018" \
@@ -140,4 +140,87 @@ minio:
 ```
 
 ### 添加配置文件
+
+然后我们需要编写配置文件，用于初始化配置 MinioClient装载到spring容器中
+
+```bash
+@Configuration
+public class MinIoConfig {
+    @Value("${minio.endpoint}")
+    private String endpoint;
+
+    @Value("${minio.accessKey}")
+    private String accessKey;
+
+    @Value("${minio.secretKey}")
+    private String secretKey;
+
+    @Bean
+    public MinioClient minioClient() throws Exception{
+        // 使用MinIO服务的URL，端口，Access key和Secret key创建一个MinioClient对象
+        MinioClient minioClient = new MinioClient(endpoint, accessKey, secretKey);
+        return minioClient;
+    }
+}
+```
+
+### 编写Controller
+
+然后在写一个前端控制器
+
+```java
+
+@RestController
+public class MinIoController {
+
+    @Autowired
+    MinioClient minioClient;
+    
+    @PostMapping("/upload")
+    public String upload(@RequestParam("data") MultipartFile data) throws Exception{
+        String fileName = data.getOriginalFilename();
+        InputStream inputStram = data.getInputStream();
+        minioClient.putObject(
+                PutObjectArgs.builder().bucket("mogublog").object(fileName).stream(
+                        inputStram, data.getSize(), -1)
+                        .contentType(data.getContentType())
+                        .build());
+        return "上传成功";
+    }
+
+    @PostMapping("/download")
+    public String download(@RequestParam("fileName")String fileName) throws Exception{
+        String url = minioClient.presignedGetObject("mogublog", fileName, 60*60*24*7);
+        return url;
+    }
+}
+```
+
+### 测试图片上传
+
+下面我们就需要进行测试了，我们运行我们的项目，然后使用postman进行上传测试
+
+首先我们在postman中添加我们的上传接口，然后在修改请求头中添加Content-Type
+
+```bash
+Content-Type  multipart/form-data
+```
+
+
+
+![image-20201018222200593](images/image-20201018222200593.png)
+
+然后在选择我们的图片上传
+
+![image-20201018222251132](images/image-20201018222251132.png)
+
+最后在刷新MinIO，就能够看到我们刚刚上传的文件了
+
+![img](images/Q041@R@}5GDOIN_Y$BUTY]X.png)
+
+我们可以通过下面的地址直接访问我们的图片
+
+```bash
+http://192.168.1.101:9000/mogublog/1578926382309.jpg
+```
 
