@@ -69,7 +69,7 @@ public class MateAnnotationDemo {
 
 - @interface 用来声明一个注解，格式：public @interface 注解名 {定义内容
 - 其中的每个方法实际上是申明了一个配置参数
-- 方法的名称j就是参数的类型
+- 方法的名称就是参数的类型
 - 返回值类型就是参数的类型（返回值只能是基本数据类型，Class，String，enum）
 - 通过default来申明参数的默认值
 - 如果只有一个参数成员，一般参数名为 value
