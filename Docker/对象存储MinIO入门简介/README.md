@@ -67,6 +67,18 @@ minio/minio server /data
 
 ![image-20201015150408263](images/image-20201015150408263.png)
 
+如果需要后台运行，使用这条语句
+
+```bash
+docker run --privileged -d -it -p 9090:9000 --name minio \
+-e "MINIO_ACCESS_KEY=mogu2018" \
+--privileged=true \
+-e "MINIO_SECRET_KEY=mogu2018" \
+-v /home/minio/data:/data \
+-v /home/minio/config:/root/.minio \
+minio/minio server /data
+```
+
 ## 访问
 
 我们只需要访问上面提到的ip地址，就能够进入到我们的页面了
