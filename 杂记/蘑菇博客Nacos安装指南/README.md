@@ -44,6 +44,14 @@ db.password=root
 
 ![image-20200814150743682](images/image-20200814150743682.png)
 
+> 注意：如果上述启动出现错误，那么可能是因为集群模式启动出现问题，使用下面命令改成单机模式
+>
+> ```bash
+> startup.cmd -m standalone
+> ```
+
+启动成功的页面
+
 ![image-20200814150938013](images/image-20200814150938013.png)
 
 项目启动成功后，我们访问 http://localhost:8848/nacos，输入下方的默认密码
