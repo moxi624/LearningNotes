@@ -17,9 +17,7 @@
 
 因为我现在用的是window，所以我下载了windows版本，也就是 nacos-server.zip
 
-> 如果国内环境下载过慢，可以使用下面的这个地址
-> 链接：https://pan.baidu.com/s/1oTYQuqz1oMM5kTE_tl-8JQ 
-> 提取码：92gx 
+> 如果国内环境下载过慢，可以使用 [备用下载地址](https://wws.lanzous.com/i1rAmhrtroj)
 
 下载完成后，我们进行解压缩，然后进入 conf目录，打开 application.properties文件
 

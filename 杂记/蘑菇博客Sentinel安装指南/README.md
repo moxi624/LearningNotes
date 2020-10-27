@@ -24,6 +24,8 @@ Hystrix存在的问题
 
 ![image-20200814152203586](images/image-20200814152203586.png)
 
+> 如果Github下载缓慢，可以使用 [备用下载地址](https://wws.lanzous.com/iXUolhrte2j)
+
 下载完成后，放到我们的Sentinel文件夹下
 
 ![image-20200814152301259](images/image-20200814152301259.png)
