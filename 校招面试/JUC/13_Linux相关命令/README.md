@@ -8,6 +8,8 @@
 
 使用top命令的话，重点关注的是 %CPU、%MEM 、load average 三个指标
 
+- load average三个指标：分别代表1、5、15分钟的负载情况
+
 在这个命令下，按1的话，可以看到每个CPU的占用情况
 
 uptime：系统性能命令的精简版
