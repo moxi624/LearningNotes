@@ -285,4 +285,3 @@ Client和Transport类型都可以安全的被多个goroutine同时使用。出�
 ## 参考
 
 - [Go语言基础之net/http](https://www.liwenzhou.com/posts/Go/go_http/)
-- 
