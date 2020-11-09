@@ -178,5 +178,3 @@ type EsCfg struct {
 }
 ```
 
-### main函数
-

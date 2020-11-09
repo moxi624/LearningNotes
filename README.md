@@ -2,7 +2,7 @@
 
 ## 项目介绍
 
-Java学习笔记，主要来源于B站上视频的学习，同时会记录平时一些学习和项目中遇到的问题，同步更新在 [蘑菇博客](http://www.moguit.cn)，如果对我的博客网站感兴趣的话，欢迎关注我的 [蘑菇博客源码](https://gitee.com/moxi159753/mogu_blog_v2)，如果笔记对您有帮助的话，欢迎star支持，谢谢~
+个人学习笔记，主要来源于B站上视频的学习，同时会记录平时一些学习和项目中遇到的问题，同步更新在 [蘑菇博客](http://www.moguit.cn)，如果对我的博客网站感兴趣的话，欢迎关注我的 [蘑菇博客源码](https://gitee.com/moxi159753/mogu_blog_v2)，如果笔记对您有帮助的话，欢迎star支持，谢谢~
 
 笔记主要涵盖：Java，JVM、JUC、Spring，SpringCloud，计算机网络，操作系统，数据结构，Vue等
 
@@ -241,7 +241,7 @@ Java学习笔记，主要来源于B站上视频的学习，同时会记录平时
 - [希尔排序](./数据结构/43_希尔排序/README.md)
 - [归并排序](./数据结构/44_归并排序/README.md)
 - [快速排序](./数据结构/45_快速排序/README.md)
-- [动态规划算法](./数据结构/动态规划算法/README.md)
+- [常见的动态规划算法](./数据结构/动态规划算法/常见的动态规划算法/README.md)
 - [源码](./数据结构/NowCode)
 
 ## SpringBoot
@@ -317,6 +317,7 @@ Java学习笔记，主要来源于B站上视频的学习，同时会记录平时
 - [罗技K380快捷键](./杂记/罗技K380快捷键/README.md)
 - [将PDF转换为Kindle能识别的MOBI格式](./杂记/将PDF转换为Kindle能识别的MOBI格式/README.md)
 - [OCR文字识别软件](./杂记/OCR文字识别软件/README.md)
+- [如何向开源社区正确提问](./杂记/如何向开源社区正确提问/README.md)
 
 ## Linux
 
@@ -390,13 +391,52 @@ Java学习笔记，主要来源于B站上视频的学习，同时会记录平时
 - [Golang中的反射](./Golang/Golang基础/16_Golang中的反射/README.md)
 - [源码](./Golang/Golang基础/Code)
 
+## Golang进阶
+
+> 来源bilibili 七米老师的学习视频：[点我传送](https://www.bilibili.com/video/BV17Q4y1P7n9)
+>
+> 李文周老师的博客：[点我传送](https://www.liwenzhou.com/)
+
+- [Golang并发编程](./Golang/Golang进阶/4_Golang并发编程/README.md)
+- [互联网协议介绍](./Golang/Golang进阶/5_互联网协议介绍/README.md)
+- [HTTP请求](./Golang/Golang进阶/6_HTTP请求/README.md)
+- [日志库](./Golang/Golang进阶/7_日志库/README.md)
+- [反射](./Golang/Golang进阶/8_反射/README.md)
+- [单元测试](./Golang/Golang进阶/9_单元测试/README.md)
+- [Flag包的用法](./Golang/Golang进阶/10_Flag包的用法/README.md)
+- [Go操作数据库](./Golang/Golang进阶/11_Go操作数据库/README.md)
+- [sqlx库的使用](./Golang/Golang进阶/12_sqlx库的使用/README.md)
+- [Go操作Redis](./Golang/Golang进阶/13_Go操作Redis/README.md)
+- [Go操作消息队列](./Golang/Golang进阶/14_Go操作消息队列/README.md)
+- [Go的依赖管理GoModule](./Golang/Golang进阶/15_Go的依赖管理GoModule/README.md)
+- [GoContext的使用](./Golang/Golang进阶/16_GoContext的使用/README.md)
+- [日志收集项目架构设计及Kafka介绍](./Golang/Golang进阶/17_日志收集项目架构设计及Kafka介绍/README.md)
+- [etcd介绍](./Golang/Golang进阶/18_etcd介绍/README.md)
+- [ES介绍和使用](./Golang/Golang进阶/19_ES介绍和使用/README.md)
+- [Kafka消费示例](./Golang/Golang进阶/20_Kafka消费示例/README.md)
+- [Kibana介绍和使用](./Golang/Golang进阶/21_Kibana介绍和使用/README.md)
+- [Prometheus和Grafana介绍](./Golang/Golang进阶/22_Prometheus和Grafana介绍/README.md)
+- [源码](./Golang/Golang进阶/GoAdvanceCode)
+
+## Golang框架-Gin
+
+> 来源bilibili 七米老师的学习视频：[点我传送](https://www.bilibili.com/video/BV17Q4y1P7n9)
+>
+> 李文周老师的博客：[点我传送](https://www.liwenzhou.com/)
+
+- [Gin内容介绍](./Golang/Gin框架/1_Gin内容介绍/README.md)
+- [Http及Template介绍](./Golang/Gin框架/2_http及Template介绍/README.md)
+- [GORM介绍和使用](./Golang/Gin框架/3_GORM介绍和使用/README.md)
+- [GORM进行CURD](./Golang/Gin框架/4_GORM进行CURD/README.md)
+- [源码](./Golang/Gin框架/Code)
+
 ## 关注&交流
 
-刚刚创建了QQ群 (**加群备注**：`蘑菇博客`) <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=soh24RYi"><img border="0" src="./doc/images/qq/group.png" alt="蘑菇博客交流群" title="蘑菇博客交流群"></a>，目前项目还存在很多不足之处，欢迎各位老哥进群进行技术交流，为了防止广告进入，希望加群的时候能添加备注，谢谢~
+刚刚创建了QQ群 (**加群备注**：`蘑菇博客`) <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=soh24RYi"><img border="0" src="./doc/images/qq/group.png" alt="蘑菇博客交流群" title="蘑菇博客交流群"></a>，目前项目还存在很多不足之处，欢迎各位老哥进群进行技术交流，为了识别同行，防止广告进入，希望加群的时候能添加备注，谢谢~
 
-|              QQ群（加群备注：`蘑菇博客`）              |            QQ（加群备注：`蘑菇博客`）            |
-| :----------------------------------------------------: | :----------------------------------------------: |
-| <img src="./doc/images/qq/qqGroup2.png" width="200" /> | <img src="./doc/images/qq/qq.png" width="200" /> |
+|             QQ群（加群备注：`蘑菇博客`）              |              QQ群（加群备注：`蘑菇博客`）              |
+| :---------------------------------------------------: | :----------------------------------------------------: |
+| <img src="./doc/images/qq/qqGroup.png" width="200" /> | <img src="./doc/images/qq/qqGroup2.png" width="200" /> |
 
 ## 赞赏
 
