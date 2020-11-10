@@ -1,4 +1,4 @@
-# 蘑菇博客如何部署到阿里云服务器
+# 蘑菇博客部署到阿里云服务器（Eureka分支）
 
 ## 前言
 
@@ -11,6 +11,27 @@
 ## SpringBoot项目打包
 
 首先我们需要将项目拉取下来，然后进入到mogu_blog_v2目录
+
+首先判断当前分支是否是Eureka分支，使用下面命令查看
+
+```bash
+git branch
+```
+
+这里显示的是目前在Nacos分支，所以我们需要切换到Eureka分支
+
+![image-20201110090336834](images/image-20201110090336834.png)
+
+使用下面命令切换分支
+
+```bash
+# 切换Eureka分支
+git checkout Eureka
+```
+
+![image-20201110090632776](images/image-20201110090632776.png)
+
+切换好分支后，我们就可以进行 maven依赖安装了
 
 ```bash
 # 拉取项目
@@ -142,9 +163,6 @@ data:
   # mogu_web网址，用于第三方登录回调
   web:
     url: http://101.132.122.175:8603
-  # 静态资源映射，通过nginx
-  image:
-    url: http://101.132.122.175:8600/
 ```
 
 如果拥有域名的小伙伴，可以将配置改成如下形式
@@ -158,15 +176,11 @@ data:
   # mogu_web网址，用于第三方登录回调
   web:
     url: http://101.132.122.175:8603
-  # 静态资源映射，通过nginx
-  image:
-    url: http://picture.moguit.cn/
 ```
 
 同时在配置文件的最下面，还需要修改第三方注册需要的 clientId 和 ClientSecret：如果不清楚如何获取的小伙伴，可以查看我的这篇博客，在后面部分对ID的获取有相关介绍：[SpringBoot+Vue如何集成第三方登录JustAuth](http://moguit.cn/#/info?blogUid=8cbadb54967257f12d6cc7eb1a58a361)
 
 ```yaml
-
 # 第三方登录
 justAuth:
   clientId:

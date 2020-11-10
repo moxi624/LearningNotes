@@ -281,8 +281,6 @@
 
 ## 杂记
 
-- [Windows环境下搭建蘑菇博客](./杂记/Windows环境下搭建蘑菇博客/README.md)
-- [Docker搭建蘑菇博客](./杂记/Docker搭建蘑菇博客/README.md)
 - [CKEditor前端样式和编辑器的样式不一致的问题](./杂记/CKEditor前端样式和编辑器的样式不一致的问题/README.md)
 - [Ckeidtor中上传图片添加token信息](./杂记/ckeidtor中上传图片添加token信息/README.md)
 - [CLion搭建C语言开发环境](./杂记/CLion搭建C语言开发环境/README.md)
@@ -295,6 +293,9 @@
 - [记一次蘑菇博客差点被删库的经历](./杂记/记一次蘑菇博客差点被删库的经历/README.md)
 - [解决git默认不区分大小写的问题](./杂记/解决git默认不区分大小写的问题/README.md)
 - [蘑菇博客从Eureka迁移到Nacos](./杂记/蘑菇博客从Eureka迁移到Nacos/README.md)
+- [Windows环境下搭建蘑菇博客](./杂记/Windows环境下搭建蘑菇博客/README.md)
+- [Docker搭建蘑菇博客(Eureka版)](./杂记/Docker搭建蘑菇博客(Eureka版)/README.md)
+- [Docker搭建蘑菇博客(Nacos版)](./杂记/Docker搭建蘑菇博客(Nacos版)/README.md)
 - [蘑菇博客Nacos安装指南](./杂记/蘑菇博客Nacos安装指南/README.md)
 - [蘑菇博客Sentinel安装指南](./杂记/蘑菇博客Sentinel安装指南/README.md)
 - [蘑菇博客QQ小程序发布指南](./杂记/蘑菇博客QQ小程序发布指南/README.md)
@@ -303,7 +304,8 @@
 - [蘑菇博客配置七牛云存储](./杂记/蘑菇博客配置七牛云存储/README.md)
 - [蘑菇博客配置域名解析](./杂记/蘑菇博客配置域名解析/README.md)
 - [蘑菇博客切换搜索模式](./杂记/蘑菇博客切换搜索模式/README.md)
-- [蘑菇博客如何部署到阿里云服务器](./杂记/蘑菇博客如何部署到阿里云服务器/README.md)
+- [蘑菇博客部署到阿里云服务器(Eureka版)](./杂记/蘑菇博客部署到阿里云服务器(Eureka版)/README.md)
+- [蘑菇博客部署到阿里云服务器(Nacos版)](./杂记/蘑菇博客部署到阿里云服务器(Nacos版)/README.md)
 - [蘑菇博客如何扩展新的功能和页面](./杂记/蘑菇博客如何扩展新的功能和页面/README.md)
 - [蘑菇博客使用GithubAction完成持续集成](./杂记/蘑菇博客使用GithubAction完成持续集成/README.md)
 - [蘑菇博客使用SQL语句进行搜索出的内容忽略大小写并添加高亮效果](./杂记/蘑菇博客使用SQL语句进行搜索出的内容忽略大小写并添加高亮效果/README.md)
