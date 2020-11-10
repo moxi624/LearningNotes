@@ -38,7 +38,23 @@ db.password=root
 
 ![image-20200814150620395](images/image-20200814150620395.png)
 
-然后创建一个数据库脚 nacos_config，将配置导入到mysql中，然后我们到nacos目录，双击startup.bat启动
+然后创建一个数据库 nacos_config，将配置导入到mysql中
+
+> tip：如果导入时出现错误：Error Code: 1071 - Specified key was too long; max key length is 767 bytes
+>
+> 这个错误一般是mysql5.6版本引起的，只需要进入mysql
+>
+> ```bash
+> # 进入mysql
+> mysql -u root -p
+> # 使用mysql数据库
+> use mysql;
+> # 查看innodb_large_prefix状态，并开启 即可解决上述问题
+> show variables like '%innodb_large_prefix%';
+> set global innodb_large_prefix=on;
+> ```
+
+然后我们到nacos目录，双击startup.bat启动
 
 ![image-20200814150743682](images/image-20200814150743682.png)
 
