@@ -4,9 +4,27 @@
 
 最近很多小伙伴问我如何把蘑菇博客部署在自己的云服务器中，今天花费了一些时间整理一下博客部署的过程，希望能够对大家有所帮助，好了话不多说，下面开始进入正式的部署过程。
 
-如果小伙伴还没有安装好对应的环境话，需要按这篇博客搭建好环境：[使用Docker快速搭建蘑菇博客](http://moguit.cn/#/info?blogUid=ab8377106a0d4b9f8d66131e4312c69e)
+如果还没有安装好对应的环境话，需要按这篇博客搭建好环境：[使用Docker快速搭建蘑菇博客（Eureka分支）](http://moguit.cn/#/info?blogUid=ab8377106a0d4b9f8d66131e4312c69e)
+
+如果已经拥有域名的小伙伴，并且想给蘑菇博客配置域名解析：可以参考这篇博客：[蘑菇博客配置域名解析](http://moguit.cn/#/info?blogUid=06565868c0e86fe8125a9d55430cd266)
+
+如果本博客教程在搭建的时候存在疑惑，那么可以参考我录制的视频教程：[利用阿里云免费服务器搭建个人博客](https://www.bilibili.com/video/BV1c5411b7EZ?t=117)
 
 本文不再重复叙述 nginx、rabbitmq、mysql、solr以及redis的安装和启动，如果了解，请移步至上一篇博客~
+
+## 重新导入数据库脚本
+
+因为之前部署的docker环境中的数据库脚本可能不是最新的，因此在配置好docker环境后，我们需要远程连接上我们docker服务器中的Mysql，我们进入doc文件夹
+
+```
+mogu_blog.sql：代表mogu_blog数据库的文件
+mogu_blog_update.sql：代表mogu_blog在后续开发时候更新的字段）
+mogu_picture.sql：代表mogu_picture数据库文件
+mogu_picture_update.sql：代表mogu_picture在后续开发时候更新的字段）
+nacos_config.sql：表示Nacos配置脚本（仅用于Nacos分支）
+```
+
+首次导入数据库文件的时候，我们只需要执行mogu_blog.sql 和 mogu_picture.sql文件即可，如果你在之前已经部署了本项目，那么你需要在对应的update.sql文件中，打开后，从中找到没有的字段，复制上执行即可，里面每个字段的添加，都会有对应的日期提示，如果有些字段是你clone项目后添加的，那么你就需要执行它们一遍即可
 
 ## SpringBoot项目打包
 
