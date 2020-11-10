@@ -65,13 +65,24 @@ export const appConfig = {
 }
 ```
 
-如果你想发布项目的话，那么就需要拥有域名 和 配置对应的https了，关于如何配置，可以参考这篇博客
+如果你想发布项目的话，那么就需要拥有域名 和 配置对应的https了，因为我们小程序只用到了两个端口，所以我们只需要对这两个端口都配置一下https即可~， 关于如何配置，可以参考这篇博客
 
-Linux下通过nginx配置https
+[Linux下通过nginx配置https](http://www.moguit.cn/#/info?blogUid=cc8dff10a58c4f740a1f52cc962465da)
+
+在我们配置好 https后，也就是上面提到的正式环境
+
+```bash
+WEB_API: 'https://apiweb.moguit.cn',
+PICTURE_API: 'https://apipicture.moguit.cn',
+```
+
+我们还需要把这两个合法访问的域名添加到QQ小程序的后台页面
+
+![image-20201109153610484](images/image-20201109153610484.png)
 
 ### 打包
 
-下载完成后，我们回到HbuildX页面，然后点击 发行 -> 小程序-QQ
+上述操作完成后，我们回到HbuildX页面，然后点击 发行 -> 小程序-QQ 
 
 ![image-20200814164605313](images/image-20200814164605313.png)
 
@@ -91,7 +102,7 @@ Linux下通过nginx配置https
 
 ![image-20200814165321545](images/image-20200814165321545.png)
 
-打开程序后，我们选择详情，然后点击不校验域名
+打开程序后，我们选择详情，然后点击不校验域名【如果是https域名访问，就不需要】
 
 ![image-20200814165614236](images/image-20200814165614236.png)
 
@@ -163,3 +174,9 @@ uniapp:
 ![image-20200814173917783](images/image-20200814173917783.png)
 
 这个时候我们就可以重新打包程序了，然后点击发布，最后在提交审核
+
+![image-20201109153726695](images/image-20201109153726695.png)
+
+经过一系列的操作，我们的小程序也终于通过了审核~，回到版本设置页面，点击发布即可
+
+![image-20201109153820718](images/image-20201109153820718.png)
