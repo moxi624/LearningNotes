@@ -8,7 +8,7 @@
 
 如果你的服务器带宽只有1M，可以使用免费的百度云加速，加快页面渲染速度：[如何使用百度云加速提升网站访问速度](http://www.moguit.cn/#/info?blogUid=af053959672343f8a139ec27fd534c6c)
 
-> tip：特别注意，因为镜像中的代码可能不是最新版本，因此推荐在按照本篇博客，安装好docker环境后，需要在参考 [蘑菇博客部署阿里云](http://www.moguit.cn/#/info?blogUid=ab8377106a0d4b9f8d66131e4312c69e) 这篇博客，重新将前后端代码都重新部署一遍，同时也记得把doc中的两个SQL文件也重新导入，确保服务器为最新代码
+> tip：特别注意，因为镜像中的代码可能不是最新版本，因此推荐在按照本篇博客，安装好docker环境后，需要在参考 [蘑菇博客部署阿里云(Eureka版)](http://www.moguit.cn/#/info?blogUid=ab8377106a0d4b9f8d66131e4312c69e) 这篇博客，重新将前后端代码都重新部署一遍，同时也记得把doc中的两个SQL文件也重新导入，确保服务器为最新代码
 
 如果你之前安装好了蘑菇博客的docker环境，修改的博客的源码，想要重新发布到自己服务器上：[蘑菇博客如何部署到阿里云服务器(Eureka版)](http://www.moguit.cn/#/info?blogUid=ab8377106a0d4b9f8d66131e4312c69e)
 
@@ -461,18 +461,6 @@ PICTURE_HOST: '"http://your_ip:8600"',
 
 ![image-20200209130403916](images/image-20200209130403916.png)
 
-修改完成后prod.js后，我们还需要修改ckeditor图片上传的接口
-
-在 vue_mogu_admin/static/ckeditor/config.js，修改下面的内容，这个只需要在admin项目才需要修改，web中没有使用ckeditor
-
-```javascript
-//开启工具栏“图像”中文件上传功能，后面的url为待会要上传action要指向的的action或servlet
-config.filebrowserImageUploadUrl = "http://your_ip:8602/ckeditor/imgUpload?";
-
-//开启插入\编辑超链接中文件上传功能，后面的url为待会要上传action要指向的的action或servlet                                                                                                   
-config.filebrowserUploadUrl = 'http://your_ip:8602/ckeditor/fileUpload';
-```
-
 修改完成后，需要进行重新编译~ 打包~ 部署~
 
 我们首先在 vue_mogu_admin 目录下，执行下列命令进行打包（打包过程中.....可能会遇到一些语法规范错误，请无视~）
@@ -502,8 +490,6 @@ unzip dist.zip
 ```
 
 同理的操作，在执行一下上述操作，将vue_mogu_web项目也进行打包，部署到 /home/mogu_blog/vue_mogu_web目录下即可
-
- 
 
 ## 访问蘑菇博客项目
 
