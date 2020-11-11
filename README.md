@@ -328,6 +328,8 @@
 - [CentOS下如何安装Nginx](./Linux/CentOS下如何安装Nginx/README.md)
 - [记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历](./Linux/记一次因代码出错不断输出日志占满Docker容器硬盘的排查经历/README.md)
 - [CentOS下安装Nacos](./Linux/CentOS下安装Nacos/README.md)
+- [CentOS下安装Sentinel](./Linux/CentOS下安装Sentinel/README.md)
+- [VMWare中CentOS如何配置固定IP](./Linux/VMWare中CentOS如何配置固定IP/README.md)
 
 ## Redis
 
