@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b3629cc1-2621-4a40-b6e7-88066bb5f1ee" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../go-zero介绍/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero介绍/images/image-20201104093933723.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero介绍/images/image-20201104094000878.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero启动/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero启动/images/image-20201105154538400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero启动/images/image-20201105155233095.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero启动/images/image-20201107155510495.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104100022009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104100602605.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104104250248.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104105803487.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104110133846.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104110258102.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104111213437.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104112647582.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104113011565.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104113239862.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104161742144.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104162246868.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104164751086.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104165254087.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104165400359.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104224033260.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero适用场景/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go-zero适用场景/images/image-20201107161628900.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../K8S/3_使用kubeadm方式搭建K8S集群/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../K8S/3_使用kubeadm方式搭建K8S集群/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Linux/VMWare中CentOS如何配置固定IP/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Linux/VMWare中CentOS如何配置固定IP/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" path="E:/Software/Golang" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1kBxbEbeg7p4qaOdEz3xb5tK38r" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/rpc/add" />
+    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\LearningNotes\Golang\go-zero学习\code\bookstore\rpc\add" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="694" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605188721645">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="694" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1605188721645" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1605189716139">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1605189716139" />
+    <state x="661" y="252" width="598" height="536" key="find.popup" timestamp="1605192433050">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="661" y="252" width="598" height="536" key="find.popup/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1605192433050" />
+  </component>
+</project>

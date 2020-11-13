@@ -50,9 +50,9 @@
 
 NAT模式是最简单的实现虚拟机上网的方式
 
-> Guest访问网络的所有数据都是主机提供的，Guest并不真实存在与网络中，主机与网络中的任何机器都不能查看和访问到Guest的存在
->
-> Guest可以访问主机能访问的所有网络，但是对于主机以及主机网络的其它机器，Guest又是不可见的，甚至主机也访问不到Guest
+在NAT模式下，宿主计算机相当于一台开启了DHCP功能的路由器，而虚拟机是内网中的一台真实主机，通过路由器(宿主计算机) DHCP动态获得网络参数，因此在NAT模式下，虚拟机可以访问外部网络，反之则不行
+
+使用NAT模式的方便之处在于，我们不需要做任何网络设置，只要宿主机可以连接到外部网络，虚拟机也可以。
 
 **虚拟机与主机：**只能单向访问，虚拟机可以通过网络访问到主机，主机无法通过网络访问到虚拟机
 
@@ -96,11 +96,12 @@ NAT模式下，虚拟机网络连接到宿主机的VMnet8上，此时系统的VM
 
 ![image-20201111194922373](images/image-20201111194922373.png)
 
-然后我们右键属性，找到IPv4协议，选择自动获取IP地址
+然后我们右键属性，找到IPv4协议，然后设置一下ip地址
 
-![image-20201111195055691](images/image-20201111195055691.png)
+- ip地址：192.168.13.1  【注意这个ip地址，可能和下面重置网络后的不一样，这里可以修改成一致的】
+- 子网掩码：255.255.255.0
 
-
+![image-20201111220229085](images/image-20201111220229085.png)
 
 ### 虚拟网络编辑器
 
@@ -152,26 +153,26 @@ vim /etc/sysconfig/network-scripts/ifcfg-ens33
 然后在文件中，加入如下内容
 
 ```bash
-YPE=Ethernet
-PROXY_METHOD=none
-BROWSER_ONLY=no
-BOOTPROTO=none
-DEFROUTE=yes
-IPV4_FAILURE_FATAL=no
-IPV6INIT=yes
-IPV6_AUTOCONF=yes
-IPV6_DEFROUTE=yes
-IPV6_FAILURE_FATAL=no
-IPV6_ADDR_GEN_MODE=stable-privacy
-NAME=ens33
-UUID=6cd10557-b21f-4202-a0ce-1b35dd7f0662
-DEVICE=ens33
-ONBOOT=yes
-IPADDR=192.168.13.130
-NETMASK=255.255.255.0
-GATEWAY=192.168.13.254
-DNS1=114.114.114.114
-IPV6_PRIVACY=no
+TYPE="Ethernet"
+PROXY_METHOD="none"
+BROWSER_ONLY="no"
+BOOTPROTO="static"  # 设置静态方式
+DEFROUTE="yes"
+IPV4_FAILURE_FATAL="no"
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes"
+IPV6_DEFROUTE="yes"
+IPV6_FAILURE_FATAL="no"
+IPV6_ADDR_GEN_MODE="stable-privacy"
+NAME="ens33"
+UUID="b4fe4a51-0691-447c-b203-c397cb232eda"
+DEVICE="ens33"
+ONBOOT="yes"
+IPV6_PRIVACY="no"
+IPADDR=192.168.13.130 #本机地址
+NETMASK=255.255.255.0 #子网掩码
+GATEWAY=192.168.13.2 #默认网关
+DNS1=8.8.8.8
 ```
 
 这里需要注意的几个点就是下面几个参数
@@ -183,7 +184,7 @@ IPADDR=192.168.13.130
 NETMASK=255.255.255.0
 # 网关 【刚刚我们在NAT设置中配置的】
 GATEWAY=192.168.13.254
-DNS1=114.114.114.114
+DNS1=8.8.8.8
 ```
 
 配置完成后，我们就重启网络即可
@@ -202,6 +203,20 @@ ping www.baidu.com
 ```
 
 发现能够成功访问网络了，这个时候说明我们虚拟机已经能够正常联网~
+
+![image-20201111220338773](images/image-20201111220338773.png)
+
+
+
+## 最后
+
+在说一个我遇到的问题，就是在配置好网络后，重启电脑，发现之前配置的虚拟机又不能上网了，后面经过群里小伙伴的指点，发现是重启后，VMware的NAT和DHCP服务已经关闭了，所以我们需要手动启动
+
+![image-20201113145306958](images/image-20201113145306958.png)
+
+重启后打开虚拟机，发现能够成功联网了~
+
+![image-20201113145500500](images/image-20201113145500500.png)
 
 ## 参考
 

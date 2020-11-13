@@ -47,22 +47,14 @@ swapoff -a
 sed -ri 's/.*swap.*/#&/' /etc/fstab
 
 # 根据规划设置主机名
-hostnamectl set-hostname <hostname>
+hostnamectl set-hostname k8smaster
 
 # 在master添加hosts
 cat >> /etc/hosts << EOF
-202.193.57.11 k8smaster
-202.193.57.198 k8snode1
-202.193.57.92 k8snode2
+192.168.68.130 k8smaster
+192.168.68.131 k8snode1
+192.168.68.132 k8snode2
 EOF
-
-202.193.57.11
-202.193.57.254
-202.193.64.62
-
-192.168.31.216
-192.168.31.1
-192.168.31.1
 
 
 # 将桥接的IPv4流量传递到iptables的链
@@ -166,13 +158,10 @@ systemctl enable kubelet
 
 ## 部署Kubernetes Master【master节点】
 
-在202.193.57.11执行，也就是master节点
+在 192.168.68.130 执行，也就是master节点
 
 ```bash
-kubeadm init --apiserver-advertise-address=202.193.57.11 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.18.0 --service-cidr=10.96.0.0/12  --pod-network-cidr=10.244.0.0/16
-
-
-kubeadm init --apiserver-advertise-address=192.168.31.216 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.18.0 --service-cidr=10.96.0.0/12  --pod-network-cidr=10.244.0.0/16
+kubeadm init --apiserver-advertise-address=192.168.68.130 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.18.0 --service-cidr=10.96.0.0/12  --pod-network-cidr=10.244.0.0/16
 ```
 
 由于默认拉取镜像地址k8s.gcr.io国内无法访问，这里指定阿里云镜像仓库地址，【执行上述命令会比较慢，因为后台其实已经在拉取镜像了】，我们 docker images 命令即可查看已经拉取的镜像
