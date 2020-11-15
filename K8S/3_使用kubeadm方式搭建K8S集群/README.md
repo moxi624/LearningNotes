@@ -12,6 +12,18 @@ kubeadm init
 kubeadm join <Master节点的IP和端口 >
 ```
 
+## Kubeadm方式搭建K8S集群
+
+使用kubeadm方式搭建K8s集群主要分为以下几步
+
+- 准备三台虚拟机，同时安装操作系统CentOS 7.x
+- 对三个安装之后的操作系统进行初始化操作
+- 在三个节点安装 docker kubelet kubeadm kubectl
+- 在master节点执行kubeadm init命令初始化
+- 在node节点上执行 kubeadm join命令，把node节点添加到当前集群
+- 配置CNI网络插件，用于节点之间的连通【失败了可以多试几次】
+- 通过拉取一个nginx进行测试，能否进行外网测试
+
 ## 安装要求
 
 在开始之前，部署Kubernetes集群机器需要满足以下几个条件：
@@ -23,11 +35,13 @@ kubeadm join <Master节点的IP和端口 >
 
 ## 准备环境
 
-| 角色   | IP             |
-| ------ | -------------- |
-| master | 202.193.57.11  |
-| node1  | 202.193.57.198 |
-| node2  | 202.193.57.92  |
+| 角色   | IP              |
+| ------ | --------------- |
+| master | 192.168.177.130 |
+| node1  | 192.168.177.131 |
+| node2  | 192.168.177.132 |
+
+然后开始在每台机器上执行下面的命令
 
 ```bash
 # 关闭防火墙
@@ -43,17 +57,21 @@ setenforce 0
 # 关闭swap
 # 临时
 swapoff -a 
-# 临时
+# 永久关闭
 sed -ri 's/.*swap.*/#&/' /etc/fstab
 
-# 根据规划设置主机名
+# 根据规划设置主机名【master节点上操作】
 hostnamectl set-hostname k8smaster
+# 根据规划设置主机名【node1节点操作】
+hostnamectl set-hostname k8snode1
+# 根据规划设置主机名【node2节点操作】
+hostnamectl set-hostname k8snode2
 
 # 在master添加hosts
 cat >> /etc/hosts << EOF
-192.168.68.130 k8smaster
-192.168.68.131 k8snode1
-192.168.68.132 k8snode2
+192.168.177.130 k8smaster
+192.168.177.131 k8snode1
+192.168.177.132 k8snode2
 EOF
 
 
@@ -72,9 +90,7 @@ ntpdate time.windows.com
 
 ## 安装Docker/kubeadm/kubelet
 
-所有节点安装Docker/kubeadm/kubelet 
-
-Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker
+所有节点安装Docker/kubeadm/kubelet ，Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker
 
 ### 安装Docker
 
@@ -106,14 +122,6 @@ systemctl start docker
 ```
 
 配置docker的镜像源
-
-首先创建文件夹
-
-```bash
-mkdir /etc/docker/
-```
-
-然后添加
 
 ```bash
 cat >> /etc/docker/daemon.json << EOF
@@ -158,10 +166,10 @@ systemctl enable kubelet
 
 ## 部署Kubernetes Master【master节点】
 
-在 192.168.68.130 执行，也就是master节点
+在   192.168.177.130  执行，也就是master节点
 
 ```bash
-kubeadm init --apiserver-advertise-address=192.168.68.130 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.18.0 --service-cidr=10.96.0.0/12  --pod-network-cidr=10.244.0.0/16
+kubeadm init --apiserver-advertise-address=192.168.177.130 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.18.0 --service-cidr=10.96.0.0/12  --pod-network-cidr=10.244.0.0/16
 ```
 
 由于默认拉取镜像地址k8s.gcr.io国内无法访问，这里指定阿里云镜像仓库地址，【执行上述命令会比较慢，因为后台其实已经在拉取镜像了】，我们 docker images 命令即可查看已经拉取的镜像
@@ -192,7 +200,7 @@ kubectl get nodes
 
 下面我们还需要在Node节点执行其它的命令，将node1和node2加入到我们的master节点上
 
-## 加入Kubernetes Node
+## 加入Kubernetes Node【Slave节点】
 
 下面我们需要到 node1 和 node2服务器，执行下面的代码向集群添加新节点
 
@@ -201,8 +209,8 @@ kubectl get nodes
 > 注意，以下的命令是在master初始化完成后，每个人的都不一样！！！需要复制自己生成的
 
 ```bash
-kubeadm join 202.193.57.11:6443 --token tby0x1.30ly7c1b5ftbxvj4 \
-    --discovery-token-ca-cert-hash sha256:9782cab7ca747236851738e94d2a70594a7c32b0d7e718f915de4391957ca7f8
+kubeadm join 192.168.177.130:6443 --token 8j6ui9.gyr4i156u30y80xf \
+    --discovery-token-ca-cert-hash sha256:eda1380256a62d8733f4bddf926f148e57cf9d1a3a58fb45dd6e80768af5a500
 ```
 
 默认token有效期为24小时，当过期之后，该token就不可用了。这时就需要重新创建token，操作如下：
@@ -211,33 +219,98 @@ kubeadm join 202.193.57.11:6443 --token tby0x1.30ly7c1b5ftbxvj4 \
 kubeadm token create --print-join-command
 ```
 
+当我们把两个节点都加入进来后，我们就可以去Master节点 执行下面命令查看情况
+
+```bash
+kubectl get node
+```
+
+![image-20201113165358663](images/image-20201113165358663.png)
+
 ## 部署CNI网络插件
 
-```
+上面的状态还是NotReady，下面我们需要网络插件，来进行联网访问
+
+```bash
+# 下载网络插件配置
 wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
 默认镜像地址无法访问，sed命令修改为docker hub镜像仓库。
 
-```
+```bash
+# 添加
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
+# 查看状态 【kube-system是k8s中的最小单元】
 kubectl get pods -n kube-system
-NAME                          READY   STATUS    RESTARTS   AGE
-kube-flannel-ds-amd64-2pc95   1/1     Running   0          72s
+```
+
+运行后的结果
+
+![image-20201113165929510](images/image-20201113165929510.png)
+
+运行完成后，我们查看状态可以发现，已经变成了Ready状态了
+
+![image-20201113194557147](images/image-20201113194557147.png)
+
+如果上述操作完成后，还存在某个节点处于NotReady状态，可以在Master将该节点删除
+
+```bash
+# master节点将该节点删除
+kubectl delete node k8snode1
+ 
+# 然后到k8snode1节点进行重置
+ kubeadm reset
+# 重置完后在加入
+kubeadm join 192.168.177.130:6443 --token 8j6ui9.gyr4i156u30y80xf     --discovery-token-ca-cert-hash sha256:eda1380256a62d8733f4bddf926f148e57cf9d1a3a58fb45dd6e80768af5a500
 ```
 
 ## 测试kubernetes集群
 
+我们都知道K8S是容器化技术，它可以联网去下载镜像，用容器的方式进行启动
+
 在Kubernetes集群中创建一个pod，验证是否正常运行：
 
-```
-$ kubectl create deployment nginx --image=nginx
-$ kubectl expose deployment nginx --port=80 --type=NodePort
-$ kubectl get pod,svc
+```bash
+# 下载nginx 【会联网拉取nginx镜像】
+kubectl create deployment nginx --image=nginx
+# 查看状态
+kubectl get pod
 ```
 
-访问地址：http://NodeIP:Port  
+如果我们出现Running状态的时候，表示已经成功运行了
+
+![image-20201113203537028](images/image-20201113203537028.png)
+
+下面我们就需要将端口暴露出去，让其它外界能够访问
+
+```bash
+# 暴露端口
+kubectl expose deployment nginx --port=80 --type=NodePort
+# 查看一下对外的端口
+kubectl get pod,svc
+```
+
+能够看到，我们已经成功暴露了 80端口  到 30529上
+
+![image-20201113203840915](images/image-20201113203840915.png)
+
+我们到我们的宿主机浏览器上，访问如下地址
+
+```bash
+http://192.168.177.130:30529/
+```
+
+发现我们的nginx已经成功启动了
+
+![image-20201113204056851](images/image-20201113204056851.png)
+
+到这里为止，我们就搭建了一个单master的k8s集群
+
+![image-20201113204158884](images/image-20201113204158884.png)
+
+
 
 ## 错误汇总
 
@@ -351,4 +424,18 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 这个问题主要是因为我们在执行 kubeadm reset 的时候，没有把 $HOME/.kube 给移除掉，再次创建时就会出现问题了
+
+### 错误五
+
+安装的时候，出现以下错误
+
+```bash
+Another app is currently holding the yum lock; waiting for it to exit...
+```
+
+是因为yum上锁占用，解决方法
+
+```bash
+yum -y install docker-ce
+```
 
