@@ -129,6 +129,31 @@
 - [乐观锁和悲观锁](./校招面试/JUC/15_乐观锁和悲观锁/README.md)
 - [源码](./校招面试/JUC/Code)
 
+## K8S
+
+> 来源Bilibili尚硅谷教程：[k8s教程由浅入深-尚硅谷](https://www.bilibili.com/video/BV1GT4y1A756)
+
+
+- [Kubernetes简介](./K8S/1_Kubernetes简介/README.md)
+- [搭建K8S集群前置知识](./K8S/2_搭建K8S集群前置知识/README.md)
+- [使用kubeadm方式搭建K8S集群](./K8S/3_使用kubeadm方式搭建K8S集群/README.md)
+- [使用二进制方式搭建K8S集群](./K8S/4_使用二进制方式搭建K8S集群/README.md)
+- [Kubeadm和二进制方式对比](./K8S/5_Kubeadm和二进制方式对比/README.md)
+- [Kubernetes集群管理工具kubectl](./K8S/6_Kubernetes集群管理工具kubectl/README.md)
+- [Kubernetes集群YAML文件详解](./K8S/7_Kubernetes集群YAML文件详解/README.md)
+- [Kubernetes核心技术Pod](./K8S/8_Kubernetes核心技术Pod/README.md)
+- [Kubernetes核心技术Controller](./K8S/9_Kubernetes核心技术Controller/README.md)
+- [Kubernetes核心技术Service](./K8S/10_Kubernetes核心技术Service/README.md)
+- [Kubernetes控制器Controller详解](./K8S/11_Kubernetes控制器Controller详解/README.md)
+- [Kubernetes配置管理](./K8S/12_Kubernetes配置管理/README.md)
+- [Kubernetes集群安全机制](./K8S/13_Kubernetes集群安全机制/README.md)
+- [Kubernetes核心技术Ingress](./K8S/14_Kubernetes核心技术Ingress/README.md)
+- [Kubernetes核心技术Helm](./K8S/15_Kubernetes核心技术Helm/README.md)
+- [Kubernetes持久化存储](./K8S/16_Kubernetes持久化存储/README.md)
+- [Kubernetes集群资源监控](./K8S/17_Kubernetes集群资源监控/README.md)
+- [Kubernetes搭建高可用集群](./K8S/18_Kubernetes搭建高可用集群/README.md)
+- [Kubernetes容器交付介绍](./K8S/19_Kubernetes容器交付介绍/README.md)
+
 ## 中间件
 
 >来源Bilibili中华石杉老师学习视频：[Java工程师面试突击](https://www.bilibili.com/video/BV1UJ411X7M1)

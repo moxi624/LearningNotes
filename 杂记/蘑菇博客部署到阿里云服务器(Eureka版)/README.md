@@ -12,23 +12,14 @@
 
 本文不再重复叙述 nginx、rabbitmq、mysql、solr以及redis的安装和启动，如果了解，请移步至上一篇博客~
 
-## 重新导入数据库脚本
-
-因为之前部署的docker环境中的数据库脚本可能不是最新的，因此在配置好docker环境后，我们需要远程连接上我们docker服务器中的Mysql，我们进入doc文件夹
-
-```
-mogu_blog.sql：代表mogu_blog数据库的文件
-mogu_blog_update.sql：代表mogu_blog在后续开发时候更新的字段）
-mogu_picture.sql：代表mogu_picture数据库文件
-mogu_picture_update.sql：代表mogu_picture在后续开发时候更新的字段）
-nacos_config.sql：表示Nacos配置脚本（仅用于Nacos分支）
-```
-
-首次导入数据库文件的时候，我们只需要执行mogu_blog.sql 和 mogu_picture.sql文件即可，如果你在之前已经部署了本项目，那么你需要在对应的update.sql文件中，打开后，从中找到没有的字段，复制上执行即可，里面每个字段的添加，都会有对应的日期提示，如果有些字段是你clone项目后添加的，那么你就需要执行它们一遍即可
-
-## SpringBoot项目打包
+## 查看当前Git分支
 
 首先我们需要将项目拉取下来，然后进入到mogu_blog_v2目录
+
+```bash
+# 拉取项目
+git clone https://gitee.com/moxi159753/mogu_blog_v2.git
+```
 
 首先判断当前分支是否是Eureka分支，使用下面命令查看
 
@@ -49,7 +40,34 @@ git checkout Eureka
 
 ![image-20201110090632776](images/image-20201110090632776.png)
 
-切换好分支后，我们就可以进行 maven依赖安装了
+切换好分支后，后面我们就可以进行 maven依赖安装了
+
+## 重新导入数据库脚本
+
+因为之前部署的docker环境中的数据库脚本可能不是最新的，因此在配置好docker环境后，我们需要远程连接上我们docker服务器中的Mysql，我们进入doc文件夹
+
+```
+mogu_blog.sql：代表mogu_blog数据库的文件
+mogu_blog_update.sql：代表mogu_blog在后续开发时候更新的字段）
+mogu_picture.sql：代表mogu_picture数据库文件
+mogu_picture_update.sql：代表mogu_picture在后续开发时候更新的字段）
+nacos_config.sql：表示Nacos配置脚本【仅用于Nacos分支】
+```
+
+首次导入数据库文件的时候，我们只需要执行mogu_blog.sql 、 mogu_picture.sql文件即可，如果你在之前已经部署了本项目，那么你需要在对应的update.sql文件中，打开后，从中找到没有的字段，复制上执行即可，里面每个字段的添加，都会有对应的日期提示，如果有些字段是你clone项目后添加的，那么你就需要执行它们一遍
+
+【举例】假设我在2020.10.15号部署了项目，那会只需要通过导入 mogu_blog.sql 、mogu_picture.sql 和 nacos_config.sql 导入到数据库即可成功运行。但是后面在 2020.11.17号，又重新拉取了蘑菇博客的源码，想要更新最新的代码，那么这个时候就有两种情况
+
+- 如果你系统里面没有任何数据【也就是没有添加自己的博客】，那么再次 导入 mogu_blog.sql 、mogu_picture.sql 即可
+- 如果你系统已经上线【已经添加了自己的一些内容】，那么就需要查看 mogu_picture_update.sql 和 mogu_picture_update.sql，然后查看在 2020.10.15 - 2020.11.17 这一段时间内，是否更新了新的字段，如果有更新，那么为了不破坏原有的数据库，那么你需要把里面的字段插入到执行的数据库表中
+
+每次更新的时间，在mogu_*_update.sql 表里都有体现，只需要进去查看即可 ，然后找到对应访问内的，增量更新即可
+
+![img](images/caa45bc804224c9c9441f270c36d6f75)
+
+## SpringBoot项目打包
+
+下面我们进行 maven依赖安装了
 
 ```bash
 # 拉取项目
