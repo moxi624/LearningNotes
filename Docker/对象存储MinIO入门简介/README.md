@@ -54,7 +54,7 @@ mkdir -p /home/minio/config
 然后我们启动我们的容器，后面有个目录，就是我们需要挂载的硬盘目录
 
 ```bash
-docker run -p 9090:9000 --name minio \
+docker run -p 9000:9000 --name minio \
 -e "MINIO_ACCESS_KEY=mogu2018" \
 --privileged=true \
 -e "MINIO_SECRET_KEY=mogu2018" \
@@ -63,6 +63,11 @@ docker run -p 9090:9000 --name minio \
 minio/minio server /data
 ```
 
+上面的配置中，包含两个重要的信息【以后登录时会用到，可以修改成自己的】
+
+- MINIO_ACCESS_KEY：公钥
+- MINIO_SECRET_KEY：密钥
+
 运行成功后，我们就能看到我们下面的提示信息
 
 ![image-20201015150408263](images/image-20201015150408263.png)
@@ -70,7 +75,7 @@ minio/minio server /data
 如果需要后台运行，使用这条语句
 
 ```bash
-docker run --privileged -d -it -p 9090:9000 --name minio \
+docker run --privileged -d -it -p 9000:9000 --name minio \
 -e "MINIO_ACCESS_KEY=mogu2018" \
 --privileged=true \
 -e "MINIO_SECRET_KEY=mogu2018" \
@@ -81,7 +86,7 @@ minio/minio server /data
 
 ## 访问
 
-我们只需要访问上面提到的ip地址，就能够进入到我们的页面了
+我们只需要访问上面提到的ip地址，就能够进入到我们的页面了【部署云服务器，需要自行开启安全组！】
 
 ```bash
 http://192.168.1.101:9000
@@ -236,11 +241,11 @@ Content-Type  multipart/form-data
 http://192.168.1.101:9000/mogublog/1578926382309.jpg
 ```
 
-
-
 ## 蘑菇博客配置Minio
 
 蘑菇博客已经集成了Minio对象存储服务，我们只需要在系统配置，找到我们的Minio对象存储
+
+例如：我在上面已经部署了 http://101.132.122.175:8080 的Minio服务【按照你部署的ip和端口填写】
 
 ![image-20201024085505782](images/image-20201024085505782.png)
 
