@@ -238,6 +238,7 @@
   - [Windows环境下搭建蘑菇博客](./杂记/Windows环境下搭建蘑菇博客/README.md)
   - [Docker搭建蘑菇博客(Eureka版)](./杂记/Docker搭建蘑菇博客(Eureka版)/README.md)
   - [Docker搭建蘑菇博客(Nacos版)](./杂记/Docker搭建蘑菇博客(Nacos版)/README.md)
+  - [DockerCompose一键部署蘑菇博客(Nacos版)](./杂记/DockerCompose一键部署蘑菇博客(Nacos版)/README.md)
   - [蘑菇博客Nacos安装指南](./杂记/蘑菇博客Nacos安装指南/README.md)
   - [蘑菇博客Sentinel安装指南](./杂记/蘑菇博客Sentinel安装指南/README.md)
   - [蘑菇博客QQ小程序发布指南](./杂记/蘑菇博客QQ小程序发布指南/README.md)

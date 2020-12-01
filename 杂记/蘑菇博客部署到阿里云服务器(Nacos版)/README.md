@@ -227,20 +227,26 @@ http://your_ip:8603/swagger-ui/index.html
 
 前端部分，我们现在需要修改两个地方的配置，分别是：vue_mogu_admin 和 vue_mogu_web 【在本地修改】
 
-![image-20201110104248866](images/image-20201110104248866.png)
-
 ### vue_mogu_web项目打包
 
-下面我们到 vue_mogu_web/config/目录下，修改prod.env.js文件
+下面我们到 vue_mogu_web目录下【在windows下】
+
+![image-20201130111419158](images/image-20201130111419158.png)
+
+然后修改.env文件，把里面的ip地址，改成自己的
 
 ```
-// 如果没有域名使用这个
-//VUE_MOGU_WEB: '"http://47.115.54.30:8602"',
-// 如果有域名使用这个
-VUE_MOGU_WEB: '"http://demoweb.moguit.cn"',
-PICTURE_API: '"http://47.115.54.30:8602"',
-WEB_API: '"http://47.115.54.30:8603"',
-ELASTICSEARCH: '"http://47.115.54.30:8605"',
+NODE_ENV=production
+VUE_MOGU_WEB=http://120.78.126.96:9527
+PICTURE_API=http://120.78.126.96:8602
+WEB_API=http://120.78.126.96:8603
+ELASTICSEARCH=http://120.78.126.96:8605
+```
+
+注意：如果你拥有域名，VUE_MOGU_WEB 可以修改为
+
+```bash
+VUE_MOGU_WEB=http://demoweb.moguit.cn
 ```
 
 然后执行下列命令，进行依赖安装和打包
@@ -269,25 +275,34 @@ unzip dist.zip
 
 ### vue_mogu_admin项目打包
 
-前台admin项目，修改配置的方式基本类似，我们到 vue_mogu_admin/config/目录下，修改prod.env.js文件，然后把里面的ip地址，改成你对应服务器的即可
+前台admin项目，修改配置的方式基本类似，我们到 vue_mogu_admin目录下，修改.env文件
+
+![image-20201130111729695](images/image-20201130111729695.png)
+
+然后把里面的ip地址，改成你对应服务器的即可
 
 ```
-//生产环境
-ADMIN_API: '"http://47.115.54.30:8601"',
-PICTURE_API: '"http://47.115.54.30:8602"',
-WEB_API: '"http://47.115.54.30:8603"',
-Search_API: '"http://47.115.54.30:8605"',
-SPRING_BOOT_ADMIN: '"http://47.115.54.30:8606/wallboard"',
-SOLR_API: '"http://47.115.54.30:8080/solr"',
-Zipkin_Admin: '"http://47.115.54.30:9411/zipkin/"',
-ELASTIC_SEARCH: '"http://47.115.54.30:5601"',
-EUREKA_API: '"http://47.115.54.30:8761"',
-RABBIT_MQ_ADMIN: '"http://47.115.54.30:15672"',
-DRUID_ADMIN: '"http://47.115.54.30:8601/druid/login.html"',
-// 有域名
-BLOG_WEB_URL: '"http://demoweb.moguit.cn"',
-// 没有域名
-// BLOG_WEB_URL: '"http://47.115.54.30:9527"',
+WEB_API=http://120.78.126.96:8603
+FILE_API=http://120.78.126.96:8600/
+RABBIT_MQ_ADMIN=http://120.78.126.96:15672
+SENTINEL_ADMIN=http://120.78.126.96:8070/sentinel/
+EUREKA_API=http://120.78.126.96:8761
+Search_API=http://120.78.126.96:8605
+ADMIN_API=http://120.78.126.96:8601
+NODE_ENV=production
+Zipkin_Admin=http://120.78.126.96:9411/zipkin/
+DRUID_ADMIN=http://120.78.126.96:8601/druid/login.html
+SPRING_BOOT_ADMIN=http://120.78.126.96:8606/wallboard
+BLOG_WEB_URL=http://120.78.126.96:9527
+ELASTIC_SEARCH=http://120.78.126.96:5601
+PICTURE_API=http://120.78.126.96:8602
+SOLR_API=http://120.78.126.96:8080/solr
+```
+
+注意：如果你拥有域名，BLOG_WEB_URL可以修改为
+
+```bash
+BLOG_WEB_URL=http://demoweb.moguit.cn
 ```
 
 修改完成后，需要进行重新编译~ 打包~ 部署

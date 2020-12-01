@@ -2,34 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3629cc1-2621-4a40-b6e7-88066bb5f1ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../go-zero介绍/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero介绍/images/image-20201104093933723.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero介绍/images/image-20201104094000878.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero启动/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero启动/images/image-20201105154538400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero启动/images/image-20201105155233095.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero启动/images/image-20201107155510495.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104100022009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104100602605.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104104250248.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104105803487.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104110133846.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104110258102.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104111213437.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104112647582.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104113011565.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104113239862.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104161742144.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104162246868.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104164751086.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104165254087.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104165400359.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero架构设计/images/image-20201104224033260.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero适用场景/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../go-zero适用场景/images/image-20201107161628900.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../K8S/3_使用kubeadm方式搭建K8S集群/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../K8S/3_使用kubeadm方式搭建K8S集群/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Linux/VMWare中CentOS如何配置固定IP/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Linux/VMWare中CentOS如何配置固定IP/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Docker/DockerCompose/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Docker/DockerCompose/images/image-20200727212451516.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Docker/DockerCompose/images/image-20200727212555232.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Docker/DockerCompose/images/image-20200727212932704.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Docker/DockerCompose/images/image-20200727213527466.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../_sidebar.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../_sidebar.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
