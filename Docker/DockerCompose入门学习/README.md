@@ -1,16 +1,10 @@
 # Docker Compose入门学习
 
-## 常见的Docker Compose脚本
-
-https://gitee.com/zhengqingya/docker-compose
-
 ## 简介
 
-原来我们的操作是：DockerFile  build run 进行手动操作，单个容器，如果假设我们有100个微服务，并行微服务之间还存在依赖关系。
+我们之前操作Docker的过程是：DockerFile  build run 进行手动操作，单个容器，如果假设我们有100个微服务，并行微服务之间还存在依赖关系。这个时候，我们就可以使用Docker Compose来轻松高效的管理容器，定义运行多个容器。
 
-这个时候，我们就可以使用Docker Compose来轻松高效的管理容器，定义运行多个容器。
-
-官方介绍：
+### 官方介绍：
 
 - 定义、运行多个容器
 - YAML file配置环境
@@ -25,7 +19,9 @@ https://gitee.com/zhengqingya/docker-compose
 > - 在 Docker-compose 中定义组成应用程序的服务。这样它们就可以在一个独立的环境中一起运行。
 > - 运行 docker-compose up 和 Compose 启动并运行整个应用程序。
 
-作用：批量容器编排
+### 作用
+
+批量容器编排
 
 > Compose是Docker官方的开源项目，需要安装！
 >
@@ -57,6 +53,12 @@ Compose：重要的概念
 
 - 服务service，容器，应用（web，redis，mysql）
 - 项目project，就是一组关联的容器。
+
+## 常见的Docker Compose脚本
+
+下面这个是小伙伴开源的一些Docker Compose脚本，我们如果需要部署某个应用的时候，可以通过下面脚本，非常方便的进行部署
+
+https://gitee.com/zhengqingya/docker-compose
 
 ## 安装Docker Compose
 

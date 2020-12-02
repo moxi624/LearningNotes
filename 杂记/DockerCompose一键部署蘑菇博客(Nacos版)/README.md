@@ -8,11 +8,12 @@
 
 因此后面我们将所有的服务制作成单个的镜像，然后通过docker compose 进行容器编排，来协调每个容器同时对外提供服务，同时提供了Docker容器的可视化管理工具Portainer进行管理，同时达到对服务容器化的目的，也为以后使用K8S集群管理蘑菇博客做了很好的铺垫~。
 
-本文不再讲蘑菇博客如何制作镜像，以及将镜像推送到阿里云容器镜像服务和DockerHub，如果感兴趣的小伙伴可以参考另外的几篇博客
+本文不再讲蘑菇博客如何制作镜像，Docker Compose的使用，以及将镜像推送到阿里云容器镜像服务和DockerHub，如果感兴趣的小伙伴可以参考另外的几篇博客
 
-- 使用DockerCompose构建蘑菇博客
-- 使用GithubAction构建蘑菇博客镜像提交DockerHub
+- [Docker Compose入门学习](http://www.moguit.cn/#/info?blogOid=568)
+- [使用GithubAction构建蘑菇博客镜像提交DockerHub](http://www.moguit.cn/#/info?blogOid=567)
 - Docker图形化工具Portainer介绍与安装
+- [使用DockerCompose制作蘑菇博客YAML镜像文件](http://www.moguit.cn/#/info?blogOid=567)
 
 本文主要讲解使用Docker Compose 一键部署蘑菇项目，如果想尝试其他方式，可以参考 [使用Docker快速搭建蘑菇博客（Nacos分支）](http://www.moguit.cn/#/info?blogUid=8100dcb585fff77e3fa25eed50e3708e)
 
@@ -82,7 +83,7 @@ https://github.com/docker/compose/releases
 
 ![image-20201127211547030](images/image-20201127211547030.png)
 
-> 如果上述地址下载过于缓慢，请备用地址：[点我传送](https://wws.lanzous.com/iTHoIiuilvi)
+> 如果上述地址下载过于缓慢，请备用地址【下载后解压zip】：[点我传送](https://wws.lanzous.com/iTHoIiuilvi)
 
 把下载到的文件使用Xftp工具，拷贝到 `/usr/local/bin/` 目录下
 

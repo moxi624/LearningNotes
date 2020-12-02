@@ -1,13 +1,16 @@
 # 使用GithubAction构建蘑菇博客镜像提交DockerHub
 
-## 参考 
-
-- Github Actions的使用：[使用Github Action完成蘑菇博客持续集成](http://www.moguit.cn/#/info?blogUid=0762bfb392c2cf0a94c8a7934fe46f8f)
-- 官方Actions：[Build and push Docker images](https://github.com/marketplace/actions/build-and-push-docker-images)
-
 ## 前言
 
 这阵子使用DockerCompose部署蘑菇博客， 但是还存在一些问题，就是每次我们需要下载 [蘑菇博客](https://gitee.com/moxi159753/mogu_blog_v2) 源码，然后进行编译，打包，部署。而因为蘑菇博客还是前后端分离项目，因此为了完成这一系列的操作，就需要在环境中安装maven、node、git 等环境。但是因为这些环境只是在我们项目的构建阶段才会使用，而构建项目完成后，就不需要使用了，因此就打算使用Github Actions在代码提交的后，我们提前把蘑菇博客的镜像给构建完成，然后上传到DockerHub上，最后在其它人需要使用的时候，就不需要自己重新构建镜像了，而是直接拉取线上的镜像，完成项目的部署。
+
+如果你想了解Github Actions的使用，参考：[使用Github Action完成蘑菇博客持续集成](http://www.moguit.cn/#/info?blogUid=0762bfb392c2cf0a94c8a7934fe46f8f)
+
+如果你想知道更多的官方Actions，参考：[Build and push Docker images](https://github.com/marketplace/actions/build-and-push-docker-images)
+
+如果想了解蘑菇博客镜像构建和部署，参考： [使用DockerCompose制作蘑菇博客YAML镜像文件](http://www.moguit.cn/#/info?blogOid=567)
+
+如果想快速一键部署蘑菇博客，参考：[DockerCompose一键部署蘑菇博客(Nacos版)](http://www.moguit.cn/#/info?blogOid=565)
 
 ## 环境准备
 
@@ -156,7 +159,9 @@ ENTRYPOINT ["java","-Xms256m","-Xmx256m","-jar","/app.jar"]
           echo '=====镜像构建结束====='
 ```
 
-## 登录DockerHub
+## 登录镜像网站
+
+### 登录DockerHub
 
 登录DockerHub，将我们构建成功的镜像上传
 
@@ -175,7 +180,7 @@ ENTRYPOINT ["java","-Xms256m","-Xmx256m","-jar","/app.jar"]
 
 我们通过 new repository secret，给我们的项目添加密钥，这里主要是对DockerHub的用户名和密码加密，防止直接泄漏在我们的仓库中
 
-### 注意
+### 提交阿里云
 
 如果我们要提交到 [Aliyun容器镜像服务](https://cr.console.aliyun.com/) ，那么就应该这样写 【这里主要以提交DockerHub为重心】
 
@@ -381,6 +386,10 @@ jobs:
 
 ```
 
+执行完脚本后，进入到 [DockerHub](https://registry.hub.docker.com/) 中，发现已经成功提交到仓库了
+
+![image-20201202091107737](images/image-20201202091107737.png)
+
 ### 阿里云容器镜像服务
 
 上传至阿里云容器镜像服务的完整的脚本，如下所示
@@ -544,3 +553,8 @@ jobs:
           echo '=====镜像上传结束====='
 ```
 
+执行完上述脚本后，我们发现已经成功提交到  [阿里云容器镜像服务](https://cr.console.aliyun.com/)
+
+![image-20201202091542735](images/image-20201202091542735.png)
+
+到目前为止，自动化镜像制作已经完成了~
