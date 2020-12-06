@@ -16,6 +16,13 @@
 
 然后在我们的服务器登录docker进行测试
 
+```bash
+# 登录阿里云容器镜像服务
+docker login --username=moxi****@163.com registry.cn-shenzhen.aliyuncs.com
+```
+
+登录成功
+
 ![image-20201130102403332](images/image-20201130102403332.png)
 
 ## 提交镜像

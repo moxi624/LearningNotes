@@ -12,7 +12,7 @@
 
 - [Docker Compose入门学习](http://www.moguit.cn/#/info?blogOid=568)
 - [使用GithubAction构建蘑菇博客镜像提交DockerHub](http://www.moguit.cn/#/info?blogOid=567)
-- Docker图形化工具Portainer介绍与安装
+- [Docker图形化工具Portainer介绍与安装](http://www.moguit.cn/#/info?blogOid=569)
 - [使用DockerCompose制作蘑菇博客YAML镜像文件](http://www.moguit.cn/#/info?blogOid=567)
 
 本文主要讲解使用Docker Compose 一键部署蘑菇项目，如果想尝试其他方式，可以参考 [使用Docker快速搭建蘑菇博客（Nacos分支）](http://www.moguit.cn/#/info?blogUid=8100dcb585fff77e3fa25eed50e3708e)
