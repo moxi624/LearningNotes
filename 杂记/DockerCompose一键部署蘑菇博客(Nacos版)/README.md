@@ -8,14 +8,14 @@
 
 因此后面我们将所有的服务制作成单个的镜像，然后通过docker compose 进行容器编排，来协调每个容器同时对外提供服务，同时提供了Docker容器的可视化管理工具Portainer进行管理，同时达到对服务容器化的目的，也为以后使用K8S集群管理蘑菇博客做了很好的铺垫~。
 
-本文不再讲蘑菇博客如何制作镜像，Docker Compose的使用，以及将镜像推送到阿里云容器镜像服务和DockerHub，如果感兴趣的小伙伴可以参考另外的几篇博客
+本文不再讲蘑菇博客如何制作镜像，Docker Compose的使用，以及将镜像推送到阿里云容器镜像服务和DockerHub，如果感兴趣的小伙伴可以参考另外的几篇博客。
 
 - [Docker Compose入门学习](http://www.moguit.cn/#/info?blogOid=568)
 - [使用GithubAction构建蘑菇博客镜像提交DockerHub](http://www.moguit.cn/#/info?blogOid=567)
 - [Docker图形化工具Portainer介绍与安装](http://www.moguit.cn/#/info?blogOid=569)
 - [使用DockerCompose制作蘑菇博客YAML镜像文件](http://www.moguit.cn/#/info?blogOid=567)
 
-本文主要讲解使用Docker Compose 一键部署蘑菇项目，如果想尝试其他方式，可以参考 [使用Docker快速搭建蘑菇博客（Nacos分支）](http://www.moguit.cn/#/info?blogUid=8100dcb585fff77e3fa25eed50e3708e)
+本文主要讲解使用Docker Compose 一键部署蘑菇项目，如果想尝试其他方式【传统CentOS安装软件】，可以参考 [使用Docker快速搭建蘑菇博客（Nacos分支）](http://www.moguit.cn/#/info?blogUid=8100dcb585fff77e3fa25eed50e3708e)
 
 如果你也拥有域名并且备案了的话，可以给蘑菇博客配置域名的方式访问：[蘑菇博客配置域名解析](http://moguit.cn/#/info?blogUid=06565868c0e86fe8125a9d55430cd266)
 
@@ -158,14 +158,30 @@ docker network create mogu
 
 ![image-20201128215644896](images/image-20201128215644896.png)
 
-服务器目录位置随意，我是拷贝到  `/root/docker-compose` 目录，然后给命令设置执行权限
+首先我们来查看一下docker-compose的目录结构
+
+![image-20201212095110226](images/image-20201212095110226.png)
+
+- bin：相关一键启动脚本的目录
+  - completeStartup.sh：完整版启动脚本
+  - completeShutdown.sh：完整版关闭脚本
+  - kernStartup.sh：核心版启动脚本【只包含必要的组件】
+  - kernShutdown.sh：核心版关闭脚本
+  - update.sh：用于更新镜像【同步最新代码时使用】
+- config：存放配置文件
+- data：存放数据文件
+- log：存放日志文件
+- yaml：存放docker compose的yaml文件
+
+下面我们开始，将docker-compose文件夹，拷贝服务器目录位置随意，我是拷贝到  `/root/docker-compose` 目录，然后给命令设置执行权限
 
 ```bash
 # 进入目录
 cd docker-compose
 # 添加执行权限
-chmod +x kernStartup.sh
-chmod +x kernShutdown.sh
+chmod +x bin/kernStartup.sh
+chmod +x bin/kernShutdown.sh
+chmod +x bin/update.sh
 chmod +x config/wait-for-it.sh
 ```
 
@@ -181,15 +197,21 @@ vim config/vue_mogu_admin.env
 vim config/vue_mogu_web.env
 ```
 
+可以直接拷贝在本地，使用记事本进行修改，或者通过vim的全局替换命令
+
+```bash
+:%s/120.78.126.96/192.168.177.150/g
+```
+
 ### 开始部署
 
 下面我们执行命令，进行一键部署，我们执行 `kernStartup.sh` ，它会给我们安装蘑菇博客所需的核心服务
 
 ```bash
-# 启动一键部署脚本
-sh kernStartup.sh
+# 启动一键部署脚本 【核心版脚本】
+./bin/kernStartup.sh
 # 一键关闭【需要关闭时使用】
-sh kernShutdown.sh
+./bin/kernShutdown.sh
 ```
 
 执行完成后，就会在我们的镜像仓库中拉取对应的镜像【如果本地没有的话】
@@ -212,11 +234,19 @@ docker ps -a
 
 ![image-20201128173343556](images/image-20201128173343556.png)
 
-我们的容器也正常运行
+注意：如果我们通过命令查看，发现某个容器没有正常运行，如下图所示 【没有出错的，可以直接跳过】
+
+![image-20201212095820865](images/image-20201212095820865.png)
+
+是 portainer 容器运行失败，我们就需要对该容器进行重启，可以使用下面命令【找到该容器的 yml脚本】
+
+```bash
+docker-compose -f yaml/portainer.yml up -d
+```
 
 ## 运行测试
 
-### 运行容器查看
+### 运行容器查看 【可以不启动】
 
 我们安装了Portainer容器可视化工具，主要进行Docker容器的状态监控，以及镜像和容器的安装，关于具体Portainer可视化工具的使用，参考博客：Docker图形化工具Portainer介绍与安装
 
@@ -236,7 +266,7 @@ http://ip:9000
 http://ip:8848/nacos
 ```
 
-![image-20201128210938392](images/image-20201128210938392.png)
+![image-20201212152323674](images/image-20201212152323674.png)
 
 > 如果还存在某些服务没有注册上来，那么就需要等待一会【因为后台启动需要时间】
 
