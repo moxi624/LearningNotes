@@ -528,6 +528,16 @@ vm.max_map_count=655360
 
 # 让配置生效
 sysctl -p
+
+# 重启 docker，让内核参数对docker服务生效
+systemctl restart docker
+```
+
+默认情况下，Elasticsearch 使用 uid:gid（1000:1000）作为容器内的运行用户，如果把数据和日志挂载到宿主机目录中，需要修改权限
+
+```bash
+chown -R 1000:1000 ./data/elasticsearch_data
+chown -R 1000:1000 ./log/elk
 ```
 
 然后开始部署ELK

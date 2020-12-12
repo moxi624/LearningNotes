@@ -113,7 +113,7 @@
 - [CyclicBarrier是什么](./校招面试/JUC/7_CountDownLatch_CyclicBarrier_Semaphore使用/CyclicBarrier/README.md)
 - [Semaphore是什么](./校招面试/JUC/7_CountDownLatch_CyclicBarrier_Semaphore使用/Semaphore/README.md)
 - [Java中的阻塞队列](./校招面试/JUC/8_阻塞队列/README.md)
-- [Synchronized和Lock的区别与好处](./校招面试/JUC/Synchronized和Lock的区别与好处/README.md)
+- [Synchronized和Lock的区别与好处](./校招面试/JUC/9_Synchronized和Lock的区别与好处/README.md)
 - [Java线程池详解](./校招面试/JUC/10_线程池/README.md)
 - [死锁编码及快速定位](./校招面试/JUC/11_死锁编码及快速定位/README.md)
 - [JVM体系结构](./校招面试/JUC/12_JVM/JVM体系结构/README.md)
