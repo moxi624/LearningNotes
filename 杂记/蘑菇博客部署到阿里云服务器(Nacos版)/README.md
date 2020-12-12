@@ -59,6 +59,27 @@ nacos_config.sql：表示Nacos配置脚本（仅用于Nacos分支）
 
 ![img](images/0065b6c10d584aca9dfc31472a2d2d12)
 
+注意：我们在导入nacos_config.sql的时候，可能会遇到下面的错误
+
+```bash
+Error occured at:2020-12-11 09:30:29
+Line no.:190
+Error Code: 1071 - Specified key was too long; max key length is 767 bytes
+```
+
+这是由于索引长度过长而引起的，解决方法如下所示
+
+```bash
+# 首先检查数据库是否限制了索引的大小
+SHOW variables like 'innodb_large_prefix';
+# 如果查询为off的话，需要开启
+SET GLOBAL INNODB_LARGE_PREFIX = ON;
+# 然后在查看innodb_file_format引擎格式是不是BARRACUDA
+SHOW variables like 'innodb_file_format';
+# 如果不是，需要修改
+SET GLOBAL innodb_file_format = BARRACUDA;
+```
+
 ## 更改Nacos配置
 
 首先我们需要确保Nacos成功启动，然后访问Nacos管理页面
@@ -157,7 +178,7 @@ fi
 
 大概意思就是，我们找到jar启动的PID，然后使用kill命令杀死即可。
 
-启动mogu_sms后，我们重复上面的操作，分别把 mogu_picture、mogu_web、mogu_admin分别执行上述操作，即可完成蘑菇博客后台项目的部署
+启动mogu_sms后，我们重复上面的操作，分别把mogu_gateway、 mogu_picture、mogu_web、mogu_admin分别执行上述操作，即可完成蘑菇博客后台项目的部署
 
 需要注意的是：mogu_picture项目和mogu_web项目，除了替换对应的jar包外，我们还需要修改对应的配置文件，然后在启动项目【在最开始已经提到】
 
@@ -170,6 +191,12 @@ netstat -tunlp
 ```
 
 能够发现5个服务已经成功启动了
+
+- mogu_picture：8602
+- mogu_sms：8604
+- mogu_admin：8601
+- mogu_web：8603
+- mogu_gateway：8607
 
 ![image-20200101131754872](images/image-20200101131754872.png)
 
@@ -190,9 +217,9 @@ systemctl start rabbitmq-server
 http://your_ip:8848/nacos
 ```
 
-如果出现下面的页面，说明已经成功启动
+如果我们看到下面五个服务都注册到Nacos中，那说明启动成功
 
-![image-20201110100513715](images/image-20201110100513715.png)
+![image-20201212145951100](images/image-20201212145951100.png)
 
 ### 查看swagger-ui页面
 
@@ -213,7 +240,7 @@ http://your_ip:8603/swagger-ui/index.html
 
 选择LoginRestApi，验证登录，输入默认用户名和密码：admin  mogu2018，同时选择记住账号密码  true
 
-![image-20201110103206281](images/image-20201110103206281.png)
+![image-20201212151219659](images/image-20201212151219659.png)
 
 登录成功后，复制我们的token
 
@@ -231,16 +258,16 @@ http://your_ip:8603/swagger-ui/index.html
 
 下面我们到 vue_mogu_web目录下【在windows下】
 
-![image-20201130111419158](images/image-20201130111419158.png)
+![image-20201212150424856](images/image-20201212150424856.png)
 
 然后修改.env文件，把里面的ip地址，改成自己的
 
-```
+```bash
 NODE_ENV=production
 VUE_MOGU_WEB=http://120.78.126.96:9527
-PICTURE_API=http://120.78.126.96:8602
-WEB_API=http://120.78.126.96:8603
-ELASTICSEARCH=http://120.78.126.96:8605
+PICTURE_API=http://120.78.126.96:8607/mogu-picture
+WEB_API=http://120.78.126.96:8607/mogu-web
+SEARCH_API=http://120.78.126.96:8607/mogu-search
 ```
 
 注意：如果你拥有域名，VUE_MOGU_WEB 可以修改为
@@ -277,26 +304,20 @@ unzip dist.zip
 
 前台admin项目，修改配置的方式基本类似，我们到 vue_mogu_admin目录下，修改.env文件
 
-![image-20201130111729695](images/image-20201130111729695.png)
+![image-20201212150503542](images/image-20201212150503542.png)
 
 然后把里面的ip地址，改成你对应服务器的即可
 
 ```
-WEB_API=http://120.78.126.96:8603
-FILE_API=http://120.78.126.96:8600/
-RABBIT_MQ_ADMIN=http://120.78.126.96:15672
-SENTINEL_ADMIN=http://120.78.126.96:8070/sentinel/
-EUREKA_API=http://120.78.126.96:8761
-Search_API=http://120.78.126.96:8605
-ADMIN_API=http://120.78.126.96:8601
 NODE_ENV=production
-Zipkin_Admin=http://120.78.126.96:9411/zipkin/
-DRUID_ADMIN=http://120.78.126.96:8601/druid/login.html
-SPRING_BOOT_ADMIN=http://120.78.126.96:8606/wallboard
+ADMIN_API=http://120.78.126.96:8607/mogu-admin
+PICTURE_API=http://120.78.126.96:8607/mogu-picture
+WEB_API=http://120.78.126.96:8607/mogu-web
+Search_API=http://120.78.126.96:8607/mogu-search
+FILE_API=http://120.78.126.96:8600/
 BLOG_WEB_URL=http://120.78.126.96:9527
-ELASTIC_SEARCH=http://120.78.126.96:5601
-PICTURE_API=http://120.78.126.96:8602
 SOLR_API=http://120.78.126.96:8080/solr
+ELASTIC_SEARCH=http://120.78.126.96:5601
 ```
 
 注意：如果你拥有域名，BLOG_WEB_URL可以修改为
