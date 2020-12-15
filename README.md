@@ -365,6 +365,7 @@
 - [CentOS下安装Nacos](./Linux/CentOS下安装Nacos/README.md)
 - [CentOS下安装Sentinel](./Linux/CentOS下安装Sentinel/README.md)
 - [VMWare中CentOS如何配置固定IP](./Linux/VMWare中CentOS如何配置固定IP/README.md)
+- [CentOS中将文本中的ip替换成服务器外网ip](./Linux/CentOS中将文本中的ip替换成服务器外网ip/README.md)
 
 ## Redis
 

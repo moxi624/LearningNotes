@@ -187,7 +187,25 @@ chmod +x config/wait-for-it.sh
 
 ### 修改前端配置
 
-下面我们需要修改前端页面请求的地址，我们在 `docker-compose\config` 目录，将里面的ip地址，修改为我们目前服务器的ip地址【可以拷贝出来在本地替换】
+关于前端配置的修改，提供了两种方式
+
+- 自动修改：通过python脚本获取外网地址，然后一键替换【虚拟机部署的无效】
+- 手动修改：如果在虚拟机中部署，必须使用手动修改的方式
+
+### 自动修改
+
+文件夹中提供了自动替换ip的python脚本
+
+```bash
+# 进入到bin目录
+cd bin
+# 执行脚本
+python2 replaceIp.py
+```
+
+tip：该脚本只能在云服务器上，才能获取到精确的外网地址，如果采用NAT网络模式的虚拟机，获取的IP会有问题，需要自己手动进行ip地址的修改~
+
+### 手动修改
 
 ```bash
 # 修改vue_mogu_admin项目配置
@@ -208,10 +226,12 @@ vim config/vue_mogu_web.env
 下面我们执行命令，进行一键部署，我们执行 `kernStartup.sh` ，它会给我们安装蘑菇博客所需的核心服务
 
 ```bash
+# 进入到bin目录
+cd bin
 # 启动一键部署脚本 【核心版脚本】
-./bin/kernStartup.sh
+sh kernStartup.sh
 # 一键关闭【需要关闭时使用】
-./bin/kernShutdown.sh
+sh kernShutdown.sh
 ```
 
 执行完成后，就会在我们的镜像仓库中拉取对应的镜像【如果本地没有的话】
