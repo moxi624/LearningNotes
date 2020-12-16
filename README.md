@@ -366,6 +366,7 @@
 - [CentOS下安装Sentinel](./Linux/CentOS下安装Sentinel/README.md)
 - [VMWare中CentOS如何配置固定IP](./Linux/VMWare中CentOS如何配置固定IP/README.md)
 - [CentOS中将文本中的ip替换成服务器外网ip](./Linux/CentOS中将文本中的ip替换成服务器外网ip/README.md)
+- [Asciinema-一种基于文本的终端录制方法](./Linux/Asciinema-一种基于文本的终端录制方法/README.md)
 
 ## Redis
 
