@@ -496,21 +496,25 @@ http://your_ip:8848/nacos
 我们在通过访问下列swagger接口，测试接口是否正常
 
 ```
-http://your_ip:8601/swagger-ui.html
-http://your_ip:8603/swagger-ui.html
+http://your_ip:8601/swagger-ui/index.html
+http://your_ip:8603/swagger-ui/index.html
 ```
 
 如果能够进入下面页面的话，说明后台是没有问题的了，下面我们可以验证一下接口
 
-![image-20200209130313977](images/image-20200209130313977-1599124105900.png)
+![img](images/f7aac7c1d46e41fb88cce5918318f509)
 
 验证登录
 
-![image-20200209130324333](images/image-20200209130324333-1599124105900.png)
+![img](images/84ed060923214f7cb8df77f0b6bc512a)
 
-登录功能正常使用，我们把token复制到来，然后在swagger页面的右上角，有一个authorize的按钮，点击后，将token粘贴进去，即可操作全部接口进行测试了~
+然后执行完成后，复制到token
 
-![image-20200209130336478](images/image-20200209130336478-1599124105900.png)
+![img](images/ec60e235b7264864a404abc8cd24248f)
+
+然后在swagger页面的右上角，有一个authorize的按钮，点击后，将token粘贴进去，即可操作全部接口进行测试了~
+
+![img](images/03c6697dfd3148888215e2f38e99b775)
 
 ## 修改前端项目配置
 
