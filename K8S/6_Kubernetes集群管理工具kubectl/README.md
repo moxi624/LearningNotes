@@ -129,7 +129,4 @@ kubectl expose deployment nginx --port=80 --type=NodePort
 
 # 查看资源
 kubectl get pod, svc
-
-# 对资源应用进行配置
-kubectl apply -f
 ```

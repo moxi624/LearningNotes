@@ -29,6 +29,10 @@ Pod 和 Controller之间是通过label标签来建立关系，同时Controller�
 - 部署，滚动升级等功能
 - 应用场景：web服务，微服务
 
+Deployment表示用户对K8S集群的一次更新操作。Deployment是一个比RS( Replica Set, RS) 应用模型更广的 API 对象，可以是创建一个新的服务，更新一个新的服务，也可以是滚动升级一个服务。滚动升级一个服务，实际是创建一个新的RS，然后逐渐将新 RS 中副本数增加到理想状态，将旧RS中的副本数减少到0的复合操作。
+
+这样一个复合操作用一个RS是不好描述的，所以用一个更通用的Deployment来描述。以K8S的发展方向，未来对所有长期伺服型的业务的管理，都会通过Deployment来管理。
+
 ## Deployment部署应用
 
 之前我们也使用Deployment部署过应用，如下代码所示
