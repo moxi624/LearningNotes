@@ -24,3 +24,14 @@
 - [Kubernetes搭建高可用集群](./18_Kubernetes搭建高可用集群/README.md)
 - [Kubernetes容器交付介绍](./19_Kubernetes容器交付介绍/README.md)
 
+
+
+## 扩展
+
+- [使用kubeadm-ha脚本一键安装K8S](./30_使用kubeadm-ha脚本一键安装K8S/README.md)
+
+- [Kubernetes可视化界面kubesphere](./31_Kubernetes可视化界面kubesphere/README.md)
+
+- [Kubernetes配置默认存储类](./32_Kubernetes配置默认存储类/README.md)
+
+  

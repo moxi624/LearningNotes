@@ -1,9 +1,9 @@
-# 一键脚本部署k8s以及后续kuboard的安装
+# 使用kubeadm-ha脚本一键安装K8S
 
-### 前情提示
+## 前情提示
 
 `以前安装k8s集群的时候使用的是k8s官网的教程 使用的镜像源都是国外的 速度慢就不说了 还有一些根本就下载不动 导致安装失败 最后在群里小伙伴(蘑菇博客交流群/@你钉钉响了)的建议下使用一个开源的一键安装k8s的脚本就好了起来了`  
-git地址  https://github.com/TimeBye/kubeadm-ha
+Github地址：https://github.com/TimeBye/kubeadm-ha
 
 ## 环境准备
 
@@ -11,8 +11,8 @@ git地址  https://github.com/TimeBye/kubeadm-ha
 
 ### 硬件系统要求
 
-- Master节点：2c2g+
-- Worker节点：2c4g+
+- Master节点：2C4G +
+- Worker节点：2C4G +
 
 使用centos7.7安装请按上面配置准备好3台centos,1台作为Master节点,2台Worker节点
 
@@ -20,11 +20,11 @@ git地址  https://github.com/TimeBye/kubeadm-ha
 
 这是我的各个节点的配置
 
-| 主机名     | ip             | 配置 |
-| ---------- | -------------- | ---- |
-| k8s-master | 192.168.28.80  | 2c8g |
-| k8s-master | 192.168.28.128 | 2c8g |
-| k8s-master | 192.168.28.89  | 2c8g |
+| 主机名     | ip              | 配置 |
+| ---------- | --------------- | ---- |
+| k8s-master | 192.168.177.130 | 2C4G |
+| k8s-node1  | 192.168.177.131 | 2C2G |
+| k8s-node2  | 192.168.177.132 | 2C2G |
 
 ### centos准备
 
@@ -50,9 +50,9 @@ systemctl stop firewalld  && systemctl disable firewalld && systemctl status fir
 ping 其他节点ip
 ```
 
-#### centos软件准备
+#### CentOS软件准备
 
-用ssh连接到Master节点上安装git
+用 **ssh** 连接到 **Master** 节点上安装 Git
 
 ```sh
 yum install git -y
@@ -101,26 +101,26 @@ vi example/hosts.s-master.ip.ini
 ;    第三个字段 ansible_user     为节点远程登录用户名
 ;    第四个字段 ansible_ssh_pass 为节点远程登录用户密码
 [all]
-192.168.28.80 ansible_port=22 ansible_user="root" ansible_ssh_pass="cheng"
-192.168.28.128 ansible_port=22 ansible_user="root" ansible_ssh_pass="cheng"
-192.168.28.89 ansible_port=22 ansible_user="root" ansible_ssh_pass="cheng"
+192.168.177.130 ansible_port=22 ansible_user="root" ansible_ssh_pass="moxi"
+192.168.177.131 ansible_port=22 ansible_user="root" ansible_ssh_pass="moxi"
+192.168.177.132 ansible_port=22 ansible_user="root" ansible_ssh_pass="moxi"
 
 ; 单 master 节点不需要进行负载均衡，lb节点组留空。
 [lb]
 
 ; 注意etcd集群必须是1,3,5,7...奇数个节点
 [etcd]
-192.168.28.80
-192.168.28.128
-192.168.28.89
+192.168.177.130
+192.168.177.131
+192.168.177.132
 
 [kube-master]
-192.168.28.80
+192.168.177.130
 
 [kube-worker]
-192.168.28.80
-192.168.28.128
-192.168.28.89
+192.168.177.130
+192.168.177.131
+192.168.177.132
 
 ; 预留组，后续添加master节点使用
 [new-master]
@@ -146,9 +146,9 @@ vi example/hosts.s-master.ip.ini
 ;-------------------------------------- 以下为基础信息配置 ------------------------------------;
 [all:vars]
 ; 是否跳过节点物理资源校验，Master节点要求2c2g以上，Worker节点要求2c4g以上
-skip_verify_node=false
+skip_verify_node=true
 ; kubernetes版本
-kube_version="1.19.4"
+kube_version="1.18.14"
 ; 负载均衡器
 ;   有 nginx、openresty、haproxy、envoy  和 slb 可选，默认使用 nginx
 ;   为什么单 master 集群 apiserver 也使用了负载均衡请参与此讨论： https://github.com/TimeBye/kubeadm-ha/issues/8
@@ -190,7 +190,6 @@ kubelet_root_dir="/var/lib/kubelet"
 docker_storage_dir="/var/lib/docker"
 ; Etcd 数据根目录
 etcd_data_dir="/var/lib/etcd"
-
 ```
 
 #### 升级内核
@@ -231,35 +230,80 @@ kubectl get nodes
 
 ```
 NAME             STATUS   ROLES                AGE     VERSION
-192.168.28.128   Ready    etcd,worker          2m57s   v1.19.4
-192.168.28.80    Ready    etcd,master,worker   3m29s   v1.19.4
-192.168.28.89    Ready    etcd,worker          2m57s   v1.19.4
+192.168.28.128   Ready    etcd,worker          2m57s   v1.18.14
+192.168.28.80    Ready    etcd,master,worker   3m29s   v1.18.14
+192.168.28.89    Ready    etcd,worker          2m57s   v1.18.14
+```
+
+### 集群重置
+
+如果部署失败了，想要重置整个集群【包括数据】，执行下面脚本
+
+```bash
+ansible-playbook -i example/hosts.s-master.ip.ini 99-reset-cluster.yml
 ```
 
 ## 部署kuboard
 
-### 切换docker的镜像加速为阿里云
+### 安装Docker
 
-在所有节点执行
+因为我们需要拉取镜像，所以需要在服务器提前安装好Docker，首先配置一下Docker的阿里yum源
 
-```sh
-sudo mkdir -p /etc/docker
-sudo tee /etc/docker/daemon.json <<-'EOF'
-{
-  "registry-mirrors": ["https://uz6p4blc.mirror.aliyuncs.com"]
-}
+```bash
+cat >/etc/yum.repos.d/docker.repo<<EOF
+[docker-ce-edge]
+name=Docker CE Edge - \$basearch
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/\$basearch/edge
+enabled=1
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 EOF
-sudo systemctl daemon-reload && systemctl restart docker
 ```
 
-### 安装 Kuboard
+然后yum方式安装docker
+
+```bash
+# yum安装
+yum -y install docker-ce
+# 查看docker版本
+docker --version  
+# 开机自启
+systemctl enable docker
+# 启动docker
+systemctl start docker
+```
+
+配置docker的镜像源
+
+```bash
+cat >> /etc/docker/daemon.json << EOF
+{
+  "registry-mirrors": ["https://b9pmyelo.mirror.aliyuncs.com"]
+}
+EOF
+```
+
+然后重启docker
+
+```bash
+systemctl restart docker
+```
+
+## 安装Kuboard【可选】
+
+### 简介
+
+**Kuboard** 是一款免费的 **Kubernetes** 图形化管理工具，力图帮助用户快速在 **Kubernetes** 上落地微服务。
+
+Kuboard文档：https://kuboard.cn/
+
+### 安装
 
 `在master节点执行`
 
 ```sh
 kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
 kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server.yaml
-
 ```
 
 查看 Kuboard 运行状态
@@ -269,7 +313,7 @@ kubectl get pods -l k8s.kuboard.cn/name=kuboard -n kube-system
 
 ```
 
-输出结果如下所示
+输出结果如下所示。注意：如果是 `ContainerCreating` 那么需要等待一会
 
 ```
 NAME                       READY   STATUS    RESTARTS   AGE
@@ -281,33 +325,98 @@ kuboard-74c645f5df-cmrbc   1/1     Running   0          80s
 
 Kuboard Service 使用了 NodePort 的方式暴露服务，NodePort 为 32567；您可以按如下方式访问 Kuboard。
 
-```
+```bash
+# 格式
 http://任意一个Worker节点的IP地址:32567/
+
+# 例如，我的访问地址如下所示
+http://192.168.177.130:32567/
 ```
 
-我的
+页面如下所示：
 
-```
-http://192.168.28.128:32567/
-```
+![image-20210107211525789](images/image-20210107211525789.png)
 
-第一次访问需要输入token 我们获取一下
-
-### 获取token 
-
-`在master节点执行`
+第一次访问需要输入token 我们获取一下 **token**， `在master节点执行`
 
 ```sh
 echo $(kubectl -n kube-system get secret $(kubectl -n kube-system get secret | grep kuboard-user | awk '{print $1}') -o go-template='{{.data.token}}' | base64 -d)
 
 ```
 
-我获取到的token (全部复制完全)
+获取到的 **token**，然后粘贴到框中，我的 **token** 格式如下：
 
-```
+```bash
 eyJhbGciOiJSUzI1NiIsImtpZCI6ImY1eUZlc0RwUlZha0E3LWZhWXUzUGljNDM3SE0zU0Q4dzd5R3JTdXM2WEUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXVzZXItdG9rZW4tMmJsamsiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoia3Vib2FyZC11c2VyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiYzhlZDRmNDktNzM0Zi00MjU1LTljODUtMWI5MGI4MzU4ZWMzIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmt1Ym9hcmQtdXNlciJ9.MujbwGnkL_qa3H14oKDT1zZ5Fzt16pWoaY52nT7fV5B2nNIRsB3Esd18S8ztHUJZLRGxAhBwu-utToi2YBb8pH9RfIeSXMezFZ6QhBbp0n5xYWeYETQYKJmes2FRcW-6jrbpvXlfUuPXqsbRX8qrnmSVEbcAms22CSSVhUbTz1kz8C7b1C4lpSGGuvdpNxgslNFZTFrcImpelpGSaIGEMUk1qdjKMROw8bV83pga4Y41Y6rJYE3hdnCkUA8w2SZOYuF2kT1DuZuKq3A53iLsvJ6Ps-gpli2HcoiB0NkeI_fJORXmYfcj5N2Csw6uGUDiBOr1T4Dto-i8SaApqmdcXg
 ```
 
-将token输入到kuboard
+最后即可进入 **kuboard** 的 **dashboard** 界面
 
-最后即可进入kuboard的dashboard界面
+![image-20210107211713726](images/image-20210107211713726.png)
+
+### 卸载Kuboard
+
+当我们 **kuboard** 不想使用的时候，我们就可以直接卸载
+
+```bash
+kubectl delete -f https://kuboard.cn/install-script/kuboard.yaml
+kubectl delete -f https://addons.kuboard.cn/metrics-server/0.3.7/metrics-server.yaml
+```
+
+## Rancher部署【可选】
+
+> kuboard和rancher建议部署其中一个
+
+### helm安装
+
+使用helm部署rancher会方便很多，所以需要安装helm
+
+```bash
+curl -O http://rancher-mirror.cnrancher.com/helm/v3.2.4/helm-v3.2.4-linux-amd64.tar.gz
+tar -zxvf helm-v3.2.4-linux-amd64.tar.gz
+mv linux-amd64/helm /usr/local/bin
+```
+
+#### 验证
+
+```bash
+helm version
+```
+
+输入以下内容说明helm安装成功
+
+```bash
+version.BuildInfo{Version:"v3.2.4", GitCommit:"0ad800ef43d3b826f31a5ad8dfbb4fe05d143688", GitTreeState:"clean", GoVersion:"go1.13.12"}
+```
+
+### 添加rancher chart仓库
+
+```bash
+helm repo add rancher-stable http://rancher-mirror.oss-cn-beijing.aliyuncs.com/server-charts/stable
+helm repo update
+```
+
+### 安装rancher
+
+```bash
+helm install rancher rancher-stable/rancher \
+ --create-namespace	\
+ --namespace cattle-system \
+ --set hostname=rancher.local.com
+```
+
+##### 等待 Rancher 运行：
+
+```bash
+kubectl -n cattle-system rollout status deploy/rancher
+```
+
+输出信息：
+
+```bash
+Waiting for deployment "rancher" rollout to finish: 0 of 3 updated replicas are available...
+deployment "rancher" successfully rolled out
+```
+
+
+
