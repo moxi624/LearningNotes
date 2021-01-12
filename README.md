@@ -41,6 +41,20 @@
 >
 > 【腾讯云】云产品限时秒杀，爆款1核2G云服务器，首年99元（老用户重新用微信QQ注册即可） [点我进入](https://curl.qcloud.com/zry6xub9)
 
+## 公众号文章
+
+> 来源陌溪的个人公众号：**陌溪教你学编程**
+
+- [大型生产事故,开源项目蘑菇博客差点被删库](https://mp.weixin.qq.com/s/UprMwItKjJ-Bcj1Z5ija1g)
+- [蘑菇博客从0到2000Star，分享我的Java自学路线图](https://mp.weixin.qq.com/s/3u6OOYkpj4_ecMzfMqKJRw)
+- [陌溪在开源社区逛了几个月, 终于写下了蘑菇博客的开源文档](https://mp.weixin.qq.com/s/VXH19dQRkNtPbzDMVXwsPQ)
+- [从三本院校到斩获字节跳动后端研发Offer-讲述我的故事](https://mp.weixin.qq.com/s/c4rR_aWpmNNFGn-mZBLWYg)
+- [年轻人不讲码德,竟然用1核2G服务器来部署蘑菇博客](https://mp.weixin.qq.com/s/geq912p7hinDEeNU1Py1jQ)
+- [蘑菇博客前端页面如何引入矢量图标](https://mp.weixin.qq.com/s/mO0HlIZsjdluY16YW8rOdA)
+- [Windows+VMware快速搭建蘑菇博客本地开发环境](https://mp.weixin.qq.com/s/9aB7yyP9j67MS-zhigJFWA)
+- [一份百投百中的计算机校招简历是如何诞生的](https://mp.weixin.qq.com/s/IWjVpVkRbthCo5BtdW5R4g)
+- [陌溪在公众号摸滚翻爬半个月，整理的入门指南](https://mp.weixin.qq.com/s/Jj1i-mD9Tw0vUEFXi5y54g)
+
 ## Java
 
 > 来源Bilibili尚硅谷周阳老师学习视频：[点我传送](https://www.bilibili.com/video/BV15J4112785)
