@@ -54,6 +54,7 @@
 - [Windows+VMware快速搭建蘑菇博客本地开发环境](https://mp.weixin.qq.com/s/9aB7yyP9j67MS-zhigJFWA)
 - [一份百投百中的计算机校招简历是如何诞生的](https://mp.weixin.qq.com/s/IWjVpVkRbthCo5BtdW5R4g)
 - [陌溪在公众号摸滚翻爬半个月，整理的入门指南](https://mp.weixin.qq.com/s/Jj1i-mD9Tw0vUEFXi5y54g)
+- [Nacos出现重大安全漏洞,开源项目险遭脱库](https://mp.weixin.qq.com/s/8DtVEtJZU47Ugr802l9ZWg)
 
 ## Java
 
