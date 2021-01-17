@@ -53,6 +53,12 @@ kubectl get storageclass
 
 如果没有默认存储类，那么就需要安装默认的存储类，参考博客：[Kubernetes配置默认存储类](http://moguit.cn/#/info?blogOid=575)
 
+因为我安装的是 **nfs**，所以在安装了 **nfs** 服务器启动
+
+```bash
+systemctl start nfs
+```
+
 ### 开始安装
 
 如果无法正常访问github，可以提前把文件下载到本地
@@ -91,7 +97,17 @@ kubectl get pod -n kubesphere-system
 
 ![image-20210110104812804](images/image-20210110104812804.png)
 
-使用 `kubectl get pod --all-namespaces` 查看所有 Pod 是否在 KubeSphere 的相关命名空间中正常运行。如果是，请通过以下命令检查控制台的端口：
+使用 `kubectl get pod --all-namespaces` 查看所有 Pod 是否在 KubeSphere 的相关命名空间中正常运行。
+
+```bash
+kubectl get pods --all-namespaces
+```
+
+能够发现所有的节点已经成功运行
+
+![image-20210113102423851](images/image-20210113102423851.png)
+
+如果是，请通过以下命令检查控制台的端口：
 
 ```bash
 kubectl get svc/ks-console -n kubesphere-system
