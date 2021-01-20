@@ -2,7 +2,7 @@
 
 ## 前言
 
-这阵子在整K8s，因为之前不太清楚VMWare如何设置固定IP地址，所以每次VMWare中都是自动获取IP的，这样就造成了每次只要本地机器重启，虚拟机中的网络又变化了，导致K8S服务无法正常的启动。
+这阵子在整 **K8S** ，因为之前不太清楚VMWare如何设置固定IP地址，所以每次VMWare中都是自动获取IP的，这样就造成了每次只要本地机器重启，虚拟机中的网络又变化了，导致K8S服务无法正常的启动。
 
 这里需要特别感谢群里的小伙伴 **@你钉钉响了** **@清欢渡**  手把手的教学，帮助我学习了一波VMware网络知识~，有时间要好好补一补Linux网络知识 ...，言归正传，下面开始给VMware设置固定IP了
 
@@ -84,8 +84,6 @@ NAT模式下，虚拟机网络连接到宿主机的VMnet8上，此时系统的VM
 
 在NAT模式下，主机网卡直接与虚拟NAT设备相连，然后虚拟NAT设备与虚拟DHCP服务器一起连接在虚拟机交换机VMnet8上，这样就实现了虚拟机联网。
 
-
-
 ## 使用NAT模式配置虚拟机固定IP
 
 ### 找到VMnet8网卡
@@ -94,12 +92,7 @@ NAT模式下，虚拟机网络连接到宿主机的VMnet8上，此时系统的VM
 
 ![image-20201111194922373](images/image-20201111194922373.png)
 
-然后我们右键属性，找到IPv4协议，然后设置一下ip地址
-
-- ip地址：192.168.13.1  【注意这个ip地址，可能和下面重置网络后的不一样，这里可以修改成一致的】
-- 子网掩码：255.255.255.0
-
-![image-20201111220229085](images/image-20201111220229085.png)
+然后我们右键属性，找到IPv4协议，然后选择 **自动获取 IP地址**
 
 ### 虚拟网络编辑器
 
@@ -151,38 +144,40 @@ vim /etc/sysconfig/network-scripts/ifcfg-ens33
 然后在文件中，加入如下内容
 
 ```bash
-TYPE="Ethernet"
-PROXY_METHOD="none"
-BROWSER_ONLY="no"
-BOOTPROTO="static"  # 设置静态方式
-DEFROUTE="yes"
-IPV4_FAILURE_FATAL="no"
-IPV6INIT="yes"
-IPV6_AUTOCONF="yes"
-IPV6_DEFROUTE="yes"
-IPV6_FAILURE_FATAL="no"
-IPV6_ADDR_GEN_MODE="stable-privacy"
-NAME="ens33"
-UUID="b4fe4a51-0691-447c-b203-c397cb232eda"
-DEVICE="ens33"
-ONBOOT="yes"
-IPV6_PRIVACY="no"
-IPADDR=192.168.13.130 #本机地址
-NETMASK=255.255.255.0 #子网掩码
-GATEWAY=192.168.13.2 #默认网关
-DNS1=8.8.8.8
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=static
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=ens33
+UUID=1f6d2414-12b7-40ef-8fb1-d2e6db9c739b
+DEVICE=ens33
+ONBOOT=yes
+IPADDR=192.168.13.130
+NETMASK=255.255.255.0
+GATEWAY=192.168.13.254
+DNS1=223.5.5.5
 ```
 
 这里需要注意的几个点就是下面几个参数
 
 ```bash
-# ip地址【DHCP中的范围内的】
+#设置静态模式
+BOOTPROTO=static
+ONBOOT=yes
+#ip地址【DHCP中的范围内的】
 IPADDR=192.168.13.130 
-# 子网掩码
+#子网掩码
 NETMASK=255.255.255.0
-# 网关 【刚刚我们在NAT设置中配置的】
+#网关【刚刚我们在NAT设置中配置的】
 GATEWAY=192.168.13.254
-DNS1=8.8.8.8
+DNS1=223.5.5.5
 ```
 
 配置完成后，我们就重启网络即可
@@ -208,7 +203,7 @@ ping www.baidu.com
 
 ## 最后
 
-在说一个我遇到的问题，就是在配置好网络后，重启电脑，发现之前配置的虚拟机又不能上网了，后面经过群里小伙伴的指点，发现是重启后，VMware的NAT和DHCP服务已经关闭了，所以我们需要手动启动
+在说一个我遇到的问题，就是在配置好网络后，重启电脑，发现之前配置的虚拟机又不能上网了，后面经过群里小伙伴的指点，发现是重启后，**VMware** 的 **NAT** 和 **DHCP** 服务已经关闭了，所以我们需要手动启动
 
 ![image-20201113145306958](images/image-20201113145306958.png)
 
