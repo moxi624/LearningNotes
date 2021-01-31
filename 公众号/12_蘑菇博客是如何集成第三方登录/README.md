@@ -2,7 +2,7 @@
 
 大家好，我是**陌溪**
 
-这篇主要给搭建讲解的是，蘑菇博客项目是如何集成第三方登录。陌溪在做第三方登录的时候，也没有上来就造轮子，而是先在 **Github** 和 **Gitee** 中找到了一个第三方登录的开源库：**JustAuth**。
+这篇主要给搭建讲解的是，蘑菇博客项目是如何集成第三方登录。陌溪在做第三方登录的时候，也没有上来就造轮子，而是先在 **Gitee** 中找到了一个第三方登录的开源库：**JustAuth**。
 
 **JustAuth**，如你所见，它仅仅是一个**第三方授权登录**的**工具类库**，它可以让我们脱离繁琐的第三方登录 SDK，让登录变得 **So easy!**  **JustAuth** 集成了诸如：**Github**、**Gitee**、支付宝、新浪微博、微信、Google、Facebook、Twitter、StackOverflow等国内外数十家第三方平台。
 
@@ -471,6 +471,141 @@ justAuth:
     github: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   clientSecret:
     gitee: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    github: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX    
+    github: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
 ```
 
+## Gitee获取授权密钥
+
+在码云中：我们首先进入设置页面，然后选择第三方应用，然后创建应用
+
+
+![img](images/1577774049160.png)
+
+然后开始填写对应的内容
+
+![img](images/1577774070401.png)
+
+重新点击第三方应用，获取到对应的ClientID和Client Secret替换即可
+
+![img](images/1577774097799.png)
+
+Github上的操作同理，我们需要设置setting，然后选择Developer settings，OAuth Apps：创建一个新的
+
+![img](images/1577774134599.png)
+
+这里填写的信息和刚刚码云上差不多，最后一个 **Authorization callback URL** 需要改成 **Github** 的回调地址
+
+```bash
+http://127.0.0.1:8603/oauth/callback/github
+```
+
+页面如下所示
+
+![img](images/1577774162993.png)
+
+然后最后在创建成功后复制对应的 **ClientID** 和 **Client Secret** 即可：
+
+![img](images/1577774183497.png)
+
+## 关于AuthRestApi中方法的作用
+
+在 **AuthRestApi** 中，下面几个方法的主要作用是：
+
+- **renderAuth**：获取认证，前端通过 **login** 方法，即访问的是该接口，然后会创建一个认证请求，里面调用了**getAuthRequest** 方法
+- **getAuthRequest**：该方法需要传入一个 **source** 参数，该参数主要是失败用户请求的接口，然后封装一个 **URL**，最后通过 **renderAuth** 返回到前台页面中，该方法前端接受后，最终会生成一个 **URL** ，然后跳转到对应的页面进行授权即可
+
+例如下面的 **vue** 代码：
+
+```
+    goAuth: function (source) {
+        var params = new URLSearchParams();
+        params.append("source", source);
+        login(params).then(response => {
+          if (response.code == "success") {
+            console.log(response.data.url);
+            var token = response.data.token;
+            console.log(response);
+            window.location.href = response.data.url
+          }
+        });
+      },
+```
+
+vue代码，就是通过source判断我点击的按钮，如果是github，那么source为 ”github“，然后调用后台的登录方法，通过传递的source，生成一个授权页面url，最后我们通过window.location.href 跳转到授权页面：
+
+![img](images/1577774935816.png)
+
+回调的接口如下所示：
+
+```java
+ /**
+     * oauth平台中配置的授权回调地址，以本项目为例，在创建gitee授权应用时的回调地址应为：http://127.0.0.1:8603/oauth/callback/gitee
+     */
+    @RequestMapping("/callback/{source}")
+    public void login(@PathVariable("source") String source, AuthCallback callback, HttpServletRequest request, HttpServletResponse httpServletResponse) throws IOException {
+        log.info("进入callback：" + source + " callback params：" + JSONObject.toJSONString(callback));
+        AuthRequest authRequest = getAuthRequest(source);
+        AuthResponse response = authRequest.login(callback);
+        String result = JSONObject.toJSONString(response);
+        System.out.println(JSONObject.toJSONString(response));
+
+        Map<String, Object> map = JsonUtils.jsonToMap(result);
+        Map<String, Object> data = JsonUtils.jsonToMap(JsonUtils.objectToJson(map.get(SysConf.DATA)));
+        Map<String, Object> token = JsonUtils.jsonToMap(JsonUtils.objectToJson(data.get(SysConf.TOKEN)));
+        String accessToken = token.get(SysConf.ACCESS_TOKEN).toString();
+        User user = userService.insertUserInfo(request, result);
+
+        if (user != null) {
+            //将从数据库查询的数据缓存到redis中
+            stringRedisTemplate.opsForValue().set(SysConf.USER_TOEKN + SysConf.REDIS_SEGMENTATION + accessToken, JsonUtils.objectToJson(user), userTokenSurvivalTime, TimeUnit.SECONDS);
+        }
+
+        httpServletResponse.sendRedirect(webSiteUrl + "?token=" + accessToken);
+    }
+```
+
+我们需要将得到的用户信息，存储到数据库，同时生成一个token，通过url的方式，传递到前台，然后前台得到token后，通过token获取用户信息：
+
+```java
+    @ApiOperation(value = "获取用户信息", notes = "获取用户信息")
+    @GetMapping("/verify/{accessToken}")
+    public String verifyUser(@PathVariable("accessToken") String accessToken) {
+        String userInfo = stringRedisTemplate.opsForValue().get("TOKEN:" + accessToken);
+        if (StringUtils.isEmpty(userInfo)) {
+            return ResultUtil.result(SysConf.ERROR, MessageConf.INVALID_TOKEN);
+        } else {
+            Map<String, Object> map = JsonUtils.jsonToMap(userInfo);
+            return ResultUtil.result(SysConf.SUCCESS, map);
+        }
+    }
+```
+
+然后在vue项目中，我们只需要判断是否有token通过url传递过来
+
+```javascript
+ let token = this.getUrlVars()["token"];
+      // 判断url中是否含有token
+      if (token != undefined) {
+        setCookie("token", token, 1)
+      }
+
+      // 从cookie中获取token
+      token = getCookie("token")
+      if (token != undefined) {
+        authVerify(token).then(response => {
+          if (response.code == "success") {
+            this.isLogin = true;
+            this.userInfo = response.data;
+          } else {
+            this.isLogin = false;
+            delCookie("token");
+          }
+        });
+      } else {
+        this.isLogin = false;
+ }
+```
+
+如果有，那么就通过token获取用户信息，登录完成后，就能够看到头像回显了：
+
+![img](images/1577775104658.png)

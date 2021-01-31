@@ -15,9 +15,9 @@
 - [Docker图形化工具Portainer介绍与安装](http://www.moguit.cn/#/info?blogOid=569)
 - [使用DockerCompose制作蘑菇博客YAML镜像文件](http://www.moguit.cn/#/info?blogOid=567)
 
-本文主要讲解使用Docker Compose 一键部署蘑菇项目，如果想尝试其他方式【传统CentOS安装软件】，可以参考 [使用Docker快速搭建蘑菇博客（Nacos分支）](http://www.moguit.cn/#/info?blogUid=8100dcb585fff77e3fa25eed50e3708e)
+本文主要讲解使用Docker Compose 一键部署蘑菇项目，如果想尝试其他方式【通过发布 **jar** 包部署】，可以参考 [使用Docker快速搭建蘑菇博客（Nacos分支）](http://www.moguit.cn/#/info?blogUid=8100dcb585fff77e3fa25eed50e3708e)
 
-如果你也拥有域名并且备案了的话，可以给蘑菇博客配置域名的方式访问：[蘑菇博客配置域名解析](http://moguit.cn/#/info?blogUid=06565868c0e86fe8125a9d55430cd266)
+如果你也拥有域名并且备案了的话，可以给蘑菇博客配置域名的方式访问：[DockerCompose部署的博客配置域名访问](http://moguit.cn/#/info?blogOid=582)
 
 如果你的服务器带宽只有1M，可以使用免费的百度云加速，加快页面渲染速度：[如何使用百度云加速提升网站访问速度](http://www.moguit.cn/#/info?blogUid=af053959672343f8a139ec27fd534c6c)
 
@@ -79,11 +79,11 @@ Docker Compose是用来定义和运行多个Docker应用程序的工具。通过
 https://github.com/docker/compose/releases
 ```
 
+> 如果Github下载过于缓慢，备用地址【下载后解压zip】：[点我传送](https://wws.lanzous.com/iTHoIiuilvi)
+
 然后选择Linux版本下载
 
 ![image-20201127211547030](images/image-20201127211547030.png)
-
-> 如果上述地址下载过于缓慢，请备用地址【下载后解压zip】：[点我传送](https://wws.lanzous.com/iTHoIiuilvi)
 
 把下载到的文件使用Xftp工具，拷贝到 `/usr/local/bin/` 目录下
 
@@ -182,7 +182,7 @@ cd docker-compose
 chmod +x bin/kernStartup.sh
 chmod +x bin/kernShutdown.sh
 chmod +x bin/update.sh
-chmod +x config/wait-for-it.sh
+chmod +x bin/wait-for-it.sh
 ```
 
 ### 修改前端配置
@@ -194,7 +194,7 @@ chmod +x config/wait-for-it.sh
 
 ### 自动修改
 
-文件夹中提供了自动替换ip的python脚本
+首先需要进入 **docker-compose/bin** 文件夹，里面提供了自动替换ip的python脚本
 
 ```bash
 # 进入到bin目录
@@ -203,9 +203,15 @@ cd bin
 python2 replaceIp.py
 ```
 
+执行完后，将会修改我们配置文件中的ip地址
+
+![image-20210103150812306](images/image-20210103150812306.png)
+
 tip：该脚本只能在云服务器上，才能获取到精确的外网地址，如果采用NAT网络模式的虚拟机，获取的IP会有问题，需要自己手动进行ip地址的修改~
 
 ### 手动修改
+
+针对虚拟机中部署，我们需要手动修改配置
 
 ```bash
 # 修改vue_mogu_admin项目配置
@@ -223,7 +229,7 @@ vim config/vue_mogu_web.env
 
 ### 开始部署
 
-下面我们执行命令，进行一键部署，我们执行 `kernStartup.sh` ，它会给我们安装蘑菇博客所需的核心服务
+首先到**bin**目录，执行 `kernStartup.sh` 开始一键部署，该脚本将安装蘑菇博客所需的核心服务
 
 ```bash
 # 进入到bin目录
@@ -233,6 +239,20 @@ sh kernStartup.sh
 # 一键关闭【需要关闭时使用】
 sh kernShutdown.sh
 ```
+
+> 注意：如果执行一键部署脚本 kernStartup.sh 的时候，出现  $'\r': command not found  文件
+>
+> 可能是因为windows与Unix文本编辑器默认格式不同引起的，因此需要进行转换
+>
+> ```bash
+> # 安装 dos2unix
+> yum -y install dos2unix*
+> # 转换脚本
+> dos2unix kernStartup.sh
+> dos2unix kernShutdown.sh
+> dos2unix update.sh
+> dos2unix wait-for-it.sh
+> ```
 
 执行完成后，就会在我们的镜像仓库中拉取对应的镜像【如果本地没有的话】
 
@@ -266,9 +286,15 @@ docker-compose -f yaml/portainer.yml up -d
 
 ## 运行测试
 
-### 运行容器查看 【可以不启动】
+### 运行容器查看 【默认未启动】
 
-我们安装了Portainer容器可视化工具，主要进行Docker容器的状态监控，以及镜像和容器的安装，关于具体Portainer可视化工具的使用，参考博客：Docker图形化工具Portainer介绍与安装
+我们安装了Portainer容器可视化工具，主要进行Docker容器的状态监控，以及镜像和容器的安装，如果需要开启的话，那么执行下面的脚本，进行启动
+
+```bash
+docker-compose -f yaml/portainer.yml up -d
+```
+
+关于具体Portainer可视化工具的使用，参考博客：[Docker图形化工具Portainer介绍与安装](http://moguit.cn/#/info?blogOid=570)
 
 ```bash
 # 访问portainer可视化界面【首次需要创建密码，选择local环境】
