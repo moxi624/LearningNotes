@@ -332,11 +332,11 @@ BLOG_WEB_URL=http://demoweb.moguit.cn
 # 安装依赖
 npm install --registry=https://registry.npm.taobao.org
 
-# 打包
+# 打包 生成dist文件夹
 npm run build
 ```
 
-我们在按上述操作，把dist压缩，然后放到/home/mogu_blog/vue_mogu_admin文件夹下
+我们在按上述操作，把 **dist** 压缩，然后放到/home/mogu_blog/vue_mogu_admin文件夹下
 
 ![img](images/1574822290047.png)
 
