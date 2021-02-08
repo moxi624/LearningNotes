@@ -175,7 +175,17 @@ target目录: mogu_admin/target
 
 ## 打包Docker镜像到服务器
 
-在我们完成所有的步骤后，就可以 点击运行，开始打包镜像
+在做成Docker镜像前，我们需要先对服务镜像打包
+
+在项目根目录，使用 `mvn clean install` 进行打包，操作完成后，即可看到 **BUILD SUCCESS**
+
+![image-20210205085824821](images/image-20210205085824821.png)
+
+然后在到 **vue_mogu_admin** 和 **vue_mogu_web** 目录，使用 **npm run build** 命令进行打包，生成 **dist** 文件夹
+
+![image-20210205090503146](images/image-20210205090503146.png)
+
+在我们完成所有的步骤后，回到 **IDEA** 中， 就可以点击 **运行**，开始打包镜像
 
 ![image-20210130212721312](images/image-20210130212721312.png)
 
