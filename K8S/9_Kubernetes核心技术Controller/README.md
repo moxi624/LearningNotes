@@ -101,7 +101,7 @@ kubectl expose deployment web --port=80 --type=NodePort --target-port=80 --name=
 关于上述命令，有几次参数
 
 - --port：就是我们内部的端口号
-- --target-get-port：就是暴露外面访问的端口号
+- --target-port：就是暴露外面访问的端口号
 - --name：名称
 - --type：类型
 
