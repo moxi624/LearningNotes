@@ -98,7 +98,7 @@ kubectl apply -f nginx.yaml
 kubectl expose deployment web --port=80 --type=NodePort --target-port=80 --name=web1
 ```
 
-关于上述命令，有几次参数
+关于上述命令，有几个参数
 
 - --port：就是我们内部的端口号
 - --target-port：就是暴露外面访问的端口号
