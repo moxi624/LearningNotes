@@ -407,13 +407,13 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
 
 我们一个都不用，在生产环境中是使用自己自定义的
 
-为什么不用Executors中JDK提供的？
+为什么不用 Executors 中JDK提供的？
 
 根据阿里巴巴手册：并发控制这章
 
 - 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程
   - 使用线程池的好处是减少在创建和销毁线程上所消耗的时间以及系统资源的开销，解决资源不足的问题，如果不使用线程池，有可能造成系统创建大量同类线程而导致消耗完内存或者“过度切换”的问题
-- 线程池不允许使用Executors去创建，而是通过ThreadToolExecutors的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险
+- 线程池不允许使用Executors去创建，而是通过 ThreadPoolExecutor 的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险
   - Executors返回的线程池对象弊端如下：
     - FixedThreadPool和SingleThreadPool：
       - 运行的请求队列长度为：Integer.MAX_VALUE，可能会堆积大量的请求，从而导致OOM
