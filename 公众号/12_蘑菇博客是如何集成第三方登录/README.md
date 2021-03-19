@@ -12,7 +12,7 @@
 
 ## 编写登录页面
 
-首先需要编写一个登录框代码，下面是使用 Vue 创建了一个组件 **LoginBox.vue**，同时里面还引入了**阿里矢量库**中的几个图标，感兴趣的小伙伴可以查看这篇博客：[蘑菇博客前端页面如何引入矢量图标](https://mp.weixin.qq.com/s?__biz=MzkyMzE5NTYzMA==&tempkey=MTA5NV82TGI3dzYxV1kybWV3NUlQMHFOSm1Ma1g4NUVMZFZuUzhWSzhfMUNMS0VDZ0ZWX253VTFUdUdrY3BJLUZ3cTMwYUhCSzBvY1RpQzNsSGlBOThjZXVKTUhuNThGVmJMMjdrR1VoVDJnV2dqR3FaRHZBRnpzRGdQekZyVlRoYVRFcDZaUVBiTkV6SkI3QkpjRkxTU2U5cFM5aGNTdjM5TFZQMGY2WkdRfn4%3D&chksm=41e9871a769e0e0c61b80fba64b260d0c1065bcfeca47c34a615f3c971f2bf1ead248b3e7367#rd)
+首先需要编写一个登录框代码，下面是陌溪使用 **Vue** 编写的一个组件 **LoginBox.vue**，同时里面还引入了**阿里矢量库**中的几个图标，感兴趣的小伙伴可以查看这篇博客：[蘑菇博客前端页面如何引入矢量图标](https://mp.weixin.qq.com/s/mO0HlIZsjdluY16YW8rOdA)
 
 ```html
 <template>
@@ -293,7 +293,7 @@
 
 下面是运行后的结果如下所示
 
-![img](images/1577773839268.png)
+![登录框](images/1577773839268.png)
 
 下面是第三方登录的请求接口
 
@@ -479,19 +479,19 @@ justAuth:
 在码云中：我们首先进入设置页面，然后选择第三方应用，然后创建应用
 
 
-![img](images/1577774049160.png)
+![创建应用](images/1577774049160.png)
 
 然后开始填写对应的内容
 
-![img](images/1577774070401.png)
+![填写回调地址](images/1577774070401.png)
 
-重新点击第三方应用，获取到对应的ClientID和Client Secret替换即可
+重新点击第三方应用，获取到对应的 **ClientID** 和 **Client Secret**
 
-![img](images/1577774097799.png)
+![获取密钥](images/1577774097799.png)
 
-Github上的操作同理，我们需要设置setting，然后选择Developer settings，OAuth Apps：创建一个新的
+**Github**上的操作同理，我们需要设置 **setting**，然后选择 **Developer settings**，**OAuth Apps**：创建一个新的
 
-![img](images/1577774134599.png)
+![创建应用](images/1577774134599.png)
 
 这里填写的信息和刚刚码云上差不多，最后一个 **Authorization callback URL** 需要改成 **Github** 的回调地址
 
@@ -501,11 +501,11 @@ http://127.0.0.1:8603/oauth/callback/github
 
 页面如下所示
 
-![img](images/1577774162993.png)
+![填写回调地址](images/1577774162993.png)
 
 然后最后在创建成功后复制对应的 **ClientID** 和 **Client Secret** 即可：
 
-![img](images/1577774183497.png)
+![获取Github密钥](images/1577774183497.png)
 
 ## 关于AuthRestApi中方法的作用
 
@@ -531,9 +531,9 @@ http://127.0.0.1:8603/oauth/callback/github
       },
 ```
 
-vue代码，就是通过source判断我点击的按钮，如果是github，那么source为 ”github“，然后调用后台的登录方法，通过传递的source，生成一个授权页面url，最后我们通过window.location.href 跳转到授权页面：
+**vue** 代码，就是通过 **source** 判断用户点击的按钮，如果是 **github**，那么 **source** 为  **github** ，然后调用后台的登录方法，通过传递的 **source** ，生成一个授权页面 **url**，最后我们通过 **window.location.href** 跳转到授权页面：
 
-![img](images/1577774935816.png)
+![授权登录](images/1577774935816.png)
 
 回调的接口如下所示：
 
@@ -564,7 +564,7 @@ vue代码，就是通过source判断我点击的按钮，如果是github，那�
     }
 ```
 
-我们需要将得到的用户信息，存储到数据库，同时生成一个token，通过url的方式，传递到前台，然后前台得到token后，通过token获取用户信息：
+我们需要将得到的用户信息，存储到数据库，同时生成一个 **token**，通过 **url** 的方式，传递到前台，然后前台得到**token** 后，通过 **token** 获取用户信息：
 
 ```java
     @ApiOperation(value = "获取用户信息", notes = "获取用户信息")
@@ -580,7 +580,7 @@ vue代码，就是通过source判断我点击的按钮，如果是github，那�
     }
 ```
 
-然后在vue项目中，我们只需要判断是否有token通过url传递过来
+然后在 **vue** 项目中，我们只需要判断是否有 **token** 通过 **url** 传递过来
 
 ```javascript
  let token = this.getUrlVars()["token"];
@@ -606,6 +606,28 @@ vue代码，就是通过source判断我点击的按钮，如果是github，那�
  }
 ```
 
-如果有，那么就通过token获取用户信息，登录完成后，就能够看到头像回显了：
+如果有，那么就通过 **token** 获取用户信息，登录完成后，就能够看到头像回显了：
 
-![img](images/1577775104658.png)
+![显示用户信息](images/1577775104658.png)
+
+本文只介绍了 **Gitee** 的登录流程，如果想要集成 **QQ** 登录或者 **微信** 登录可以参考 **JustAuth** 文档，或者直接查看**蘑菇博客**源码，里面实现了更多的登录方式。
+
+> JustAuth文档：https://docs.justauth.whnb.wang/#/
+>
+> 蘑菇博客源码: https://gitee.com/moxi159753/mogu_blog_v2
+
+我是**陌溪**，我们下期再见~
+
+## 往期推荐
+
+- [蘑菇博客从0到2000Star，分享我的Java自学路线图](https://mp.weixin.qq.com/s/3u6OOYkpj4_ecMzfMqKJRw)
+
+- [从三本院校到斩获字节跳动后端研发Offer-讲述我的故事](https://mp.weixin.qq.com/s/c4rR_aWpmNNFGn-mZBLWYg)
+
+- [陌溪在公众号摸滚翻爬半个月，整理的入门指南](https://mp.weixin.qq.com/s/Jj1i-mD9Tw0vUEFXi5y54g)
+
+## 结语
+
+**陌溪**是一个从三本院校一路摸滚翻爬上来的互联网大厂程序员。独立做过几个开源项目，其中**蘑菇博客**在码云上有 **2K Star** 。目前就职于**字节跳动的Data广告部门**，是字节跳动全线产品的商业变现研发团队。本公众号将会持续性的输出很多原创小知识以及学习资源。如果你觉得本文对你有所帮助，麻烦给文章点个「赞」和「在看」。同时欢迎各位小伙伴关注陌溪，让我们一起成长~
+
+![和陌溪一起学编程](images/image-20210122092846701.png)
