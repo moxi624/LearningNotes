@@ -4,19 +4,19 @@
 
 **陌溪** 是一个从三本院校一路摸滚翻爬上来的程序员。目前就职于 **字节跳动的Data广告部门**，是字节跳动全线产品的商业变现研发团队。这两天创建了一个 **微信公众号【陌溪教你学编程】**，未来将会在公众号上持续性的输出很多原创小知识以及学习资源，欢迎各位小伙伴关注我，和我一起共同学习，同时我也希望各位小伙伴能够给**LearningNotes**项目**多多 Star支持**，您的**点赞**就是我维护的动力！
 
-|                 微信公众号【陌溪教你学编程】                 |                   微信群【陌溪教你学编程】                   |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://gitee.com/moxi159753/wx_picture/raw/master/picture/公众号.jpg" width="200" /> | <img src="https://gitee.com/moxi159753/wx_picture/raw/master/picture/微信群.png" width="200" /> |
+|                 微信公众号【陌溪教你学编程】                 |                QQ群【备注：`蘑菇博客`】                |
+| :----------------------------------------------------------: | :----------------------------------------------------: |
+| <img src="https://gitee.com/moxi159753/wx_picture/raw/master/picture/公众号.jpg" width="200" /> | <img src="./doc/images/qq/qqGroup2.png" width="200" /> |
 
 ## 项目介绍
 
 个人学习笔记，主要来源于B站上视频的学习，同时会记录平时一些学习和项目中遇到的问题，同步更新在 [蘑菇博客](http://www.moguit.cn)，如果对我的博客网站感兴趣的话，欢迎关注我的 [蘑菇博客源码](https://gitee.com/moxi159753/mogu_blog_v2)，如果笔记对您有帮助的话，欢迎star支持，谢谢~
 
-笔记主要涵盖：Java，JVM、JUC、Spring，SpringCloud，计算机网络，操作系统，数据结构，Vue等
+笔记主要涵盖：**Java**，**JVM**、**JUC**、**Spring**，**SpringCloud**，**计算机网络**，**操作系统**，**数据结构**，**Vue** 等
 
 本仓库有来源自己总结、网上收集、视频笔记，如果有侵权之处，可以联系我进行删除
 
-因个人能力有限，笔记中可能还有很多错误的地方，还请大家能够多多指出交流，也欢迎各位小伙伴能够提交pull request请求进行完善
+因个人能力有限，笔记中可能还有**很多错误**的地方，还请大家能够多多指出交流，也欢迎各位小伙伴能够提交 **pull request** 请求进行完善。
 
 如果您要转载本仓库中的笔记到其它地方，欢迎添加笔记的仓库地址：[LearningNotes](https://gitee.com/moxi159753/LearningNotes)
 
@@ -52,9 +52,16 @@
 - [年轻人不讲码德,竟然用1核2G服务器来部署蘑菇博客](https://mp.weixin.qq.com/s/geq912p7hinDEeNU1Py1jQ)
 - [蘑菇博客前端页面如何引入矢量图标](https://mp.weixin.qq.com/s/mO0HlIZsjdluY16YW8rOdA)
 - [Windows+VMware快速搭建蘑菇博客本地开发环境](https://mp.weixin.qq.com/s/9aB7yyP9j67MS-zhigJFWA)
-- [一份百投百中的计算机校招简历是如何诞生的](https://mp.weixin.qq.com/s/IWjVpVkRbthCo5BtdW5R4g)
 - [陌溪在公众号摸滚翻爬半个月，整理的入门指南](https://mp.weixin.qq.com/s/Jj1i-mD9Tw0vUEFXi5y54g)
 - [Nacos出现重大安全漏洞,开源项目险遭脱库](https://mp.weixin.qq.com/s/8DtVEtJZU47Ugr802l9ZWg)
+- [还在人肉运维？看看蘑菇博客是如何实现自动化部署](https://t.1yb.co/kQ3A)
+- [使用IDEA发布蘑菇博客Docker镜像到服务器](https://t.1yb.co/kQ3P)
+- [陌溪在Github网上冲浪时遇到的问题](https://t.1yb.co/kQ3X)
+- [陌溪终于有时间写代码了](https://t.1yb.co/kQ40)
+- [开源项目蘑菇博客是如何集成第三方登录](https://t.1yb.co/kQ4e)
+- [SpringBoot项目启动时增加自定义Banner](https://t.1yb.co/kQ4h)
+- [蘑菇博客Golang版安装指南](https://t.1yb.co/kQ4k)
+- [开源项目蘑菇博客如何集成Minio对象存储服务器](https://t.1yb.co/kRXt)
 
 ## Java
 
@@ -504,8 +511,9 @@
 
 ## 赞赏
 
-如果觉得本仓库对您有帮助的话，希望朋友能够给博主喝一杯咖啡（ps.. 小伙伴赞赏的时候可以备注一下下~）
+如果觉得**本仓库**对您有帮助的话，希望朋友能够给博主**喝一杯咖啡**（ps.. 小伙伴赞赏的时候可以备注一下下~）
 
 |                       微信                       |                      支付宝                       |
 | :----------------------------------------------: | :-----------------------------------------------: |
 | <img src="./doc/images/qq/wx.png" width="200" /> | <img src="./doc/images/qq/zfb.png" width="200" /> |
+
