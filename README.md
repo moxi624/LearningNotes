@@ -43,7 +43,7 @@
 
 ## 公众号文章
 
-> 来源陌溪的个人公众号：**陌溪教你学编程**
+> 来源陌溪的个人公众号：**[陌溪教你学编程](https://gitee.com/moxi159753/wx_picture/raw/master/picture/%E5%85%AC%E4%BC%97%E5%8F%B7.jpg)**
 
 - [大型生产事故,开源项目蘑菇博客差点被删库](https://mp.weixin.qq.com/s/UprMwItKjJ-Bcj1Z5ija1g)
 - [蘑菇博客从0到2000Star，分享我的Java自学路线图](https://mp.weixin.qq.com/s/3u6OOYkpj4_ecMzfMqKJRw)
