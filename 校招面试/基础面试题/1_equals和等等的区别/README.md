@@ -110,7 +110,7 @@ str1.equals(str2)：true
 str1 == str5：false
 str1 == str6：false
 str5 == str6：false
-str5.equals(str6)：false
+str5.equals(str6)：true
 str1 == str6.intern()：false
 str1 == str2.intern()：true
 ```
