@@ -108,8 +108,7 @@ A服务本身需要B服务资源，与用户无关。
 ### 建表语句
 
 官方SQL地址：
-https://github.com/spring-projects/spring-security-oauth/blob/master/spring-securityoauth2/
-src/test/resources/schema.sql
+https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql
 
 ### oauth_client_details【核心表】
 
