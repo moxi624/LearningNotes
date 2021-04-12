@@ -82,7 +82,7 @@ public class SpinLockDemo {
 
         // 让main线程暂停1秒，使得t1线程，先执行
         try {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -104,11 +104,12 @@ public class SpinLockDemo {
 最后输出结果
 
 ```
-t1	 come in 
+t1 come in
+.....一秒后.....
+t2 come in
 .....五秒后.....
-t1	 invoked myUnlock()
-t2	 come in 
-t2	 invoked myUnlock()
+t1 invoked myUnlock()
+t2 invoked myUnlock()
 ```
 
 首先输出的是 t1	 come in 
