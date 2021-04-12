@@ -7,13 +7,13 @@
 <p align=center>
     <img src="./doc/images/qq//公众号2.jpg" width="500" />
 </p>
-> **【内推】**目前字节跳动的 **广告系统** 和 **在线教育** 等方向拥有大量岗位需求，欢迎点击下方**内推链接**选择合适的岗位投递，同时可以通过 **公众号** 联系我跟进面试进度。
->
-> 春招&实习：[点我传送](https://job.toutiao.com/campus/m/position?category=&external_referral_code=PS33MAS&job_hot_flag=&keywords=&location=&project=&type=)
->
-> 社会招聘：[点我传送](https://job.toutiao.com/experienced/m/?external_referral_code=PS33MAS)
-
 🔗友情链接：我的好友阿秀前段时间收集了超过1000本计算机经典书籍的PDF，包括C++、Java、Python、操作系统、计算机网络、数据库等方面的书籍都有收录，基本上你能听过的都在里面了。这是他的仓库 [CS-Books](https://github.com/forthespada/CS-Books)，大家可以去看看，以后看书不花钱不是梦了哈哈，欢迎Star⭐
+
+## 内推
+
+目前字节跳动的 **广告系统** 和 **在线教育** 等方向拥有大量岗位需求，欢迎点击下方**内推链接**【内推码:PS33MAS】选择合适的岗位投递，同时可以通过 **公众号** 联系我跟进面试进度。
+
+春招&实习：[点我传送](https://job.toutiao.com/campus/m/position?category=&external_referral_code=PS33MAS&job_hot_flag=&keywords=&location=&project=&type=)      社会招聘：[点我传送](https://job.toutiao.com/experienced/m/?external_referral_code=PS33MAS)
 
 ## 项目介绍
 
