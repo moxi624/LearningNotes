@@ -1,14 +1,20 @@
-# 学习笔记
+# 陌溪的学习笔记
 
 ## 关于我
 
 **陌溪** 是一个从三本院校一路摸滚翻爬上来的程序员。目前就职于 **字节跳动的Data广告部门**，是字节跳动全线产品的商业变现研发团队。这两天创建了一个 **微信公众号【陌溪教你学编程】**，未来将会在公众号上持续性的输出很多原创小知识以及学习资源，欢迎各位小伙伴关注我，和我一起共同学习，同时我也希望各位小伙伴能够给**LearningNotes**项目**多多 Star支持**，您的**点赞**就是我维护的动力！
 
-|                 微信公众号【陌溪教你学编程】                 |                 QQ群【备注：`蘑菇博客`】                 |
-| :----------------------------------------------------------: | :------------------------------------------------------: |
-| <img src="https://gitee.com/moxi159753/wx_picture/raw/master/picture/公众号.jpg" width="200" /> | <img src="./doc/images/qq/qqGroup2-2.png" width="200" /> |
+<p align=center>
+    <img src="./doc/images/qq//公众号2.jpg" width="500" />
+</p>
 
 🔗友情链接：我的好友阿秀前段时间收集了超过1000本计算机经典书籍的PDF，包括C++、Java、Python、操作系统、计算机网络、数据库等方面的书籍都有收录，基本上你能听过的都在里面了。这是他的仓库 [CS-Books](https://github.com/forthespada/CS-Books)，大家可以去看看，以后看书不花钱不是梦了哈哈，欢迎Star⭐
+
+## 内推
+
+目前字节跳动的 **广告系统** 和 **在线教育** 等方向拥有大量岗位需求，欢迎点击下方**内推链接**【内推码:PS33MAS】选择合适的岗位投递。小伙伴们使用**内推链接**投递后，可以通过 **公众号** 联系我跟进面试进度。
+
+春招&实习：[点我传送](https://job.toutiao.com/campus/m/position?category=&external_referral_code=PS33MAS&job_hot_flag=&keywords=&location=&project=&type=)     社会招聘：[点我传送](https://job.toutiao.com/experienced/m/?external_referral_code=PS33MAS)
 
 ## 项目介绍
 
@@ -64,6 +70,7 @@
 - [SpringBoot项目启动时增加自定义Banner](https://t.1yb.co/kQ4h)
 - [蘑菇博客Golang版安装指南](https://t.1yb.co/kQ4k)
 - [开源项目蘑菇博客如何集成Minio对象存储服务器](https://t.1yb.co/kRXt)
+- [读者问:有没有高效的记视频笔记方法？](https://t.1yb.co/msyJ)
 
 ## Java
 

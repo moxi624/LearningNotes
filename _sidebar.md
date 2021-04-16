@@ -17,6 +17,7 @@
   - [SpringBoot项目启动时增加自定义Banner](https://t.1yb.co/kQ4h)
   - [蘑菇博客Golang版安装指南](https://t.1yb.co/kQ4k)
   - [开源项目蘑菇博客如何集成Minio对象存储服务器](https://t.1yb.co/kRXt)
+  - [读者问:有没有高效的记视频笔记方法？](https://t.1yb.co/msyJ)
 - **Java**
   - [equals和等等的区别](校招面试/基础面试题/1_equals和等等的区别/README.md)
   - [代码块](./校招面试/基础面试题/2_代码块/README.md)
