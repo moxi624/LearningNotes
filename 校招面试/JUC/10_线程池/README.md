@@ -418,7 +418,7 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
     - FixedThreadPool和SingleThreadPool：
       - 运行的请求队列长度为：Integer.MAX_VALUE，可能会堆积大量的请求，从而导致OOM
     - CacheThreadPool和ScheduledThreadPool
-      - 运行的请求队列长度为：Integer.MAX_VALUE，可能会堆积大量的请求，从而导致OOM
+      - 运行的请求队列长度为：Integer.MAX_VALUE，线程数上限太大导致oom
 
 ## 手写线程池
 
