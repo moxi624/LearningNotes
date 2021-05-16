@@ -1,3 +1,11 @@
+## PDF下载
+
+本笔记同时提供 **PDF** 离线版本，请扫描下方公众号『**陌溪教你学编程**』后，回复关键字『**PDF**』，即可下载 **PDF 版本的笔记**。
+
+<p align=center>
+    <img src="../../doc/images/qq/获取PDF.jpg" width="500" />
+</p>
+
 ## 中间件
 
 >来源Bilibili中华石杉老师学习视频：[Java工程师面试突击](https://www.bilibili.com/video/BV1UJ411X7M1)

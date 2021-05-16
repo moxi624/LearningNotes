@@ -1,12 +1,10 @@
-# ElasticStack
+## PDF下载
 
-## 前言
+本笔记同时提供 **PDF** 离线版本，请扫描下方公众号『**陌溪教你学编程**』后，回复关键字『**PDF**』，即可下载 **PDF 版本的笔记**。
 
-ELK = ElasticSearch + Logstash + Kibana
-
-随着Beats的加入，原来的ELK体系变成了ElasticStack，即
-
-ElasticStack =  ElasticSearch + Logstash + Kibana + Beats
+<p align=center>
+    <img src="../doc/images/qq/获取PDF.jpg" width="500" />
+</p>
 
 ## 笔记
 
