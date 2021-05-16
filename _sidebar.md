@@ -18,6 +18,10 @@
   - [蘑菇博客Golang版安装指南](https://t.1yb.co/kQ4k)
   - [开源项目蘑菇博客如何集成Minio对象存储服务器](https://t.1yb.co/kRXt)
   - [读者问:有没有高效的记视频笔记方法？](https://t.1yb.co/msyJ)
+  - [不限速的阿里云盘PC桌面版本来了~](https://t.1yb.co/pPOW)
+  - [万字长文带你学习ElasticSearch](https://t.1yb.co/pPPo)
+  - [一文带你了解轻量性日志采集器Beats的使用](https://t.1yb.co/pPQ9)
+  - [如何使用一条命令完成蘑菇博客的部署？](https://t.1yb.co/pPQr)
 - **Java**
   - [equals和等等的区别](校招面试/基础面试题/1_equals和等等的区别/README.md)
   - [代码块](./校招面试/基础面试题/2_代码块/README.md)

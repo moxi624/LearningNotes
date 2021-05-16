@@ -134,7 +134,7 @@ http://192.168.177.130:30880/
 
 ### 错误1
 
-kubesphere无法登录，提示account is not active
+kubesphere无法登录，提示 account is not active
 
 ![image-20210110110018004](images/image-20210110110018004.png)
 
