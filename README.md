@@ -21,7 +21,7 @@
 
 ## PDF下载
 
-本仓库中整理的笔记同时提供 PDF 离线版本，请扫描下方公众号『**陌溪教你学编程**』后，回复关键字『**PDF**』，即可下载 **仓库最新 PDF 版本的笔记**。
+本仓库中整理的笔记同时提供 **PDF** 离线版本，请扫描下方公众号『**陌溪教你学编程**』后，回复关键字『**PDF**』，即可下载 **仓库最新 PDF 版本的笔记**。
 
 <p align=center>
     <img src="./doc/images/qq//获取PDF.jpg" width="500" />
@@ -357,7 +357,7 @@
 - [Vue中对数组变化监听](./Vue/Vue中对数组变化监听/README.md)
 - [Vue中使用Vue-cropper进行图片裁剪](./Vue/Vue中使用Vue-cropper进行图片裁剪/README.md)
 - [Vuex学习指南-实现一个计数器](./Vue/VueX/Vuex学习指南-实现一个计数器/README.md)
-- [Vue中防止XSS脚本攻击](./Vue/VueX/Vue中防止XSS脚本攻击/README.md)
+- [Vue中防止XSS脚本攻击](./Vue/Vue中防止XSS脚本攻击/README.md)
 - [Vue如何使用G2绘制图片](./Ant/G2/Vue如何使用G2绘制图片/README.md)
 - [使用Vuex进行两个页面逻辑交互](./Vue/使用Vuex进行两个页面逻辑交互/README.md)
 
