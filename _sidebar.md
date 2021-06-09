@@ -22,6 +22,9 @@
   - [万字长文带你学习ElasticSearch](https://t.1yb.co/pPPo)
   - [一文带你了解轻量性日志采集器Beats的使用](https://t.1yb.co/pPQ9)
   - [如何使用一条命令完成蘑菇博客的部署？](https://t.1yb.co/pPQr)
+  - [双非本科，折戟成沙铁未销，九面字节终上岸！](https://mp.weixin.qq.com/s/SRf2f8wFFyjz2BUUXD_pmg)
+  - [如何给蘑菇博客搭建一套分布式日志收集系统？](https://mp.weixin.qq.com/s/AvF_IAZobOyerhM7moOBLw)
+  - [蘑菇博客被跨站脚本攻击了？](https://mp.weixin.qq.com/s/ogKcfvfix8cVsmSENj-nKQ)
 - **Java**
   - [equals和等等的区别](校招面试/基础面试题/1_equals和等等的区别/README.md)
   - [代码块](./校招面试/基础面试题/2_代码块/README.md)
