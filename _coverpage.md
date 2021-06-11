@@ -7,7 +7,13 @@
 <a href='https://gitee.com/moxi159753/LearningNotes/stargazers'><img src='https://gitee.com/moxi159753/LearningNotes/badge/star.svg?theme=dark' alt='star'></img></a>
 <a href='https://gitee.com/moxi159753/LearningNotes/members'><img src='https://gitee.com/moxi159753/LearningNotes/badge/fork.svg?theme=dark' alt='fork'></img></a>
 
-[Gitee](<https://gitee.com/moxi159753/LearningNotes>)
+<!-- 引入不蒜子脚本和标签 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span id="busuanzi_container_site_pv" >本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+ [Gitee](<https://gitee.com/moxi159753/LearningNotes>)
 [Github](<https://github.com/moxi624/LearningNotes>)
 [开始阅读](README.md)
 
