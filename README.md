@@ -1,8 +1,8 @@
-# 陌溪的学习笔记
+# 📙陌溪的学习笔记
 
 ## 关于我
 
-[**陌溪**](https://gitee.com/moxi159753/LearningNotes/raw/master/doc/images/qq/添加陌溪.png) 是一个从三本院校一路摸滚翻爬上来的程序员。目前就职于字节跳动的Data广告部门，是字节跳动全线产品的商业变现研发团队。这两天创建了一个 **微信公众号【[陌溪教你学编程](https://gitee.com/moxi159753/LearningNotes/raw/master/doc/images/qq/公众号2.jpg)】**，未来将会在公众号上持续性的输出很多原创小知识以及学习资源，欢迎各位小伙伴关注我，和我一起共同学习，同时我也希望各位小伙伴能够给**LearningNotes **项目多多 **Star** 支持，您的**点赞**就是我维护的动力！
+[**陌溪**](https://gitee.com/moxi159753/LearningNotes/raw/master/doc/images/qq/添加陌溪.png) 是一个从三本院校一路摸滚翻爬上来的程序员。目前就职于字节跳动的Data广告部门，是字节跳动全线产品的商业变现研发团队。这两天创建了一个 **微信公众号【[陌溪教你学编程](https://gitee.com/moxi159753/LearningNotes/raw/master/doc/images/qq/公众号2.jpg)】**，未来将会在公众号上持续性的输出很多原创小知识以及学习资源，欢迎各位小伙伴关注我，和我一起共同学习，同时我也希望各位小伙伴能够给 **LearningNotes** 项目多多 **Star** 支持，您的**点赞**就是我维护的动力！
 
 
 🔗友情链接：我的好友阿秀前段时间收集了超过1000本计算机经典书籍的PDF，包括C++、Java、Python、操作系统、计算机网络、数据库等方面的书籍都有收录，基本上你能听过的都在里面了。这是他的仓库 [CS-Books](https://github.com/forthespada/CS-Books)，大家可以去看看，以后看书不花钱不是梦了哈哈，欢迎Star⭐
@@ -15,7 +15,7 @@
 
 本仓库有来源自己总结、网上收集、视频笔记，如果有侵权之处，可以联系我进行删除
 
-因个人能力有限，笔记中可能还有**很多错误**的地方，还请大家能够多多指出交流，也欢迎各位小伙伴能够提交 **pull request** 请求进行完善。
+因个人能力有限，笔记中可能还有**很多错误**的地方，还请大家能够多多指出交流，也欢迎各位小伙伴能够提交 **Pull Request** 请求进行完善。
 
 如果您要转载本仓库中的笔记到其它地方，欢迎添加笔记的仓库地址：[LearningNotes](https://gitee.com/moxi159753/LearningNotes)
 

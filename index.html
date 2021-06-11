@@ -13,14 +13,14 @@
   <meta name="google-site-verification" content="qTFCf1hJ275saQ7H1kin5t2DVpznBKAj0Gi50XMOVMo" />
   <!-- 百度站点收录-->
   <meta name="baidu-site-verification" content="SZyWUIzWiU" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css">
  
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-	  name: '📔 陌溪的学习笔记',	  
+	  name: '📙 陌溪的学习笔记',	  
       coverpage: true, // 设置封面
       onlyCover: true, // 只显示封面  
       loadSidebar: true, // 设置侧边栏
@@ -33,13 +33,14 @@
         depth: 3,                       // 搜索标题的最大程级, 1 - 6
       },
 	  footer: {
-        copy: '<span id="sitetime" style="font-size:14px"></span><br/><span style="font-size:14px">Copyright &copy; 2021.06.11 - 至今</span>',
-        auth: ' <a href="https://mp.weixin.qq.com/s/gRw25aRFBVB0lUhBAJqV5g" target="_blank" style="font-size:14px">🏷️ <strong>陌溪</strong> </a> <span style="font-size:14px"> 种树最好的时间是十年前，其次是现在💖！</span>',
+        copy: '<span id="sitetime" style="font-size:14px"></span><br/><span style="font-size:14px">  Copyright <a href="https://t.1yb.co/sBOZ" target="_blank" style="font-size:14px"> 🏷️ <strong>陌溪</strong> </a>  &nbsp;  &copy; 2021.06.11 - 至今 &nbsp; <a href="http://www.beian.gov.cn/portal/index.do" target="_blank" style="font-size:14px"> <strong>赣ICP备18014504号</strong></a></span>',
+        auth: '<br/><span style="font-size:14px"> 种一颗树最好的时间是十年前，其次是现在🌲️</span>',
         pre: '<hr/>',
         style: 'text-align: left;',
       }//添加页脚
     }
   </script>
+  
   
 <script src="https://cdn.bootcdn.net/ajax/libs/docsify/4.11.2/docsify.js"></script>
 
@@ -120,7 +121,7 @@ $(document).ready(function () {
 	   var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
 	   var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
 	   var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
-	   document.getElementById("sitetime").innerHTML = " 阿秀的小破站已安全运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分 " + diffSeconds + " 秒 ";
+	   document.getElementById("sitetime").innerHTML = " 陌溪的笔记已运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分 " + diffSeconds + " 秒 ";
 	}
 	siteTime();
 </script>
