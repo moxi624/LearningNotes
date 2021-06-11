@@ -4,25 +4,23 @@
   <meta charset="UTF-8">
   <title>陌溪的学习笔记</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <link rel="icon" href="./icon.ico">
-  <meta name="description" content="Description">
+  <meta name="description" content="陌溪的学习笔记，面试突击宝典">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   
-    <!-- 谷歌站点收录 -->
+  <!-- 谷歌站点收录 -->
   <meta name="google-site-verification" content="qTFCf1hJ275saQ7H1kin5t2DVpznBKAj0Gi50XMOVMo" />
   <!-- 百度站点收录-->
   <meta name="baidu-site-verification" content="SZyWUIzWiU" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css">
- 
+  
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-	  name: '📙 陌溪的学习笔记',	  
+	  name: '📙 陌溪的学习笔记',	 
       coverpage: true, // 设置封面
-      onlyCover: true, // 只显示封面  
+      onlyCover: true, // 只显示封面
       loadSidebar: true, // 设置侧边栏
       subMaxLevel: 3, //侧边栏显示当前页面的目录(标题)
       loadNavbar: true, // 设置导航栏
@@ -41,9 +39,7 @@
     }
   </script>
   
-  
 <script src="https://cdn.bootcdn.net/ajax/libs/docsify/4.11.2/docsify.js"></script>
-
 
 <!-- 引入搜索模块 -->
 <script src="https://cdn.bootcdn.net/ajax/libs/docsify/4.11.2/plugins/search.min.js"></script>
@@ -51,25 +47,20 @@
 <!-- 添加一键拷贝代码-->
 <script src="//unpkg.com/docsify-copy-code"></script></script>
 
+<!--添加不蒜子访问统计-->
+<script async src="https://cdn.jsdelivr.net/gh/forthespada/forthespada.github.io@master/plugin/js/busuanzi.pure.mini.js"></script>
+
+<!-- mouse click -->
+<script src="https://cdn.jsdelivr.net/gh/forthespada/forthespada.github.io@master/plugin/click_heart.js"></script>
+
 <!-- 添加页脚 -->
 <script src="https://cdn.jsdelivr.net/gh/wugenqiang/NoteBook@master/plugin/docsify-footer-enh.min.js"></script>
-
 
 <!-- 字数统计功能 -->
 <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
 
 <!-- 图片缩小方法-->
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-
-<!-- 添加代码高亮 -->
-<script src="//unpkg.com/prismjs/components/prism-bash.js"></script>  
-<script src="//unpkg.com/prismjs/components/prism-java.js"></script>  
-<script src="//unpkg.com/prismjs/components/prism-sql.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-java.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-sql.js"></script>
-
-<!--添加不蒜子访问统计-->
-<script async src="https://cdn.jsdelivr.net/gh/forthespada/forthespada.github.io@master/plugin/js/busuanzi.pure.mini.js"></script>
 
 <!-- 回到顶部功能 -->
 <script src="https://cdn.jsdelivr.net/gh/forthespada/forthespada.github.io@master/plugin/jquery.js"></script>
@@ -86,9 +77,15 @@ $(document).ready(function () {
 });
 </script>
 
-<!-- mouse click -->
-<script src="https://cdn.jsdelivr.net/gh/forthespada/forthespada.github.io@master/plugin/click_heart.js"></script>
-  
+
+<!-- 添加代码高亮 -->
+<script src="//unpkg.com/prismjs/components/prism-bash.js"></script>  
+<script src="//unpkg.com/prismjs/components/prism-java.js"></script>  
+<script src="//unpkg.com/prismjs/components/prism-sql.js"></script>
+<script src="//unpkg.com/prismjs/components/prism-java.js"></script>
+<script src="//unpkg.com/prismjs/components/prism-sql.js"></script>
+
+
 <!-- 添加网站运行时间统计 -->
 <script language=javascript>
 	function siteTime() {
@@ -113,7 +110,7 @@ $(document).ready(function () {
 	   minutes - 0-59之间的整数，做为date对象的分钟数
 	   seconds - 0-59之间的整数，做为date对象的秒数
 	   microseconds - 0-999之间的整数，做为date对象的毫秒数 */
-	   var t1 = Date.UTC(2021, 05, 20, 00, 00, 00); //北京时间2021-05-20 
+	   var t1 = Date.UTC(2021, 06, 11, 00, 00, 00); //北京时间2021-06-11
 	   var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
 	   var diff = t2 - t1;
 	   var diffYears = Math.floor(diff / years);
