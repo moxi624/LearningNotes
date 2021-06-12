@@ -7,7 +7,7 @@
 <a href='https://gitee.com/moxi159753/LearningNotes/stargazers'><img src='https://gitee.com/moxi159753/LearningNotes/badge/star.svg?theme=dark' alt='star'></img></a>
 <a href='https://gitee.com/moxi159753/LearningNotes/members'><img src='https://gitee.com/moxi159753/LearningNotes/badge/fork.svg?theme=dark' alt='fork'></img></a>
 
-:octocat: <span id="busuanzi_container_site_uv">本站访客数：<span id="busuanzi_value_site_uv"></span>人</span> |  <span id="busuanzi_container_site_pv"> :rocket: 本站访问数：<span id="busuanzi_value_site_pv"></span>次
+:rocket: 本站访问数：<span id="busuanzi_value_site_pv"></span>次
 
  [Gitee](<https://gitee.com/moxi159753/LearningNotes>)
 [Github](<https://github.com/moxi624/LearningNotes>)
