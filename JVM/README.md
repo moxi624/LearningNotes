@@ -5,7 +5,6 @@
 <p align=center>
     <img src="../doc/images/qq/获取PDF.jpg" width="500" />
 </p>
-
 ## 介绍
 
 > 来源Bilibili尚硅谷宋红康老师JVM教程：[硅谷2020最新版宋红康JVM教程](https://www.bilibili.com/video/BV1PJ411n7xZ)
