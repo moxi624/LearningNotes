@@ -44,7 +44,7 @@
 
 为了防止cwnd增长过大引起网络拥塞，还需设置一个慢开始门限ssthresh状态变量，ssthresh的用法如下：
 
-- 当 cwnd > ssthresh时：使用慢开始算法
+- 当 cwnd < ssthresh时：使用慢开始算法
 - 当cwnd = ssthresh时：采用 慢开始或拥塞避免中的任意一种
 - 当 cwnd > ssthresh时：采用拥塞避免算法
 
