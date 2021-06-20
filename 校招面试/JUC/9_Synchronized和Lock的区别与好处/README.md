@@ -4,11 +4,11 @@
 
 早期的时候我们对线程的主要操作为：
 
-- synchronized wati  notify
+- synchronized wait  notify
 
 然后后面出现了替代方案
 
-- lock await  singal
+- lock await  signal
 
 ![image-20200317101210376](images/image-20200317101210376.png)
 
