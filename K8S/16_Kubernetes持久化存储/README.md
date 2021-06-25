@@ -24,7 +24,7 @@ yum install -y nfs-utils
 首先创建存放数据的目录
 
 ```bash
-mkdir -p /data/nfx
+mkdir -p /data/nfs
 ```
 
 设置挂载路径
@@ -53,7 +53,10 @@ yum install -y nfs-utils
 下面我们回到nfs服务端，启动我们的nfs服务
 
 ```bash
+# 启动服务
 systemctl start nfs
+# 或者使用以下命令进行启动
+service nfs-server start
 ```
 
 ![image-20201119082047766](images/image-20201119082047766.png)
