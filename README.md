@@ -32,6 +32,7 @@
 为了更方便小伙伴的复习和查询，把本仓库做成一个在线的文档
 
 - 在线文档：http://note.moguit.cn/
+- 备用地址：http://moxi159753.gitee.io/learningnotes/
 
 ## 内推
 

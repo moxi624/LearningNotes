@@ -171,7 +171,7 @@ class ShareResource {
         try {
             // 判断
             while(number != 2) {
-                // 不等于1，需要等待
+                // 不等于2，需要等待
                 condition2.await();
             }
 
@@ -197,7 +197,7 @@ class ShareResource {
         try {
             // 判断
             while(number != 3) {
-                // 不等于1，需要等待
+                // 不等于3，需要等待
                 condition3.await();
             }
 
