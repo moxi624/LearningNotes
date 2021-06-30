@@ -65,7 +65,7 @@ Thread t1 = new Thread(futureTask, "aaa");
 t1.start();
 ```
 
-最后通过 utureTask.get() 获取到返回值
+最后通过 futureTask.get() 获取到返回值
 
 ```
 // 输出FutureTask的返回值
