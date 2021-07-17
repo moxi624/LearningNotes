@@ -14,8 +14,39 @@ http://slproweb.com/products/Win32OpenSSL.html
 
 ## 生成步骤
 
-首先进入 bin 目录下，执行 openssl
+首先进入 bin 目录下，执行
 
-然后执行 genrsa-des3 -out server.key 2048  (会生成 servver.key 私钥文件)
+```bash
+openssl
+```
 
-创建证书请求：
+然后执行(会生成 servver.key 私钥文件)
+
+```bash
+genrsa-des3 -out server.key 2048
+```
+
+然后输入 123456
+
+下面开始创建证书请求，会生成 **server.csr**
+
+```bash
+req-new-key server.key -out server.csr
+```
+
+其中，common  name 也是域名，可以填写 **jtthink.com**
+
+删除密码
+
+```bash
+rsa -in server.key -out server_no_passwd.key
+```
+
+执行下面命令生成 server.crt
+
+```bash
+x509 -req -days 565 -in server.csr -signkey server_no_passwd.key -out server.crt
+```
+
+到此为止，自签证书完成
+

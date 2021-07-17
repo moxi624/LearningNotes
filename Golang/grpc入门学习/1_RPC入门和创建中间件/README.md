@@ -120,6 +120,7 @@ go get github.com/golang/protobuf/protoc-gen-go
 ```bash
 syntax="proto3";  // 表示现在使用的proto是 3.0版本
 package services;
+option go_package = "../services";  // 高版本的go需要添加这个，代表生成的包名
 
 message ProdRequest {  // 表示构建一个请求体
     int32 prod_id = 1; //商品ID
@@ -133,6 +134,8 @@ service ProductService {
     rpc  GetProductStock (ProdRequest) returns (ProdResponse);
 } 
 ```
+
+## 生成 Go PRC文件
 
 然后执行下面命令进行转换
 
@@ -445,6 +448,8 @@ var _ProductService_serviceDesc = grpc.ServiceDesc{
 }
 ```
 
+## 创建GRPC服务端
+
 在第一节中，我们依葫芦画瓢做了一个"中间文件"，并生成对应的 **go** 文件，只不过看起来好像没啥用，接下来我们就要创建真正的服务。
 
 ## 引入Service
@@ -454,6 +459,7 @@ var _ProductService_serviceDesc = grpc.ServiceDesc{
 ```bash
 syntax="proto3";
 package services;
+option go_package = "../services";
 
 message ProdRequest {
     int32 prod_id = 1; //商品ID
@@ -468,9 +474,73 @@ service ProductService {
 } 
 ```
 
-然后生成我们新的 **Prod.proto.go** 文件
+然后生成我们新的 **Prod.proto.go** 文件，同时包含了 **Service** 文件
 
 ```bash
 protoc --go_out=plugins=grpc:../services Prod.proto
+```
+
+## 创建实现类
+
+下面我们就可以创建一个实现类了，在 **services** 文件夹下创建 **ProdService** 文件
+
+![image-20210717090052476](images/image-20210717090052476.png)
+
+文件内容如下，只需要实现我们对应的方法即可
+
+```go
+/**
+ * @Description
+ * @Author 陌溪
+ * @Date 2021/7/17 8:56
+ **/
+package services
+
+import (
+	"context"
+	"google.golang.org/grpc"
+	"log"
+)
+
+// 定义的结构体
+type ProdService struct {
+
+}
+
+func (this *ProdService) GetProductStock(ctx context.Context, in *ProdRequest, opts ...grpc.CallOption) (*ProdResponse, error) {
+	log.Fatalln("进来了")
+	return &ProdResponse{ ProdStock: 20}, nil
+}
+```
+
+## 创建RPC服务
+
+最后，为了使我们的 **RPC** 进行启动，我们还需要对服务进行启动
+
+```GO
+package main
+
+import (
+	"log"
+	"net"
+
+	"github.com/zhuge20100104/grpc-demo/grpc-1/server/services"
+	"google.golang.org/grpc"
+)
+
+func main() {
+	// 通过grpc创建一个Server
+	rpcServer := grpc.NewServer()
+	// 注册Service
+	services.RegisterProductServiceServer(rpcServer, new(services.ProdService))
+	// 监听一个端口
+	listen, err := net.Listen("tcp", ":8888")
+	if err != nil {
+		log.Fatalf("启动网络监听失败 %v\n", err)
+	}
+	log.Print("服务器成功监听8888端口")
+	// 进行通信
+	rpcServer.Serve(listen)
+}
 ```
 
