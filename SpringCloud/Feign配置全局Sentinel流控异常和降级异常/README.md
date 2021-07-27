@@ -12,7 +12,7 @@ Blocked by Sentinel(flow limiting)
 
 ## Feign全局兜底异常处理
 
-之前提到过通过 [配置Sentinel规则持久化到Nacos中](http://www.moguit.cn/#/info?blogUid=6473a200c9986f45af2ae9f12534ec93) 提到将Sentinel规则持久化到数据库中，但是我们在通过feign调用时，不能很好的处理由sentinel产生的流控异常，当然我们可以通过 @SentinelResource 注解来解决，如下所示，我们通过在需要处理的方法上，编写一个异常处理的方法即可
+之前提到过通过 [配置Sentinel规则持久化到Nacos中](http://www.moguit.cn/#/info?blogUid=6473a200c9986f45af2ae9f12534ec93) 提到将Sentinel规则持久化到数据库中，但是我们在通过feign调用时，不能很好的处理由sentinel产生的流控异常，当然我们可以通过 **@SentinelResource** 注解来解决，如下所示，我们通过在需要处理的方法上，编写一个异常处理的方法即可
 
 ```bash
 @GetMapping("/testHotKey")
