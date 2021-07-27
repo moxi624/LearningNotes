@@ -215,7 +215,7 @@ k8s 集群控制节点，对集群进行调度管理，接受集群外用户去�
 ### Controller
 
 - 确保预期的pod副本数量【ReplicaSet】
-- 无状态应用部署【Depoltment】
+- 无状态应用部署【Deployment】
   - 无状态就是指，不需要依赖于网络或者ip
 - 有状态应用部署【StatefulSet】
   - 有状态需要特定的条件
