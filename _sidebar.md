@@ -25,6 +25,12 @@
   - [双非本科，折戟成沙铁未销，九面字节终上岸！](https://mp.weixin.qq.com/s/SRf2f8wFFyjz2BUUXD_pmg)
   - [如何给蘑菇博客搭建一套分布式日志收集系统？](https://mp.weixin.qq.com/s/AvF_IAZobOyerhM7moOBLw)
   - [蘑菇博客被跨站脚本攻击了？](https://mp.weixin.qq.com/s/ogKcfvfix8cVsmSENj-nKQ)
+  - [如何给蘑菇博客搭建一套全链路追踪模块？](https://mp.weixin.qq.com/s/DB-kE4ubCao7m08KsuKcPw)
+  - [陌溪在字节跳动工作一周啦](https://mp.weixin.qq.com/s/ctObzL0jC583gL6_yT1NNw)
+  - [为什么你们制作镜像只有5MB，而我却200MB？](https://mp.weixin.qq.com/s/iWpivtTAKMPKT6gq_3nwaA)
+  - [面试官：谈谈你对ThreadLocal的理解？](https://mp.weixin.qq.com/s/--er6Wh-fc5v6n7MjYOiNw)
+  - [字节二面：蘑菇博客是怎么解决缓存穿透的](https://mp.weixin.qq.com/s/JNnL6sTySXL9ta5p0rjjXg)
+  - [还在用破解IDEA？陌溪手把手教如何申请正版](https://mp.weixin.qq.com/s/mZjoSjk0QqeKFxPbFySomg)
 - **Java**
   - [equals和等等的区别](校招面试/基础面试题/1_equals和等等的区别/README.md)
   - [代码块](./校招面试/基础面试题/2_代码块/README.md)
