@@ -22,7 +22,7 @@
       coverpage: true, // 设置封面
       onlyCover: true, // 只显示封面
       loadSidebar: true, // 设置侧边栏
-      subMaxLevel: 3, //侧边栏显示当前页面的目录(标题)
+      subMaxLevel: 2, //侧边栏显示当前页面的目录(标题)
       loadNavbar: true, // 设置导航栏
       // 完整配置参数
       search: {
@@ -77,17 +77,6 @@ $(document).ready(function () {
 });
 </script>
 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?b434d13346692660cab629bae098bc59";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
 <!-- 添加代码高亮 -->
 <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>  
 <script src="//unpkg.com/prismjs/components/prism-java.js"></script>  
@@ -128,9 +117,22 @@ var _hmt = _hmt || [];
 	   var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
 	   var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
 	   var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
-	   document.getElementById("sitetime").innerHTML = " 陌溪的笔记已运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分 " + diffSeconds + " 秒 ";
+	   if(document.getElementById("sitetime")) {
+		  document.getElementById("sitetime").innerHTML = " 陌溪的笔记已运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分 " + diffSeconds + " 秒 ";
+	   }
 	}
 	siteTime();
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b434d13346692660cab629bae098bc59";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
 </body>
