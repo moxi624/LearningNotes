@@ -206,7 +206,6 @@
 
 > 来源Bilibili尚硅谷教程：[k8s教程由浅入深-尚硅谷](https://www.bilibili.com/video/BV1GT4y1A756)
 
-
 - [Kubernetes简介](http://www.moguit.cn/#/info?blogOid=250)
 - [搭建K8S集群前置知识](http://www.moguit.cn/#/info?blogOid=7)
 - [使用kubeadm方式搭建K8S集群](http://www.moguit.cn/#/info?blogOid=548)
