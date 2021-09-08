@@ -162,9 +162,10 @@ public class Client {
 
 解决方案是，在Service下，加锁解决
 
-```
+```    
+    //lock 应该申明为类的成员变量
+    private Lock lock = new ReentrantLock();
     public String getOrderNumber() {
-        Lock lock = new ReentrantLock();
         lock.lock();
         try {
             return orderNumberCreateUtil.getOrderNumber();
