@@ -49,11 +49,11 @@
 
 ## 个人博客搭建
 
-如果想搭建个人的博客系统，可以购买优惠服务器后，参考 [教程](http://www.moguit.cn/#/info?blogUid=8100dcb585fff77e3fa25eed50e3708e) 在服务器搭建 [蘑菇博客项目](https://gitee.com/moxi159753/mogu_blog_v2) 用于知识点的梳理
+如果想搭建个人的博客系统，可以购买优惠服务器后，参考 [20分钟部署一个微服务架构的博客系统](https://www.bilibili.com/video/BV13y4y1V7Us)  在服务器搭建 [蘑菇博客项目](https://gitee.com/moxi159753/mogu_blog_v2) 用于知识点的梳理
 
-> 【阿里云】云服务器双12狂欢特惠，1核2G 5M轻量级应用服务器114元/年【博主使用】 [点我传送](https://www.aliyun.com/minisite/goods?userCode=w7aungxw) 
+> 【阿里云】云服务器狂欢特惠，**2核2G5M** 轻量级应用服务器 **60** 元/年【博主目前使用】 [点我传送](https://www.aliyun.com/minisite/goods?userCode=w7aungxw)
 >
-> 【腾讯云】云产品限时秒杀，爆款1核2G云服务器，首年99元（老用户重新用微信QQ注册即可） [点我进入](https://curl.qcloud.com/zry6xub9)
+> 【腾讯云】云产品限时秒杀，爆款 **2核4G8M** 云服务器，首年**74**元/年【博主强烈推荐】 [点我进入](https://curl.qcloud.com/zry6xub9)
 
 ## 公众号文章
 
