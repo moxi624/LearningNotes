@@ -458,14 +458,14 @@ System.out.println(s == s2); // false
 String s3 = new String("1") + new String("1");
 s3.intern();
 String s4 = "11";
-System.out.println(s3 == s4); // true
+System.out.println(s3 == s4); // false
 ```
 
 输出结果
 
 ```
 false
-true
+false
 ```
 
 为什么对象会不一样呢？
@@ -495,7 +495,7 @@ System.out.println(s == s2); // true
 String s = new String("1");
 s.intern();
 String s2 = "1";
-System.out.println(s == s2); // true
+System.out.println(s == s2); // false
 
 String s3 = new String("1") + new String("1");
 s3.intern();
