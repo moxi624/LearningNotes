@@ -325,8 +325,10 @@ docker pull leifengyang/guignginx:v1.0
 ## 6、补充
 
 ```bash
+# 查看日志
 docker logs 容器名/id   排错
 
+# 进入容器内部修改配置
 docker exec -it 容器id /bin/bash
 
 
@@ -356,25 +358,28 @@ https://start.spring.io/
 
 ## 2、将应用打包成镜像
 
-编写Dockerfile将自己的应用打包镜像
+编写 **Dockerfile** 将自己的应用打包镜像
 
 ### 1、以前
 
-Java为例
+**Java** 为例
 
-- SpringBoot打包成可执行jar
-- 把jar包上传给服务
+- **SpringBoot** 打包成可执行 **jar**
 
-- 服务器运行java -jar
+- 把 **jar** 包上传给服务
+
+- 服务器运行 **java -jar**
 
 ### 2、现在
 
-所有机器都安装Docker，任何应用都是镜像，所有机器都可以运行
+所有机器都安装 **Docker**，任何应用都是镜像，所有机器都可以运行
 
 ### 3、怎么打包-Dockerfile
 
 ```dockerfile
+# Java基础环境 类似于 docker pull
 FROM openjdk:8-jdk-slim
+# 镜像的作者是谁
 LABEL maintainer=leifengyang
 
 COPY target/*.jar   /app.jar
@@ -389,6 +394,18 @@ docker build -t java-demo:v1.0 .
 思考：
 
 每个应用每次打包，都需要本地编译、再上传服务器、再进行docker构建，如果有1000个应用要打包镜像怎么办？有没有更好的方式？
+
+关于 **CMD** 和 **ENTRYPOINT** 的区别
+
+```BASH
+在 Dockerfile 中， 应该至少指定一个 CMD 和 ENTRYPOINT；
+将 Docker 当作可执行程序时， 应该使用 ENTRYPOINT 进行配置；
+CMD 可以用作 ENTRYPOINT 默认参数， 或者用作 Docker 的默认命令；
+CMD 可以被 docker run 传入的参数覆盖；
+docker run 传入的参数会附加到 ENTRYPOINT 之后， 前提是使用了exec格式 
+```
+
+
 
 ## 3、启动容器
 
@@ -434,3 +451,7 @@ docker run -v /data/redis/redis.conf:/etc/redis/redis.conf \
 -p 6379:6379 \
 redis:latest  redis-server /etc/redis/redis.conf
 ```
+
+需要将redis的配置文件和数据挂载出来
+
+![image-20211108085600489](images/image-20211108085600489.png)

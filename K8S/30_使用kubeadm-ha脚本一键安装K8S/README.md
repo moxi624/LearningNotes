@@ -2,12 +2,13 @@
 
 ## 前情提示
 
-以前安装k8s集群的时候使用的是k8s官网的教程 使用的镜像源都是国外的 速度慢就不说了 还有一些根本就下载不动 导致安装失败 最后在群里小伙伴(蘑菇博客交流群/@你钉钉响了)的建议下使用一个开源的一键安装k8s的脚本就好了起来了
-Github地址：https://github.com/TimeBye/kubeadm-ha
+以前安装 **K8S** 集群的时候使用的是 **k8s** 官网的教程 使用的镜像源都是国外的 速度慢就不说了 还有一些根本就下载不动 导致安装失败 最后在群里小伙伴(蘑菇博客交流群/@你钉钉响了) 的建议下使用一个开源的一键安装k8s的脚本就好了起来了
+
+> Github地址：https://github.com/TimeBye/kubeadm-ha
 
 ## 环境准备
 
-官网的安装说明也很简单但是还有些细节还是没有提到 所以我自己照着官网的教程 补充了一些细节
+官网的安装说明也很简单但是还有些细节还是没有提到，所以我自己照着官网的教程 补充了一些细节
 
 ### 硬件系统要求
 
@@ -38,7 +39,7 @@ Github地址：https://github.com/TimeBye/kubeadm-ha
 ping baidu.com
 ```
 
-建议关闭centos的防火墙
+建议关闭 **CentOS** 的防火墙
 
 ```sh
 systemctl stop firewalld  && systemctl disable firewalld && systemctl status firewalld 
@@ -90,7 +91,7 @@ sudo ./install-ansible.sh
 vi example/hosts.s-master.ip.ini 
 ```
 
-具体要修改的就是ip 和密码 其他的保持默认
+具体要修改的就是 ip 和密码 其他的保持默认
 
 我的hosts.s-master.ip.ini 文件预览
 
