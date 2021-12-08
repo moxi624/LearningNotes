@@ -4,8 +4,13 @@
 
 [**陌溪**](https://gitee.com/moxi159753/LearningNotes/raw/master/doc/images/qq/添加陌溪.png) 是一个从三本院校一路摸滚翻爬上来的程序员。目前就职于字节跳动的Data广告部门，是字节跳动全线产品的商业变现研发团队。这两天创建了一个 **微信公众号【[陌溪教你学编程](https://gitee.com/moxi159753/LearningNotes/raw/master/doc/images/qq/公众号2.jpg)】**，未来将会在公众号上持续性的输出很多原创小知识以及学习资源，欢迎各位小伙伴关注我，和我一起共同学习，同时我也希望各位小伙伴能够给 **LearningNotes** 项目多多 **Star** 支持，您的**点赞**就是我维护的动力！
 
-
 🔗友情链接：我的好友阿秀前段时间收集了超过1000本计算机经典书籍的PDF，包括C++、Java、Python、操作系统、计算机网络、数据库等方面的书籍都有收录，基本上你能听过的都在里面了。这是他的仓库 [CS-Books](https://github.com/forthespada/CS-Books)，大家可以去看看，以后看书不花钱不是梦了哈哈，欢迎Star⭐
+
+## 投蘑菇一票
+
+码云开源项目评选开始啦，小伙伴们快动动手指，给陌溪的开源博客项目（搜索：MoguBlog ）投上自己宝贵的一票～，陌溪在这里感谢大家啦。投票地址：https://www.oschina.net/project/top_cn_2021?fr=zx1205
+
+![给蘑菇投票](./doc/images/qq/mogu.png)
 
 ## 项目介绍
 
