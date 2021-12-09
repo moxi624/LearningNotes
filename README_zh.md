@@ -8,7 +8,7 @@
 
 ## 投蘑菇一票
 
-码云开源项目评选开始啦，小伙伴们快动动手指，给陌溪的开源博客项目（搜索：MoguBlog ）投上自己宝贵的一票～，陌溪在这里感谢大家啦。投票地址：https://www.oschina.net/project/top_cn_2021?fr=zx1205
+码云开源项目评选开始啦，小伙伴们快动动手指，给陌溪的开源博客项目（搜索：MoguBlog ）投上自己宝贵的一票～，陌溪在这里感谢大家啦。投票地址：https://www.oschina.net/project/top_cn_2021/?id=618
 
 ![给蘑菇投票](./doc/images/qq/mogu.png)
 
