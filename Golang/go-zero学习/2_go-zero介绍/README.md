@@ -2,7 +2,7 @@
 
 ## 来源
 
-文档：https://www.yuque.com/tal-tech/go-zero/yaoehb
+文档：https://go-zero.dev
 
 官网：
 
@@ -116,7 +116,7 @@ go-zero是一个集成了各种工程实践的包含web和rpc框架，有如下�
 
 
 ```
-GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero
+GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero
 ```
 
 
@@ -174,7 +174,7 @@ GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero
    来解放我们的双手👈
 
    ```
-   GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+   GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go install github.com/zeromicro/go-zero/tools/goctl@latest
    ```
 
    确保goctl可执行
@@ -203,7 +203,7 @@ GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero
 
    编写业务代码：
 
-- - api文件定义了服务对外暴露的路由，可参考[api规范](https://github.com/tal-tech/zero-doc/blob/main/doc/goctl.md)
+- - api文件定义了服务对外暴露的路由，可参考[api规范](https://github.com/zeromicro/zero-doc/blob/main/doc/goctl.md)
 
 - - 可以在servicecontext.go里面传递依赖给logic，比如mysql, redis等
 

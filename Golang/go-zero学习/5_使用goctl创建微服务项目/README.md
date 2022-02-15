@@ -57,7 +57,7 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 goctl工具主要用于代码生成
 
 ```bash
-go get -u github.com/tal-tech/go-zero/tools/goctl
+go install github.com/zeromicro/go-zero/tools/goctl@latest
 ```
 
 ### 创建目录
@@ -383,4 +383,4 @@ func NewServiceContext(c config.Config) *ServiceContext {
 
 ## 来源
 
-https://www.yuque.com/tal-tech/go-zero/rm435c
+https://go-zero.dev
