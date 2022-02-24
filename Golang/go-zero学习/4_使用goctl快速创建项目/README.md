@@ -16,14 +16,14 @@ go env -w GOPROXY=https://goproxy.cn/,direct
 然后进行依赖的下载，主要是下载  goctl 用来生成我们的项目
 
 ```bash
-go get -u github.com/tal-tech/go-zero/tools/goctl
+go install github.com/zeromicro/go-zero/tools/goctl@latest
 ```
 
 ![image-20201105154538400](images/image-20201105154538400.png)
 
 ## 编写业务代码
 
-- api文件定义了服务对外暴露的路由，可参考[api规范](https://github.com/tal-tech/zero-doc/blob/main/doc/goctl.md)
+- api文件定义了服务对外暴露的路由，可参考[api规范](https://github.com/zeromicro/zero-doc/blob/main/doc/goctl.md)
 
 - 可以在servicecontext.go里面传递依赖给logic，比如mysql, redis等
 - 在api定义的get/post/put/delete等请求对应的logic里增加业务处理逻辑
